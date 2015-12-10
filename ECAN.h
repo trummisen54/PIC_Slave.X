@@ -76,11 +76,10 @@
 *                        Function Prototypes 
 *
 *********************************************************************/
-void checkCAN(void);
 
 void CANSetup(void);
-void checkInputs(void);
 
+void unZipCAN();
 
 
 unsigned char ECAN_Receive(void);
@@ -99,10 +98,15 @@ void ECAN_Transmit(unsigned char SIDH,
 
 
 unsigned char count;
-unsigned char RECEIVE_ID;
-unsigned char temp_D7;
-unsigned char temp_D1;
+unsigned char BITDATA;
+unsigned char ACCELERATOR;
 unsigned char temp_D2;
+unsigned char temp_D3;
+unsigned char temp_D4;
+unsigned char temp_D5;
+unsigned char temp_D6;
+unsigned char temp_D7;
+
 
 unsigned char MOTOR_ID = 0x01;
 unsigned char BATTERISTATUS_ID = 0x02;

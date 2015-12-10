@@ -20956,12 +20956,10 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
-# 79 "ECAN.h"
-void checkCAN(void);
-
+# 80 "ECAN.h"
 void CANSetup(void);
-void checkInputs(void);
 
+void unZipCAN();
 
 
 unsigned char ECAN_Receive(void);
@@ -20980,10 +20978,15 @@ unsigned char DATA7);
 
 
 unsigned char count;
-unsigned char RECEIVE_ID;
-unsigned char temp_D7;
-unsigned char temp_D1;
+unsigned char BITDATA;
+unsigned char ACCELERATOR;
 unsigned char temp_D2;
+unsigned char temp_D3;
+unsigned char temp_D4;
+unsigned char temp_D5;
+unsigned char temp_D6;
+unsigned char temp_D7;
+
 
 unsigned char MOTOR_ID = 0x01;
 unsigned char BATTERISTATUS_ID = 0x02;
@@ -20991,14 +20994,33 @@ unsigned char BATTERISTATUS_ID = 0x02;
 unsigned int heartbeatCount;
 unsigned char buttonWasPressed;
 
-# 15 "Other.h"
-void InitDevice(void);
+# 12 "Other.h"
 void Delay(unsigned int count);
-unsigned char ButtonPressed(void);
-int HornChanged();
-int MotorChanged();
 
-int HORN_STATUS;
+# 11 "init.h"
+void InitDevice();
+
+# 11 "peripherals.h"
+void checkHeartbeat();
+void checkBrake();
+void checkBacklight();
+void checkV_blink();
+void checkH_blink();
+void checkDirection();
+void checkSafetyPin();
+void checkAccelerator();
+void updateInputs();
+
+# 27
+int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
+MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
+
+
+int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
+TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
+
+# 38
+int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
 
 # 9 "main.c"
 int main(void){
@@ -21007,17 +21029,41 @@ int main(void){
 InitDevice();
 CANSetup();
 
-LATCbits.LATC6 = 1;
+LATAbits.LATA7 = 1;
 
 while(1){
 
-checkInputs();
 
-checkCAN();
-Delay(100);
+if(ECAN_Receive()){
+unZipCAN();
 }
 
+checkHeartbeat();
+checkBrake();
+checkBacklight();
+checkV_blink();
+checkH_blink();
+checkDirection();
+checkSafetyPin();
+checkAccelerator();
 
+
+updateInputs();
+
+ECAN_Transmit(0x32,0xC0, 0x08,
+MAP_BATTERYSTATUS,
+MAP_VELOCITY,
+MAP_HEARTBEAT,
+temp_D3,
+temp_D4,
+temp_D5,
+temp_D6,
+temp_D7);
+
+
+Delay(100);
+
+}
 return 0;
 }
 

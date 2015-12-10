@@ -20824,12 +20824,142 @@ extern __nonreentrant void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 
-# 79 "ECAN.h"
-void checkCAN(void);
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\__size_t.h"
+typedef unsigned size_t;
 
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdarg.h"
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+
+# 43 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdio.h"
+struct __prbuf
+{
+char * ptr;
+void (* func)(char);
+};
+
+# 25 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\errno.h"
+extern int errno;
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\conio.h"
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+# 23
+extern char * cgets(char *);
+extern void cputs(const char *);
+
+# 88 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdio.h"
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+
+
+# 180
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdlib.h"
+typedef unsigned short wchar_t;
+
+# 15
+typedef struct {
+int rem;
+int quot;
+} div_t;
+typedef struct {
+unsigned rem;
+unsigned quot;
+} udiv_t;
+typedef struct {
+long quot;
+long rem;
+} ldiv_t;
+typedef struct {
+unsigned long quot;
+unsigned long rem;
+} uldiv_t;
+
+# 53
+extern double atof(const char *);
+extern double strtod(const char *, const char **);
+extern int atoi(const char *);
+extern unsigned xtoi(const char *);
+extern long atol(const char *);
+extern long strtol(const char *, char **, int);
+
+extern int rand(void);
+extern void srand(unsigned int);
+extern void * calloc(size_t, size_t);
+extern div_t div(int numer, int denom);
+extern udiv_t udiv(unsigned numer, unsigned denom);
+extern ldiv_t ldiv(long numer, long denom);
+extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
+extern unsigned long _lrotl(unsigned long value, unsigned int shift);
+extern unsigned long _lrotr(unsigned long value, unsigned int shift);
+extern unsigned int _rotl(unsigned int value, unsigned int shift);
+extern unsigned int _rotr(unsigned int value, unsigned int shift);
+
+
+
+
+extern void * malloc(size_t);
+extern void free(void *);
+extern void * realloc(void *, size_t);
+
+# 86
+extern int atexit(void (*)(void));
+extern char * getenv(const char *);
+extern char ** environ;
+extern int system(char *);
+extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
+extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
+extern int abs(int);
+extern long labs(long);
+
+extern char * itoa(char * buf, int val, int base);
+extern char * utoa(char * buf, unsigned val, int base);
+
+
+
+
+extern char * ltoa(char * buf, long val, int base);
+extern char * ultoa(char * buf, unsigned long val, int base);
+
+extern char * ftoa(float f, int * status);
+
+# 80 "ECAN.h"
 void CANSetup(void);
-void checkInputs(void);
 
+void unZipCAN();
 
 
 unsigned char ECAN_Receive(void);
@@ -20848,10 +20978,15 @@ unsigned char DATA7);
 
 
 unsigned char count;
-unsigned char RECEIVE_ID;
-unsigned char temp_D7;
-unsigned char temp_D1;
+unsigned char BITDATA;
+unsigned char ACCELERATOR;
 unsigned char temp_D2;
+unsigned char temp_D3;
+unsigned char temp_D4;
+unsigned char temp_D5;
+unsigned char temp_D6;
+unsigned char temp_D7;
+
 
 unsigned char MOTOR_ID = 0x01;
 unsigned char BATTERISTATUS_ID = 0x02;
@@ -20859,30 +20994,42 @@ unsigned char BATTERISTATUS_ID = 0x02;
 unsigned int heartbeatCount;
 unsigned char buttonWasPressed;
 
-# 15 "Other.h"
-void InitDevice(void);
+# 12 "Other.h"
 void Delay(unsigned int count);
-unsigned char ButtonPressed(void);
-int HornChanged();
-int MotorChanged();
 
-int HORN_STATUS;
+# 11 "init.h"
+void InitDevice();
 
-# 91 "ECAN.c"
+# 11 "peripherals.h"
+void checkHeartbeat();
+void checkBrake();
+void checkBacklight();
+void checkV_blink();
+void checkH_blink();
+void checkDirection();
+void checkSafetyPin();
+void checkAccelerator();
+void updateInputs();
+
+# 27
+int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
+MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
+
+
+int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
+TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
+
+# 38
+int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+
+# 95 "ECAN.c"
 unsigned char temp_EIDH;
 unsigned char temp_EIDL;
 unsigned char temp_SIDH;
 unsigned char temp_SIDL;
 unsigned char temp_DLC;
-unsigned char temp_D0;
 
-
-unsigned char temp_D3;
-unsigned char temp_D4;
-unsigned char temp_D5;
-unsigned char temp_D6;
-
-# 114
+# 111
 void CANSetup(void)
 {
 
@@ -20939,7 +21086,7 @@ RXFBCON5 = 0xFF;
 RXFBCON6 = 0xFF;
 RXFBCON7 = 0xFF;
 
-# 174
+# 171
 RXF0EIDH = 0x00;
 RXF0EIDL = 0x00;
 RXF0SIDH = 0x32;
@@ -20981,7 +21128,7 @@ RXB1CON = 0x00;
 
 }
 
-# 225
+# 222
 unsigned char ECAN_Receive(void)
 {
 unsigned char RXMsgFlag;
@@ -20995,8 +21142,8 @@ temp_EIDL = RXB0EIDL;
 temp_SIDH = RXB0SIDH;
 temp_SIDL = RXB0SIDL;
 temp_DLC = RXB0DLC;
-RECEIVE_ID = RXB0D0;
-temp_D1 = RXB0D1;
+BITDATA = RXB0D0;
+ACCELERATOR = RXB0D1;
 temp_D2 = RXB0D2;
 temp_D3 = RXB0D3;
 temp_D4 = RXB0D4;
@@ -21013,8 +21160,8 @@ temp_EIDL = RXB1EIDL;
 temp_SIDH = RXB1SIDH;
 temp_SIDL = RXB1SIDL;
 temp_DLC = RXB1DLC;
-temp_D0 = RXB1D0;
-temp_D1 = RXB1D1;
+BITDATA = RXB1D0;
+ACCELERATOR = RXB1D1;
 temp_D2 = RXB1D2;
 temp_D3 = RXB1D3;
 temp_D4 = RXB1D4;
@@ -21031,8 +21178,8 @@ temp_EIDL = B0EIDL;
 temp_SIDH = B0SIDH;
 temp_SIDL = B0SIDL;
 temp_DLC = B0DLC;
-temp_D0 = B0D0;
-temp_D1 = B0D1;
+BITDATA = B0D0;
+ACCELERATOR = B0D1;
 temp_D2 = B0D2;
 temp_D3 = B0D3;
 temp_D4 = B0D4;
@@ -21056,7 +21203,7 @@ return 0;
 }
 }
 
-# 306
+# 303
 void ECAN_Transmit(unsigned char SIDH,
 unsigned char SIDL,
 unsigned char DLC,
@@ -21077,7 +21224,7 @@ TXB0SIDH = SIDH;
 TXB0SIDL = SIDL;
 TXB0DLC = DLC;
 
-# 333
+# 330
 TXB0D0 = TRANSMIT_ID;
 TXB0D1 = DATA1;
 TXB0D2 = DATA2;
@@ -21089,47 +21236,18 @@ TXB0D7 = DATA7;
 
 TXB0CONbits.TXREQ = 1;
 
-# 356
+# 353
 }
 
-void checkCAN(){
-if(ECAN_Receive()){
+# 359
+void unZipCAN(){
 
-switch(RECEIVE_ID){
-case 1 :
-
-
-
-break;
-
-case 2 :
-
-
-
-break;
-
-}
-
-}
-}
-
-void checkInputs(){
-
-if(HornChanged()){
-
-ECAN_Transmit(0x32, 0xC0, 0x03,MOTOR_ID,HORN_STATUS,
-0x00,0x00,0x00,0x00,0x00,0x00);
-
-
-LATCbits.LATC7 = HORN_STATUS;
-
-}
-
-if(MotorChanged()){
-
-
-}
-
-
+TEMP_MAP_HEARTBEAT = (BITDATA & (1 << 0));
+TEMP_MAP_BRAKE = BITDATA & (1 << 1);
+TEMP_MAP_BACKLIGHT = BITDATA & (1 << 2);
+TEMP_MAP_V_BLINK = BITDATA & (1 << 3);
+TEMP_MAP_H_BLINK = BITDATA & (1 << 4);
+TEMP_MAP_DIRECTION = BITDATA & (1 << 5);
+TEMP_MAP_SAFETYPIN = BITDATA & (1 << 6);
 
 }

@@ -8,21 +8,13 @@
 #ifndef OTHER_H
 #define	OTHER_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
 
-void InitDevice(void);
 void Delay(unsigned int count);
-unsigned char ButtonPressed(void);
-int HornChanged();
-int MotorChanged();
 
-int HORN_STATUS;
 
-#ifdef	__cplusplus
-}
-#endif
+#define DEVICE_OSC  64
+#define ONE_MS      (unsigned int)(DEVICE_OSC/4)*80
+
 
 #endif	/* OTHER_H */
 

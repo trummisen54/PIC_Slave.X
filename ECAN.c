@@ -68,8 +68,12 @@
 *********************************************************************/
 //#include <p18cxxx.h>
 #include "config.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "ECAN.h"
 #include "Other.h"
+#include "init.h"
+#include "peripherals.h"
 
 /*********************************************************************
 *
@@ -93,14 +97,7 @@ unsigned char temp_EIDL;
 unsigned char temp_SIDH;
 unsigned char temp_SIDL;
 unsigned char temp_DLC;
-unsigned char temp_D0;
 
-//unsigned char temp_D2; ligger i h filen
-unsigned char temp_D3;
-unsigned char temp_D4;
-unsigned char temp_D5;
-unsigned char temp_D6;
-//unsigned char temp_D7; ligger i h filen.
 
 //unsigned char count;
 
@@ -235,8 +232,8 @@ unsigned char ECAN_Receive(void)
         temp_SIDH = RXB0SIDH;
         temp_SIDL = RXB0SIDL;
         temp_DLC = RXB0DLC;
-        RECEIVE_ID = RXB0D0;
-        temp_D1 = RXB0D1; 
+        BITDATA = RXB0D0;
+        ACCELERATOR = RXB0D1; 
         temp_D2 = RXB0D2;
         temp_D3 = RXB0D3;
         temp_D4 = RXB0D4;
@@ -253,8 +250,8 @@ unsigned char ECAN_Receive(void)
         temp_SIDH = RXB1SIDH;
         temp_SIDL = RXB1SIDL;
         temp_DLC = RXB1DLC;
-        temp_D0 = RXB1D0;
-        temp_D1 = RXB1D1;
+        BITDATA = RXB1D0;
+        ACCELERATOR = RXB1D1;
         temp_D2 = RXB1D2;
         temp_D3 = RXB1D3;
         temp_D4 = RXB1D4;
@@ -271,8 +268,8 @@ unsigned char ECAN_Receive(void)
         temp_SIDH = B0SIDH;
         temp_SIDL = B0SIDL;
         temp_DLC = B0DLC;
-        temp_D0 = B0D0;
-        temp_D1 = B0D1;
+        BITDATA = B0D0;
+        ACCELERATOR = B0D1;
         temp_D2 = B0D2;
         temp_D3 = B0D3;
         temp_D4 = B0D4;
@@ -355,44 +352,18 @@ void ECAN_Transmit(unsigned char SIDH,
     
 }
 
-void checkCAN(){
-    if(ECAN_Receive()){
 
-        switch(RECEIVE_ID){
-            case 1 :
 
-                
 
-               break;
 
-            case 2 :
+void unZipCAN(){
 
-               // batteristatus();
-
-                break;
-
-        }
-
-    }
-}
-
-void checkInputs(){
+    TEMP_MAP_HEARTBEAT = (BITDATA & (1 << HEARTBEAT_BIT));
+    TEMP_MAP_BRAKE = BITDATA & (1 << BRAKE_BIT);
+    TEMP_MAP_BACKLIGHT = BITDATA & (1 << BACKLIGHT_BIT);
+    TEMP_MAP_V_BLINK = BITDATA & (1 << V_BLINK_BIT);
+    TEMP_MAP_H_BLINK = BITDATA & (1 << H_BLINK_BIT);
+    TEMP_MAP_DIRECTION = BITDATA & (1 << DIRECTION_BIT);
+    TEMP_MAP_SAFETYPIN = BITDATA & (1 << SAFETYPIN_BIT);
     
-    if(HornChanged()){
-        
-        ECAN_Transmit(0x32, 0xC0, 0x03,MOTOR_ID,HORN_STATUS,
-                    0x00,0x00,0x00,0x00,0x00,0x00);
-        
-        
-        LATCbits.LATC7 = HORN_STATUS;
-        
-    }
-    
-    if(MotorChanged()){
-        
-    
-    }
-    
-    
-
 }

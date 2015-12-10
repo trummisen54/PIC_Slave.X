@@ -1,5 +1,5 @@
 
-# 1 "Other.c"
+# 1 "init.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -21000,9 +21000,76 @@ void Delay(unsigned int count);
 # 11 "init.h"
 void InitDevice();
 
-# 11 "Other.c"
-void Delay(unsigned int count)
-{
+# 11 "peripherals.h"
+void checkHeartbeat();
+void checkBrake();
+void checkBacklight();
+void checkV_blink();
+void checkH_blink();
+void checkDirection();
+void checkSafetyPin();
+void checkAccelerator();
+void updateInputs();
 
-while(count--);
+# 27
+int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
+MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
+
+
+int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
+TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
+
+# 38
+int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+
+# 11 "init.c"
+void InitDevice(){
+count = 0x01;
+
+
+OSCCONbits.IRCF = 7;
+OSCTUNEbits.PLLEN = 1;
+
+
+heartbeatCount = 0;
+buttonWasPressed = 0;
+
+# 26
+ANCON0 = ANCON1 = 0x00;
+
+TRISA = 0b00111111;
+LATA = 0x00;
+
+TRISB = 0b00011101;
+LATB = 0x00;
+
+TRISC = 0x00;
+LATC = 0x00;
+
+
+
+MAP_HEARTBEAT = 0;
+MAP_BRAKE = 0;
+MAP_BACKLIGHT = 0;
+MAP_V_BLINK = 0;
+MAP_H_BLINK = 0;
+MAP_DIRECTION = 0;
+MAP_SAFETYPIN = 0;
+MAP_ACCELERATOR = 0;
+
+TEMP_MAP_HEARTBEAT = 0;
+TEMP_MAP_BRAKE = 0;
+TEMP_MAP_BACKLIGHT = 0;
+TEMP_MAP_V_BLINK = 0;
+TEMP_MAP_H_BLINK = 0;
+TEMP_MAP_DIRECTION = 0;
+TEMP_MAP_SAFETYPIN = 0;
+TEMP_MAP_ACCELERATOR = 0;
+
+MAP_BATTERYSTATUS = 0;
+MAP_VELOCITY = 0;
+MAP_HEARTBEAT = 0;
+
+
+
 }
