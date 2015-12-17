@@ -20996,12 +20996,18 @@ unsigned char buttonWasPressed;
 
 # 12 "Other.h"
 void Delay(unsigned int count);
+void heartBeat();
 
 # 11 "init.h"
 void InitDevice();
+void setup_Interrupt();
+
+int heartBeatCounter;
+int FIRST_SEND;
+long interruptCounter;
 
 # 11 "peripherals.h"
-void checkHeartbeat();
+void heartbeat();
 void checkBrake();
 void checkBacklight();
 void checkV_blink();
@@ -21010,8 +21016,9 @@ void checkDirection();
 void checkSafetyPin();
 void checkAccelerator();
 void updateInputs();
+int readAnalog();
 
-# 27
+# 28
 int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
 MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
 
@@ -21019,7 +21026,7 @@ MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
 int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
 TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
 
-# 38
+# 39
 int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
 
 # 95 "ECAN.c"
@@ -21243,11 +21250,24 @@ TXB0CONbits.TXREQ = 1;
 void unZipCAN(){
 
 TEMP_MAP_HEARTBEAT = (BITDATA & (1 << 0));
+TEMP_MAP_HEARTBEAT = (TEMP_MAP_HEARTBEAT >> 0);
+
 TEMP_MAP_BRAKE = BITDATA & (1 << 1);
+TEMP_MAP_BRAKE = (TEMP_MAP_BRAKE >> 1);
+
 TEMP_MAP_BACKLIGHT = BITDATA & (1 << 2);
+TEMP_MAP_BACKLIGHT = (TEMP_MAP_BACKLIGHT >> 2);
+
 TEMP_MAP_V_BLINK = BITDATA & (1 << 3);
+TEMP_MAP_V_BLINK = (TEMP_MAP_V_BLINK >> 3);
+
 TEMP_MAP_H_BLINK = BITDATA & (1 << 4);
+TEMP_MAP_H_BLINK = (TEMP_MAP_H_BLINK >> 4);
+
 TEMP_MAP_DIRECTION = BITDATA & (1 << 5);
+TEMP_MAP_DIRECTION = (TEMP_MAP_DIRECTION >> 5);
+
 TEMP_MAP_SAFETYPIN = BITDATA & (1 << 6);
+TEMP_MAP_SAFETYPIN = (TEMP_MAP_SAFETYPIN >> 6);
 
 }

@@ -9,12 +9,17 @@
 #define	INIT_H
 
 void InitDevice();
+void setup_Interrupt();
 
+int heartBeatCounter;
+int FIRST_SEND;
+long interruptCounter;
 
 //INPUTS
 
 #define TURNOFF_IN          PORTBbits.RB4
 #define BATTERY_IN          PORTAbits.RA0
+//#define asdf                ADRESL
 
 //OUTPUTS
 #define CHIP_ALIVE_DIODE_PIN    LATAbits.LATA7

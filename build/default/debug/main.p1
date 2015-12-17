@@ -1,46 +1,100 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"15 Other.h
+"11 init.h
 [v _InitDevice `(v ~T0 @X0 0 ef ]
-"81 ECAN.h
+"80 ECAN.h
 [v _CANSetup `(v ~T0 @X0 0 ef ]
-"33278 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f26k80.h
-[s S2181 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2181 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
-"33288
-[s S2182 :1 `uc 1 ]
-[n S2182 . LC0 ]
-"33291
-[s S2183 :1 `uc 1 :1 `uc 1 ]
-[n S2183 . . LC1 ]
-"33295
-[s S2184 :2 `uc 1 :1 `uc 1 ]
-[n S2184 . . LC2 ]
-"33299
-[s S2185 :3 `uc 1 :1 `uc 1 ]
-[n S2185 . . LC3 ]
-"33303
-[s S2186 :4 `uc 1 :1 `uc 1 ]
-[n S2186 . . LC4 ]
-"33307
-[s S2187 :5 `uc 1 :1 `uc 1 ]
-[n S2187 . . LC5 ]
-"33311
-[s S2188 :6 `uc 1 :1 `uc 1 ]
-[n S2188 . . LC6 ]
-"33315
-[s S2189 :7 `uc 1 :1 `uc 1 ]
-[n S2189 . . LC7 ]
-"33277
-[u S2180 `S2181 1 `S2182 1 `S2183 1 `S2184 1 `S2185 1 `S2186 1 `S2187 1 `S2188 1 `S2189 1 ]
-[n S2180 . . . . . . . . . . ]
-"33320
-[v _LATCbits `VS2180 ~T0 @X0 0 e@3979 ]
-"82 ECAN.h
-[v _checkInputs `(v ~T0 @X0 0 ef ]
-"79
-[v _checkCAN `(v ~T0 @X0 0 ef ]
-"16 Other.h
+"12 init.h
+[v _setup_Interrupt `(v ~T0 @X0 0 ef ]
+"33019 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f26k80.h
+[s S2161 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2161 . LATA0 LATA1 LATA2 LATA3 . LATA5 LATA6 LATA7 ]
+"33029
+[s S2162 :1 `uc 1 ]
+[n S2162 . LA0 ]
+"33032
+[s S2163 :1 `uc 1 :1 `uc 1 ]
+[n S2163 . . LA1 ]
+"33036
+[s S2164 :2 `uc 1 :1 `uc 1 ]
+[n S2164 . . LA2 ]
+"33040
+[s S2165 :3 `uc 1 :1 `uc 1 ]
+[n S2165 . . LA3 ]
+"33044
+[s S2166 :4 `uc 1 :1 `uc 1 ]
+[n S2166 . . LA4 ]
+"33048
+[s S2167 :5 `uc 1 :1 `uc 1 ]
+[n S2167 . . LA5 ]
+"33052
+[s S2168 :6 `uc 1 :1 `uc 1 ]
+[n S2168 . . LA6 ]
+"33056
+[s S2169 :7 `uc 1 :1 `uc 1 ]
+[n S2169 . . LA7 ]
+"33018
+[u S2160 `S2161 1 `S2162 1 `S2163 1 `S2164 1 `S2165 1 `S2166 1 `S2167 1 `S2168 1 `S2169 1 ]
+[n S2160 . . . . . . . . . . ]
+"33061
+[v _LATAbits `VS2160 ~T0 @X0 0 e@3977 ]
+"33146
+[s S2171 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2171 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
+"33156
+[s S2172 :1 `uc 1 ]
+[n S2172 . LB0 ]
+"33159
+[s S2173 :1 `uc 1 :1 `uc 1 ]
+[n S2173 . . LB1 ]
+"33163
+[s S2174 :2 `uc 1 :1 `uc 1 ]
+[n S2174 . . LB2 ]
+"33167
+[s S2175 :3 `uc 1 :1 `uc 1 ]
+[n S2175 . . LB3 ]
+"33171
+[s S2176 :4 `uc 1 :1 `uc 1 ]
+[n S2176 . . LB4 ]
+"33175
+[s S2177 :5 `uc 1 :1 `uc 1 ]
+[n S2177 . . LB5 ]
+"33179
+[s S2178 :6 `uc 1 :1 `uc 1 ]
+[n S2178 . . LB6 ]
+"33183
+[s S2179 :7 `uc 1 :1 `uc 1 ]
+[n S2179 . . LB7 ]
+"33145
+[u S2170 `S2171 1 `S2172 1 `S2173 1 `S2174 1 `S2175 1 `S2176 1 `S2177 1 `S2178 1 `S2179 1 ]
+[n S2170 . . . . . . . . . . ]
+"33188
+[v _LATBbits `VS2170 ~T0 @X0 0 e@3978 ]
+"85 ECAN.h
+[v _ECAN_Receive `(uc ~T0 @X0 0 ef ]
+"82
+[v _unZipCAN `(v ~T0 @X0 0 ef ]
+"37 main.c
+[v _danger `(i ~T0 @X0 0 ef ]
+"12 peripherals.h
+[v _checkBrake `(v ~T0 @X0 0 ef ]
+"13
+[v _checkBacklight `(v ~T0 @X0 0 ef ]
+"14
+[v _checkV_blink `(v ~T0 @X0 0 ef ]
+"15
+[v _checkH_blink `(v ~T0 @X0 0 ef ]
+"16
+[v _checkDirection `(v ~T0 @X0 0 ef ]
+"17
+[v _checkSafetyPin `(v ~T0 @X0 0 ef ]
+"18
+[v _checkAccelerator `(v ~T0 @X0 0 ef ]
+"19
+[v _updateInputs `(v ~T0 @X0 0 ef ]
+"87 ECAN.h
+[v _ECAN_Transmit `(v ~T0 @X0 0 ef11`uc`uc`uc`uc`uc`uc`uc`uc`uc`uc`uc ]
+"12 Other.h
 [v _Delay `(v ~T0 @X0 0 ef1`ui ]
 "42423 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f26k80.h
 [v _IRXIF `Vb ~T0 @X0 0 e@31679 ]
@@ -76,6 +130,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1659 . . . . . . . . . . ]
 "25123
 [v _TXB0CONbits `VS1659 ~T0 @X0 0 e@3872 ]
+"44735
+[v _TMR0IF `Vb ~T0 @X0 0 e@32658 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16811,62 +16867,116 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;ECAN.h: 79: void checkCAN(void);
-[; ;ECAN.h: 81: void CANSetup(void);
-[; ;ECAN.h: 82: void checkInputs(void);
-[; ;ECAN.h: 86: unsigned char ECAN_Receive(void);
-[; ;ECAN.h: 88: void ECAN_Transmit(unsigned char SIDH,
-[; ;ECAN.h: 89: unsigned char SIDL,
-[; ;ECAN.h: 90: unsigned char DLC,
-[; ;ECAN.h: 91: unsigned char TRANSMIT_ID,
-[; ;ECAN.h: 92: unsigned char DATA1,
-[; ;ECAN.h: 93: unsigned char DATA2,
-[; ;ECAN.h: 94: unsigned char DATA3,
-[; ;ECAN.h: 95: unsigned char DATA4,
-[; ;ECAN.h: 96: unsigned char DATA5,
-[; ;ECAN.h: 97: unsigned char DATA6,
-[; ;ECAN.h: 98: unsigned char DATA7);
-"101 ECAN.h
+[; ;ECAN.h: 80: void CANSetup(void);
+[; ;ECAN.h: 82: void unZipCAN();
+[; ;ECAN.h: 85: unsigned char ECAN_Receive(void);
+[; ;ECAN.h: 87: void ECAN_Transmit(unsigned char SIDH,
+[; ;ECAN.h: 88: unsigned char SIDL,
+[; ;ECAN.h: 89: unsigned char DLC,
+[; ;ECAN.h: 90: unsigned char TRANSMIT_ID,
+[; ;ECAN.h: 91: unsigned char DATA1,
+[; ;ECAN.h: 92: unsigned char DATA2,
+[; ;ECAN.h: 93: unsigned char DATA3,
+[; ;ECAN.h: 94: unsigned char DATA4,
+[; ;ECAN.h: 95: unsigned char DATA5,
+[; ;ECAN.h: 96: unsigned char DATA6,
+[; ;ECAN.h: 97: unsigned char DATA7);
+"100 ECAN.h
 [v _count `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 101: unsigned char count;
+[; ;ECAN.h: 100: unsigned char count;
+"101
+[v _BITDATA `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 101: unsigned char BITDATA;
 "102
-[v _RECEIVE_ID `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 102: unsigned char RECEIVE_ID;
+[v _ACCELERATOR `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 102: unsigned char ACCELERATOR;
 "103
-[v _temp_D7 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 103: unsigned char temp_D7;
-"104
-[v _temp_D1 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 104: unsigned char temp_D1;
-"105
 [v _temp_D2 `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 105: unsigned char temp_D2;
+[; ;ECAN.h: 103: unsigned char temp_D2;
+"104
+[v _temp_D3 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 104: unsigned char temp_D3;
+"105
+[v _temp_D4 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 105: unsigned char temp_D4;
+"106
+[v _temp_D5 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 106: unsigned char temp_D5;
 "107
+[v _temp_D6 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 107: unsigned char temp_D6;
+"108
+[v _temp_D7 `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 108: unsigned char temp_D7;
+"111
 [v _MOTOR_ID `uc ~T0 @X0 1 e ]
 [i _MOTOR_ID
 -> -> 1 `i `uc
 ]
-[; ;ECAN.h: 107: unsigned char MOTOR_ID = 0x01;
-"108
+[; ;ECAN.h: 111: unsigned char MOTOR_ID = 0x01;
+"112
 [v _BATTERISTATUS_ID `uc ~T0 @X0 1 e ]
 [i _BATTERISTATUS_ID
 -> -> 2 `i `uc
 ]
-[; ;ECAN.h: 108: unsigned char BATTERISTATUS_ID = 0x02;
-"110
+[; ;ECAN.h: 112: unsigned char BATTERISTATUS_ID = 0x02;
+"114
 [v _heartbeatCount `ui ~T0 @X0 1 e ]
-[; ;ECAN.h: 110: unsigned int heartbeatCount;
-"111
+[; ;ECAN.h: 114: unsigned int heartbeatCount;
+"115
 [v _buttonWasPressed `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 111: unsigned char buttonWasPressed;
-[; ;Other.h: 15: void InitDevice(void);
-[; ;Other.h: 16: void Delay(unsigned int count);
-[; ;Other.h: 17: unsigned char ButtonPressed(void);
-[; ;Other.h: 18: int HornChanged();
-[; ;Other.h: 19: int MotorChanged();
-"21 Other.h
-[v _HORN_STATUS `i ~T0 @X0 1 e ]
-[; ;Other.h: 21: int HORN_STATUS;
+[; ;ECAN.h: 115: unsigned char buttonWasPressed;
+[; ;Other.h: 12: void Delay(unsigned int count);
+[; ;Other.h: 13: void heartBeat();
+[; ;init.h: 11: void InitDevice();
+[; ;init.h: 12: void setup_Interrupt();
+"14 init.h
+[v _heartBeatCounter `i ~T0 @X0 1 e ]
+[; ;init.h: 14: int heartBeatCounter;
+"15
+[v _FIRST_SEND `i ~T0 @X0 1 e ]
+[; ;init.h: 15: int FIRST_SEND;
+"16
+[v _interruptCounter `l ~T0 @X0 1 e ]
+[; ;init.h: 16: long interruptCounter;
+[; ;peripherals.h: 11: void heartbeat();
+[; ;peripherals.h: 12: void checkBrake();
+[; ;peripherals.h: 13: void checkBacklight();
+[; ;peripherals.h: 14: void checkV_blink();
+[; ;peripherals.h: 15: void checkH_blink();
+[; ;peripherals.h: 16: void checkDirection();
+[; ;peripherals.h: 17: void checkSafetyPin();
+[; ;peripherals.h: 18: void checkAccelerator();
+[; ;peripherals.h: 19: void updateInputs();
+[; ;peripherals.h: 20: int readAnalog();
+"28 peripherals.h
+[v _MAP_HEARTBEAT `i ~T0 @X0 1 e ]
+[v _MAP_BRAKE `i ~T0 @X0 1 e ]
+[v _MAP_BACKLIGHT `i ~T0 @X0 1 e ]
+[v _MAP_V_BLINK `i ~T0 @X0 1 e ]
+"29
+[v _MAP_H_BLINK `i ~T0 @X0 1 e ]
+[v _MAP_DIRECTION `i ~T0 @X0 1 e ]
+[v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
+[v _MAP_ACCELERATOR `i ~T0 @X0 1 e ]
+[; ;peripherals.h: 28: int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
+[; ;peripherals.h: 29: MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
+"32
+[v _TEMP_MAP_HEARTBEAT `i ~T0 @X0 1 e ]
+[v _TEMP_MAP_BRAKE `i ~T0 @X0 1 e ]
+[v _TEMP_MAP_BACKLIGHT `i ~T0 @X0 1 e ]
+[v _TEMP_MAP_V_BLINK `i ~T0 @X0 1 e ]
+"33
+[v _TEMP_MAP_H_BLINK `i ~T0 @X0 1 e ]
+[v _TEMP_MAP_DIRECTION `i ~T0 @X0 1 e ]
+[v _TEMP_MAP_SAFETYPIN `i ~T0 @X0 1 e ]
+[v _TEMP_MAP_ACCELERATOR `i ~T0 @X0 1 e ]
+[; ;peripherals.h: 32: int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
+[; ;peripherals.h: 33: TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
+"39
+[v _MAP_BATTERYSTATUS `i ~T0 @X0 1 e ]
+[v _MAP_VELOCITY `i ~T0 @X0 1 e ]
+[; ;peripherals.h: 39: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
 "9 main.c
 [v _main `(i ~T0 @X0 1 ef ]
 {
@@ -16879,67 +16989,164 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 13: CANSetup();
 "13
 [e ( _CANSetup ..  ]
-[; ;main.c: 15: LATCbits.LATC6 = 1;
-"15
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-[; ;main.c: 17: while(1){
+[; ;main.c: 14: setup_Interrupt();
+"14
+[e ( _setup_Interrupt ..  ]
+[; ;main.c: 16: heartBeatCounter = 0;
+"16
+[e = _heartBeatCounter -> 0 `i ]
+[; ;main.c: 17: FIRST_SEND = 1;
 "17
+[e = _FIRST_SEND -> 1 `i ]
+[; ;main.c: 18: interruptCounter = 0;
+"18
+[e = _interruptCounter -> -> 0 `i `l ]
+[; ;main.c: 20: LATAbits.LATA7 = 1;
+"20
+[e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
+[; ;main.c: 21: LATBbits.LATB1 = 0;
+"21
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 23: while(1){
+"23
 [e :U 2603 ]
 {
-[; ;main.c: 19: checkInputs();
-"19
-[e ( _checkInputs ..  ]
-[; ;main.c: 21: checkCAN();
-"21
-[e ( _checkCAN ..  ]
-[; ;main.c: 22: Delay(100);
-"22
-[e ( _Delay (1 -> -> 100 `i `ui ]
-"23
-}
-[e :U 2602 ]
-"17
-[e $U 2603  ]
-[e :U 2604 ]
-[; ;main.c: 23: }
-[; ;main.c: 26: return 0;
+[; ;main.c: 26: if(ECAN_Receive()){
 "26
-[e ) -> 0 `i ]
-[e $UE 2601  ]
-[; ;main.c: 27: }
+[e $ ! != -> ( _ECAN_Receive ..  `i -> -> -> 0 `i `uc `i 2605  ]
+{
+[; ;main.c: 27: FIRST_SEND = 0;
 "27
-[e :UE 2601 ]
-}
-[v F18243 `(v ~T0 @X0 1 tf ]
+[e = _FIRST_SEND -> 0 `i ]
+[; ;main.c: 28: LATAbits.LATA6 = 1;
+"28
+[e = . . _LATAbits 0 6 -> -> 1 `i `uc ]
+[; ;main.c: 29: unZipCAN();
+"29
+[e ( _unZipCAN ..  ]
+[; ;main.c: 30: if(TEMP_MAP_HEARTBEAT == 1){
 "30
-[v _ISR `IF18243 ~T0 @X0 1 e ]
+[e $ ! == _TEMP_MAP_HEARTBEAT -> 1 `i 2606  ]
 {
-[; ;main.c: 30: void interrupt ISR(){
-[e :U _ISR ]
-[f ]
-[; ;main.c: 32: if(IRXIF){
+[; ;main.c: 31: heartBeatCounter = 0;
+"31
+[e = _heartBeatCounter -> 0 `i ]
 "32
-[e $ ! _IRXIF 2606  ]
-{
-[; ;main.c: 34: if(TXB0CONbits.TXERR){
-"34
-[e $ ! != -> . . _TXB0CONbits 0 3 `i -> -> -> 0 `i `Vuc `i 2607  ]
-{
-[; ;main.c: 35: while(1);
-"35
-[e :U 2609 ]
-[e :U 2608 ]
-[e $U 2609  ]
-[e :U 2610 ]
-"37
-}
-[e :U 2607 ]
-"38
 }
 [e :U 2606 ]
-[; ;main.c: 37: }
+"34
+}
+[e :U 2605 ]
+[; ;main.c: 32: }
+[; ;main.c: 34: }
+[; ;main.c: 36: if(heartBeatCounter > 500000){
+"36
+[e $ ! > -> _heartBeatCounter `l -> 500000 `l 2607  ]
+{
+[; ;main.c: 37: danger();
+"37
+[e ( _danger ..  ]
+"38
+}
+[e :U 2607 ]
 [; ;main.c: 38: }
-[; ;main.c: 39: }
-"39
-[e :UE 2605 ]
+[; ;main.c: 40: checkBrake();
+"40
+[e ( _checkBrake ..  ]
+[; ;main.c: 41: checkBacklight();
+"41
+[e ( _checkBacklight ..  ]
+[; ;main.c: 42: checkV_blink();
+"42
+[e ( _checkV_blink ..  ]
+[; ;main.c: 43: checkH_blink();
+"43
+[e ( _checkH_blink ..  ]
+[; ;main.c: 44: checkDirection();
+"44
+[e ( _checkDirection ..  ]
+[; ;main.c: 45: checkSafetyPin();
+"45
+[e ( _checkSafetyPin ..  ]
+[; ;main.c: 46: checkAccelerator();
+"46
+[e ( _checkAccelerator ..  ]
+[; ;main.c: 51: updateInputs();
+"51
+[e ( _updateInputs ..  ]
+[; ;main.c: 53: ECAN_Transmit(0x32,0xC0, 0x08,
+[; ;main.c: 54: MAP_BATTERYSTATUS,
+[; ;main.c: 55: MAP_VELOCITY,
+[; ;main.c: 56: 1,
+[; ;main.c: 57: temp_D3,
+[; ;main.c: 58: temp_D4,
+[; ;main.c: 59: temp_D5,
+[; ;main.c: 60: temp_D6,
+[; ;main.c: 61: temp_D7);
+"61
+[e ( _ECAN_Transmit (4 , , , , , , , , , , -> -> 50 `i `uc -> -> 192 `i `uc -> -> 8 `i `uc -> _MAP_BATTERYSTATUS `uc -> _MAP_VELOCITY `uc -> -> 1 `i `uc _temp_D3 _temp_D4 _temp_D5 _temp_D6 _temp_D7 ]
+[; ;main.c: 64: Delay(10);
+"64
+[e ( _Delay (1 -> -> 10 `i `ui ]
+"66
+}
+[e :U 2602 ]
+"23
+[e $U 2603  ]
+[e :U 2604 ]
+[; ;main.c: 66: }
+[; ;main.c: 67: return 0;
+"67
+[e ) -> 0 `i ]
+[e $UE 2601  ]
+[; ;main.c: 68: }
+"68
+[e :UE 2601 ]
+}
+[v F18272 `(v ~T0 @X0 1 tf ]
+"71
+[v _ISR `IF18272 ~T0 @X0 1 e ]
+{
+[; ;main.c: 71: void interrupt ISR(){
+[e :U _ISR ]
+[f ]
+[; ;main.c: 73: interruptCounter++;
+"73
+[e ++ _interruptCounter -> -> 1 `i `l ]
+[; ;main.c: 75: if(IRXIF){
+"75
+[e $ ! _IRXIF 2609  ]
+{
+[; ;main.c: 76: if(TXB0CONbits.TXERR){
+"76
+[e $ ! != -> . . _TXB0CONbits 0 3 `i -> -> -> 0 `i `Vuc `i 2610  ]
+{
+[; ;main.c: 77: LATBbits.LATB1 = 1;
+"77
+[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
+"79
+}
+[e :U 2610 ]
+"80
+}
+[e :U 2609 ]
+[; ;main.c: 79: }
+[; ;main.c: 80: }
+[; ;main.c: 85: if(TMR0IF == 1){
+"85
+[e $ ! == -> _TMR0IF `i -> 1 `i 2611  ]
+{
+[; ;main.c: 86: interruptCounter++;
+"86
+[e ++ _interruptCounter -> -> 1 `i `l ]
+[; ;main.c: 87: TMR0IF = 0;
+"87
+[e = _TMR0IF -> -> 0 `i `b ]
+"88
+}
+[e :U 2611 ]
+[; ;main.c: 88: }
+[; ;main.c: 105: }
+"105
+[e :UE 2608 ]
 }

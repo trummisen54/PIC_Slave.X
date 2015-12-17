@@ -17189,8 +17189,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _buttonWasPressed `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 115: unsigned char buttonWasPressed;
 [; ;Other.h: 12: void Delay(unsigned int count);
+[; ;Other.h: 13: void heartBeat();
 [; ;init.h: 11: void InitDevice();
-[; ;peripherals.h: 11: void checkHeartbeat();
+[; ;init.h: 12: void setup_Interrupt();
+"14 init.h
+[v _heartBeatCounter `i ~T0 @X0 1 e ]
+[; ;init.h: 14: int heartBeatCounter;
+"15
+[v _FIRST_SEND `i ~T0 @X0 1 e ]
+[; ;init.h: 15: int FIRST_SEND;
+"16
+[v _interruptCounter `l ~T0 @X0 1 e ]
+[; ;init.h: 16: long interruptCounter;
+[; ;peripherals.h: 11: void heartbeat();
 [; ;peripherals.h: 12: void checkBrake();
 [; ;peripherals.h: 13: void checkBacklight();
 [; ;peripherals.h: 14: void checkV_blink();
@@ -17199,34 +17210,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;peripherals.h: 17: void checkSafetyPin();
 [; ;peripherals.h: 18: void checkAccelerator();
 [; ;peripherals.h: 19: void updateInputs();
-"27 peripherals.h
+[; ;peripherals.h: 20: int readAnalog();
+"28 peripherals.h
 [v _MAP_HEARTBEAT `i ~T0 @X0 1 e ]
 [v _MAP_BRAKE `i ~T0 @X0 1 e ]
 [v _MAP_BACKLIGHT `i ~T0 @X0 1 e ]
 [v _MAP_V_BLINK `i ~T0 @X0 1 e ]
-"28
+"29
 [v _MAP_H_BLINK `i ~T0 @X0 1 e ]
 [v _MAP_DIRECTION `i ~T0 @X0 1 e ]
 [v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
 [v _MAP_ACCELERATOR `i ~T0 @X0 1 e ]
-[; ;peripherals.h: 27: int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
-[; ;peripherals.h: 28: MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
-"31
+[; ;peripherals.h: 28: int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
+[; ;peripherals.h: 29: MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
+"32
 [v _TEMP_MAP_HEARTBEAT `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_BRAKE `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_BACKLIGHT `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_V_BLINK `i ~T0 @X0 1 e ]
-"32
+"33
 [v _TEMP_MAP_H_BLINK `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_DIRECTION `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_SAFETYPIN `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_ACCELERATOR `i ~T0 @X0 1 e ]
-[; ;peripherals.h: 31: int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
-[; ;peripherals.h: 32: TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
-"38
+[; ;peripherals.h: 32: int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
+[; ;peripherals.h: 33: TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
+"39
 [v _MAP_BATTERYSTATUS `i ~T0 @X0 1 e ]
 [v _MAP_VELOCITY `i ~T0 @X0 1 e ]
-[; ;peripherals.h: 38: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+[; ;peripherals.h: 39: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
 "95 ECAN.c
 [v _temp_EIDH `uc ~T0 @X0 1 e ]
 [; ;ECAN.c: 95: unsigned char temp_EIDH;
@@ -17786,25 +17798,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ECAN.c: 361: TEMP_MAP_HEARTBEAT = (BITDATA & (1 << 0));
 "361
 [e = _TEMP_MAP_HEARTBEAT & -> _BITDATA `i << -> 1 `i -> 0 `i ]
-[; ;ECAN.c: 362: TEMP_MAP_BRAKE = BITDATA & (1 << 1);
+[; ;ECAN.c: 362: TEMP_MAP_HEARTBEAT = (TEMP_MAP_HEARTBEAT >> 0);
 "362
-[e = _TEMP_MAP_BRAKE & -> _BITDATA `i << -> 1 `i -> 1 `i ]
-[; ;ECAN.c: 363: TEMP_MAP_BACKLIGHT = BITDATA & (1 << 2);
-"363
-[e = _TEMP_MAP_BACKLIGHT & -> _BITDATA `i << -> 1 `i -> 2 `i ]
-[; ;ECAN.c: 364: TEMP_MAP_V_BLINK = BITDATA & (1 << 3);
+[e = _TEMP_MAP_HEARTBEAT >> _TEMP_MAP_HEARTBEAT -> 0 `i ]
+[; ;ECAN.c: 364: TEMP_MAP_BRAKE = BITDATA & (1 << 1);
 "364
-[e = _TEMP_MAP_V_BLINK & -> _BITDATA `i << -> 1 `i -> 3 `i ]
-[; ;ECAN.c: 365: TEMP_MAP_H_BLINK = BITDATA & (1 << 4);
+[e = _TEMP_MAP_BRAKE & -> _BITDATA `i << -> 1 `i -> 1 `i ]
+[; ;ECAN.c: 365: TEMP_MAP_BRAKE = (TEMP_MAP_BRAKE >> 1);
 "365
-[e = _TEMP_MAP_H_BLINK & -> _BITDATA `i << -> 1 `i -> 4 `i ]
-[; ;ECAN.c: 366: TEMP_MAP_DIRECTION = BITDATA & (1 << 5);
-"366
-[e = _TEMP_MAP_DIRECTION & -> _BITDATA `i << -> 1 `i -> 5 `i ]
-[; ;ECAN.c: 367: TEMP_MAP_SAFETYPIN = BITDATA & (1 << 6);
+[e = _TEMP_MAP_BRAKE >> _TEMP_MAP_BRAKE -> 1 `i ]
+[; ;ECAN.c: 367: TEMP_MAP_BACKLIGHT = BITDATA & (1 << 2);
 "367
+[e = _TEMP_MAP_BACKLIGHT & -> _BITDATA `i << -> 1 `i -> 2 `i ]
+[; ;ECAN.c: 368: TEMP_MAP_BACKLIGHT = (TEMP_MAP_BACKLIGHT >> 2);
+"368
+[e = _TEMP_MAP_BACKLIGHT >> _TEMP_MAP_BACKLIGHT -> 2 `i ]
+[; ;ECAN.c: 370: TEMP_MAP_V_BLINK = BITDATA & (1 << 3);
+"370
+[e = _TEMP_MAP_V_BLINK & -> _BITDATA `i << -> 1 `i -> 3 `i ]
+[; ;ECAN.c: 371: TEMP_MAP_V_BLINK = (TEMP_MAP_V_BLINK >> 3);
+"371
+[e = _TEMP_MAP_V_BLINK >> _TEMP_MAP_V_BLINK -> 3 `i ]
+[; ;ECAN.c: 373: TEMP_MAP_H_BLINK = BITDATA & (1 << 4);
+"373
+[e = _TEMP_MAP_H_BLINK & -> _BITDATA `i << -> 1 `i -> 4 `i ]
+[; ;ECAN.c: 374: TEMP_MAP_H_BLINK = (TEMP_MAP_H_BLINK >> 4);
+"374
+[e = _TEMP_MAP_H_BLINK >> _TEMP_MAP_H_BLINK -> 4 `i ]
+[; ;ECAN.c: 376: TEMP_MAP_DIRECTION = BITDATA & (1 << 5);
+"376
+[e = _TEMP_MAP_DIRECTION & -> _BITDATA `i << -> 1 `i -> 5 `i ]
+[; ;ECAN.c: 377: TEMP_MAP_DIRECTION = (TEMP_MAP_DIRECTION >> 5);
+"377
+[e = _TEMP_MAP_DIRECTION >> _TEMP_MAP_DIRECTION -> 5 `i ]
+[; ;ECAN.c: 379: TEMP_MAP_SAFETYPIN = BITDATA & (1 << 6);
+"379
 [e = _TEMP_MAP_SAFETYPIN & -> _BITDATA `i << -> 1 `i -> 6 `i ]
-[; ;ECAN.c: 369: }
-"369
+[; ;ECAN.c: 380: TEMP_MAP_SAFETYPIN = (TEMP_MAP_SAFETYPIN >> 6);
+"380
+[e = _TEMP_MAP_SAFETYPIN >> _TEMP_MAP_SAFETYPIN -> 6 `i ]
+[; ;ECAN.c: 382: }
+"382
 [e :UE 2632 ]
 }

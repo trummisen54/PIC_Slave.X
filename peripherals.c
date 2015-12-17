@@ -7,29 +7,6 @@
 #include "peripherals.h"
 
  
-
-void checkHeartbeat(){
-    
-    /*
-    if(i2c_reg_map[REC] == 0){
-        if(TMR1L > ?){
-        }
-        else{
-            TMR1L = 0;
-
-        }
-        if(i2c_reg_map[5] != MAP_HEARTBEAT){
-            MAP_HEARTBEAT = i2c_reg_map[5];
-            //send
-        }
-    }
-    else{
-        send
-    
-    }
-     */
-    
-}
 void checkBrake(){
     if(TEMP_MAP_BRAKE != MAP_BRAKE){
         MAP_BRAKE = TEMP_MAP_BRAKE;
@@ -80,8 +57,33 @@ void checkAccelerator(){
 
 
 void updateInputs(){
-    MAP_BATTERYSTATUS = BATTERY_IN;
+    
+    
+    MAP_BATTERYSTATUS = readAnalog();
     //MAP_VELOCITY = 
     //MAP_HEARTBEAT = 
  
 }
+
+int readAnalog(){
+    
+    
+    ADCON0 = 0x00;
+    
+    ADCON0bits.ADON = 1; //A/D Converter is operating
+    
+     
+    
+    Delay(ONE_MS * 100); //Pauses the pic to allow the ADC capacitor to fully ......
+    
+    ADCON0bits.GO_DONE = 1;  //Start analog read
+    while(ADCON0bits.GO_DONE); //Clears when analog read is done
+    
+    ADCON0bits.ADON = 0;
+    
+    
+    
+    return ADRESH;
+
+}
+

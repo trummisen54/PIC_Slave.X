@@ -10,6 +10,7 @@
 
 
 void Delay(unsigned int count);
+void heartBeat();
 
 
 #define DEVICE_OSC  64

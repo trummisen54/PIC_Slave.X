@@ -8,7 +8,7 @@
 #ifndef PERIPHERALS_H
 #define	PERIPHERALS_H
 
-void checkHeartbeat();
+void heartbeat();
 void checkBrake();
 void checkBacklight();
 void checkV_blink();
@@ -17,6 +17,7 @@ void checkDirection();
 void checkSafetyPin();
 void checkAccelerator();
 void updateInputs();
+int readAnalog();
 
 
 
