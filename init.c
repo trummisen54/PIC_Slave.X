@@ -73,31 +73,54 @@ void InitDevice(){
      
     
     //SYSTEM TIMER heartbeat
+    //T0CON
     T0CONbits.TMR0ON = 1; // Enable timer
     T0CONbits.T08BIT = 0; //16 bit
     T0CONbits.T0CS = 0; //not counter
     //T0CONbits.T0SE = 0;
     T0CONbits.PSA = 0; //enable prescaler
-    T0CONbits.T0PS = 7; //111 -> 1000 0111
+    T0CONbits.T0PS = 3; //011 = 1:16
+    
+    //T0CON = 1000 0011
     
     
-    /*
-    //SYSTEM TIMER RFID
+    
+   
+    //System timer Blinkers
+    //T1CON
+    T1CONbits.TMR1CS0 = 0;//Timer1 clock source is the instruction clock (FOSC/4)
+    T1CONbits.TMR1CS1 = 0;//Timer1 clock source is the instruction clock (FOSC/4)
+    T1CONbits.SOSCEN = 1; //Enable timer ocillator (ignored if TMR1CS0 = 0 and TMR1CS1 = 0))
+    
+    T1CONbits.T1CKPS0 = 1;//Prescaler = 1:8
+    T1CONbits.T1CKPS1 = 1;//Prescaler = 1:8
+    
+    T1CONbits.nT1SYNC = 1; // no sync with external oscillator (ignored if T1CONbits.TMR1CS = 0x))
+    T1CONbits.RD16 = 1; //Enables R/W operations in 16 bit operation
     T1CONbits.TMR1ON = 1; // Enable timer
-    T1CONbits.RD16 = 1; //16 bit
-    //T0CONbits.T0SE = 0;
-    T1CONbits.PSA = 0;
-    T1CONbits.T0PS = 7; //111 -> 1000 0111
-    */
     
-
+    
+    //T1GCON
+    T1GCONbits.TMR1GE = 0; //Timer 1 counts regardless of Timer1 gate function
 }
 
 void setup_Interrupt(){
+    
     RCONbits.IPEN = 1; //interrupt priority enable
     INTCONbits.GIEH = 1; //high priority interrupts
     INTCONbits.GIEL = 1; //low priority interrupts
+    
+    
+    //TIMER 0
     INTCONbits.TMR0IE = 1; //Enables the TMR0 overflow interrupt
+    heartBeatCounter = 0;
+    
+    //TIMER 1
+    PIE1bits.TMR1IE = 1; //Enables the TMR1 overflow interrupt
+    blinkCounter = 0;
+    
+    
+    
     
     
 }

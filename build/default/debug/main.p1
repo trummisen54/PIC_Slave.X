@@ -132,6 +132,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TXB0CONbits `VS1659 ~T0 @X0 0 e@3872 ]
 "44735
 [v _TMR0IF `Vb ~T0 @X0 0 e@32658 ]
+"44757
+[v _TMR1IF `Vb ~T0 @X0 0 e@31984 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16888,8 +16890,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _BITDATA `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 101: unsigned char BITDATA;
 "102
-[v _ACCELERATOR `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 102: unsigned char ACCELERATOR;
+[v _TEMP_ACCELERATOR `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 102: unsigned char TEMP_ACCELERATOR;
 "103
 [v _temp_D2 `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 103: unsigned char temp_D2;
@@ -16931,14 +16933,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;init.h: 11: void InitDevice();
 [; ;init.h: 12: void setup_Interrupt();
 "14 init.h
-[v _heartBeatCounter `i ~T0 @X0 1 e ]
-[; ;init.h: 14: int heartBeatCounter;
-"15
 [v _FIRST_SEND `i ~T0 @X0 1 e ]
-[; ;init.h: 15: int FIRST_SEND;
-"16
-[v _interruptCounter `l ~T0 @X0 1 e ]
-[; ;init.h: 16: long interruptCounter;
+[; ;init.h: 14: int FIRST_SEND;
 [; ;peripherals.h: 11: void heartbeat();
 [; ;peripherals.h: 12: void checkBrake();
 [; ;peripherals.h: 13: void checkBacklight();
@@ -16977,6 +16973,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _MAP_BATTERYSTATUS `i ~T0 @X0 1 e ]
 [v _MAP_VELOCITY `i ~T0 @X0 1 e ]
 [; ;peripherals.h: 39: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+"42
+[v _heartBeatCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 42: long heartBeatCounter;
+"43
+[v _blinkCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 43: long blinkCounter;
+"45
+[v _interruptCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 45: long interruptCounter;
 "9 main.c
 [v _main `(i ~T0 @X0 1 ef ]
 {
@@ -16994,7 +16999,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setup_Interrupt ..  ]
 [; ;main.c: 16: heartBeatCounter = 0;
 "16
-[e = _heartBeatCounter -> 0 `i ]
+[e = _heartBeatCounter -> -> 0 `i `l ]
 [; ;main.c: 17: FIRST_SEND = 1;
 "17
 [e = _FIRST_SEND -> 1 `i ]
@@ -17030,7 +17035,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 31: heartBeatCounter = 0;
 "31
-[e = _heartBeatCounter -> 0 `i ]
+[e = _heartBeatCounter -> -> 0 `i `l ]
 "32
 }
 [e :U 2606 ]
@@ -17039,9 +17044,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 2605 ]
 [; ;main.c: 32: }
 [; ;main.c: 34: }
-[; ;main.c: 36: if(heartBeatCounter > 500000){
+[; ;main.c: 36: if(heartBeatCounter > 25){
 "36
-[e $ ! > -> _heartBeatCounter `l -> 500000 `l 2607  ]
+[e $ ! > _heartBeatCounter -> -> 25 `i `l 2607  ]
 {
 [; ;main.c: 37: danger();
 "37
@@ -17077,7 +17082,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 53: ECAN_Transmit(0x32,0xC0, 0x08,
 [; ;main.c: 54: MAP_BATTERYSTATUS,
 [; ;main.c: 55: MAP_VELOCITY,
-[; ;main.c: 56: 1,
+[; ;main.c: 56: 0x01,
 [; ;main.c: 57: temp_D3,
 [; ;main.c: 58: temp_D4,
 [; ;main.c: 59: temp_D5,
@@ -17085,9 +17090,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 61: temp_D7);
 "61
 [e ( _ECAN_Transmit (4 , , , , , , , , , , -> -> 50 `i `uc -> -> 192 `i `uc -> -> 8 `i `uc -> _MAP_BATTERYSTATUS `uc -> _MAP_VELOCITY `uc -> -> 1 `i `uc _temp_D3 _temp_D4 _temp_D5 _temp_D6 _temp_D7 ]
-[; ;main.c: 64: Delay(10);
+[; ;main.c: 64: Delay((unsigned int)(64/4)*80 * 5);
 "64
-[e ( _Delay (1 -> -> 10 `i `ui ]
+[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 5 `i `ui ]
 "66
 }
 [e :U 2602 ]
@@ -17103,16 +17108,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "68
 [e :UE 2601 ]
 }
-[v F18272 `(v ~T0 @X0 1 tf ]
+[v F18274 `(v ~T0 @X0 1 tf ]
 "71
-[v _ISR `IF18272 ~T0 @X0 1 e ]
+[v _ISR `IF18274 ~T0 @X0 1 e ]
 {
 [; ;main.c: 71: void interrupt ISR(){
 [e :U _ISR ]
 [f ]
-[; ;main.c: 73: interruptCounter++;
-"73
-[e ++ _interruptCounter -> -> 1 `i `l ]
 [; ;main.c: 75: if(IRXIF){
 "75
 [e $ ! _IRXIF 2609  ]
@@ -17127,26 +17129,120 @@ Version 3.2 HI-TECH Software Intermediate Code
 "79
 }
 [e :U 2610 ]
+[; ;main.c: 79: }
+[; ;main.c: 80: IRXIF = 0;
 "80
+[e = _IRXIF -> -> 0 `i `b ]
+"81
 }
 [e :U 2609 ]
-[; ;main.c: 79: }
-[; ;main.c: 80: }
+[; ;main.c: 81: }
 [; ;main.c: 85: if(TMR0IF == 1){
 "85
 [e $ ! == -> _TMR0IF `i -> 1 `i 2611  ]
 {
-[; ;main.c: 86: interruptCounter++;
+[; ;main.c: 86: if(!FIRST_SEND){
 "86
-[e ++ _interruptCounter -> -> 1 `i `l ]
-[; ;main.c: 87: TMR0IF = 0;
+[e $ ! ! != _FIRST_SEND -> 0 `i 2612  ]
+{
+[; ;main.c: 87: heartBeatCounter++;
 "87
-[e = _TMR0IF -> -> 0 `i `b ]
+[e ++ _heartBeatCounter -> -> 1 `i `l ]
 "88
 }
-[e :U 2611 ]
+[e :U 2612 ]
 [; ;main.c: 88: }
-[; ;main.c: 105: }
-"105
+[; ;main.c: 89: TMR0IF = 0;
+"89
+[e = _TMR0IF -> -> 0 `i `b ]
+"90
+}
+[e :U 2611 ]
+[; ;main.c: 90: }
+[; ;main.c: 94: if(TMR1IF == 1){
+"94
+[e $ ! == -> _TMR1IF `i -> 1 `i 2613  ]
+{
+[; ;main.c: 95: if(MAP_V_BLINK == 1){
+"95
+[e $ ! == _MAP_V_BLINK -> 1 `i 2614  ]
+{
+[; ;main.c: 96: blinkCounter++;
+"96
+[e ++ _blinkCounter -> -> 1 `i `l ]
+[; ;main.c: 98: if(blinkCounter == 13){
+"98
+[e $ ! == _blinkCounter -> -> 13 `i `l 2615  ]
+{
+[; ;main.c: 99: LATBbits.LATB5 = 0;
+"99
+[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
+"100
+}
+[e :U 2615 ]
+[; ;main.c: 100: }
+[; ;main.c: 101: if(blinkCounter > 26){
+"101
+[e $ ! > _blinkCounter -> -> 26 `i `l 2616  ]
+{
+[; ;main.c: 102: LATBbits.LATB5 = 1;
+"102
+[e = . . _LATBbits 0 5 -> -> 1 `i `uc ]
+[; ;main.c: 103: blinkCounter = 0;
+"103
+[e = _blinkCounter -> -> 0 `i `l ]
+"104
+}
+[e :U 2616 ]
+"106
+}
+[e :U 2614 ]
+[; ;main.c: 104: }
+[; ;main.c: 106: }
+[; ;main.c: 108: if(MAP_H_BLINK == 1){
+"108
+[e $ ! == _MAP_H_BLINK -> 1 `i 2617  ]
+{
+[; ;main.c: 109: blinkCounter++;
+"109
+[e ++ _blinkCounter -> -> 1 `i `l ]
+[; ;main.c: 111: if(blinkCounter == 13){
+"111
+[e $ ! == _blinkCounter -> -> 13 `i `l 2618  ]
+{
+[; ;main.c: 112: LATBbits.LATB6 = 0;
+"112
+[e = . . _LATBbits 0 6 -> -> 0 `i `uc ]
+"113
+}
+[e :U 2618 ]
+[; ;main.c: 113: }
+[; ;main.c: 114: if(blinkCounter > 26){
+"114
+[e $ ! > _blinkCounter -> -> 26 `i `l 2619  ]
+{
+[; ;main.c: 115: LATBbits.LATB6 = 1;
+"115
+[e = . . _LATBbits 0 6 -> -> 1 `i `uc ]
+[; ;main.c: 116: blinkCounter = 0;
+"116
+[e = _blinkCounter -> -> 0 `i `l ]
+"117
+}
+[e :U 2619 ]
+"119
+}
+[e :U 2617 ]
+[; ;main.c: 117: }
+[; ;main.c: 119: }
+[; ;main.c: 124: TMR1IF = 0;
+"124
+[e = _TMR1IF -> -> 0 `i `b ]
+"125
+}
+[e :U 2613 ]
+[; ;main.c: 125: }
+[; ;main.c: 127: }
+"127
 [e :UE 2608 ]
 }

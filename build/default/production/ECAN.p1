@@ -17150,8 +17150,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _BITDATA `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 101: unsigned char BITDATA;
 "102
-[v _ACCELERATOR `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 102: unsigned char ACCELERATOR;
+[v _TEMP_ACCELERATOR `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 102: unsigned char TEMP_ACCELERATOR;
 "103
 [v _temp_D2 `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 103: unsigned char temp_D2;
@@ -17193,14 +17193,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;init.h: 11: void InitDevice();
 [; ;init.h: 12: void setup_Interrupt();
 "14 init.h
-[v _heartBeatCounter `i ~T0 @X0 1 e ]
-[; ;init.h: 14: int heartBeatCounter;
-"15
 [v _FIRST_SEND `i ~T0 @X0 1 e ]
-[; ;init.h: 15: int FIRST_SEND;
-"16
-[v _interruptCounter `l ~T0 @X0 1 e ]
-[; ;init.h: 16: long interruptCounter;
+[; ;init.h: 14: int FIRST_SEND;
 [; ;peripherals.h: 11: void heartbeat();
 [; ;peripherals.h: 12: void checkBrake();
 [; ;peripherals.h: 13: void checkBacklight();
@@ -17239,6 +17233,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _MAP_BATTERYSTATUS `i ~T0 @X0 1 e ]
 [v _MAP_VELOCITY `i ~T0 @X0 1 e ]
 [; ;peripherals.h: 39: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+"42
+[v _heartBeatCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 42: long heartBeatCounter;
+"43
+[v _blinkCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 43: long blinkCounter;
+"45
+[v _interruptCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 45: long interruptCounter;
 "95 ECAN.c
 [v _temp_EIDH `uc ~T0 @X0 1 e ]
 [; ;ECAN.c: 95: unsigned char temp_EIDH;
@@ -17519,9 +17522,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ECAN.c: 235: BITDATA = RXB0D0;
 "235
 [e = _BITDATA _RXB0D0 ]
-[; ;ECAN.c: 236: ACCELERATOR = RXB0D1;
+[; ;ECAN.c: 236: TEMP_ACCELERATOR = RXB0D1;
 "236
-[e = _ACCELERATOR _RXB0D1 ]
+[e = _TEMP_ACCELERATOR _RXB0D1 ]
 [; ;ECAN.c: 237: temp_D2 = RXB0D2;
 "237
 [e = _temp_D2 _RXB0D2 ]
@@ -17575,9 +17578,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ECAN.c: 253: BITDATA = RXB1D0;
 "253
 [e = _BITDATA _RXB1D0 ]
-[; ;ECAN.c: 254: ACCELERATOR = RXB1D1;
+[; ;ECAN.c: 254: TEMP_ACCELERATOR = RXB1D1;
 "254
-[e = _ACCELERATOR _RXB1D1 ]
+[e = _TEMP_ACCELERATOR _RXB1D1 ]
 [; ;ECAN.c: 255: temp_D2 = RXB1D2;
 "255
 [e = _temp_D2 _RXB1D2 ]
@@ -17631,9 +17634,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ECAN.c: 271: BITDATA = B0D0;
 "271
 [e = _BITDATA _B0D0 ]
-[; ;ECAN.c: 272: ACCELERATOR = B0D1;
+[; ;ECAN.c: 272: TEMP_ACCELERATOR = B0D1;
 "272
-[e = _ACCELERATOR _B0D1 ]
+[e = _TEMP_ACCELERATOR _B0D1 ]
 [; ;ECAN.c: 273: temp_D2 = B0D2;
 "273
 [e = _temp_D2 _B0D2 ]

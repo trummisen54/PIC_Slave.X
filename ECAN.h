@@ -98,8 +98,8 @@ void ECAN_Transmit(unsigned char SIDH,
 
 
 unsigned char count;
-unsigned char BITDATA;
-unsigned char ACCELERATOR;
+unsigned char BITDATA;          //value from CAN receive
+unsigned char TEMP_ACCELERATOR; //value from CAN receive
 unsigned char temp_D2;
 unsigned char temp_D3;
 unsigned char temp_D4;

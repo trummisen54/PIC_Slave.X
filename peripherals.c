@@ -25,14 +25,19 @@ void checkBacklight(){
     }
 }
 void checkV_blink(){
-    if(TEMP_MAP_V_BLINK != MAP_V_BLINK){
+    if(TEMP_MAP_V_BLINK != MAP_V_BLINK){ //generate blink signal if TEMP_MAP_V_BLINK == 1
         MAP_V_BLINK = TEMP_MAP_V_BLINK;
+        
+        blinkCounter = 0;
         V_BLINK_OUT_PIN = MAP_V_BLINK;
     }
 }
 void checkH_blink(){
     if(TEMP_MAP_H_BLINK != MAP_H_BLINK){
         MAP_H_BLINK = TEMP_MAP_H_BLINK;
+        H_BLINK_OUT_PIN = MAP_H_BLINK;
+        
+        blinkCounter = 0;
         H_BLINK_OUT_PIN = MAP_H_BLINK;
     }
 }
@@ -49,9 +54,9 @@ void checkSafetyPin(){
     }
 }
 void checkAccelerator(){
-    if(TEMP_MAP_ACCELERATOR != MAP_ACCELERATOR){
-        MAP_ACCELERATOR = TEMP_MAP_ACCELERATOR;
-        LATB = MAP_ACCELERATOR;
+    if(TEMP_ACCELERATOR != MAP_ACCELERATOR){
+        LATC = TEMP_ACCELERATOR;
+        MAP_ACCELERATOR = TEMP_ACCELERATOR;
     }
 }
 

@@ -20979,7 +20979,7 @@ unsigned char DATA7);
 
 unsigned char count;
 unsigned char BITDATA;
-unsigned char ACCELERATOR;
+unsigned char TEMP_ACCELERATOR;
 unsigned char temp_D2;
 unsigned char temp_D3;
 unsigned char temp_D4;
@@ -21002,9 +21002,7 @@ void heartBeat();
 void InitDevice();
 void setup_Interrupt();
 
-int heartBeatCounter;
 int FIRST_SEND;
-long interruptCounter;
 
 # 11 "peripherals.h"
 void heartbeat();
@@ -21028,6 +21026,12 @@ TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
 
 # 39
 int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+
+
+long heartBeatCounter;
+long blinkCounter;
+
+long interruptCounter;
 
 # 11 "init.c"
 void InitDevice(){
@@ -21092,9 +21096,7 @@ MAP_BATTERYSTATUS = 0;
 MAP_VELOCITY = 0;
 MAP_HEARTBEAT = 0;
 
-
-
-
+# 77
 T0CONbits.TMR0ON = 1;
 T0CONbits.T08BIT = 0;
 T0CONbits.T0CS = 0;
@@ -21102,14 +21104,37 @@ T0CONbits.T0CS = 0;
 T0CONbits.PSA = 0;
 T0CONbits.T0PS = 7;
 
-# 94
+# 89
+T1CONbits.TMR1CS0 = 0;
+T1CONbits.TMR1CS1 = 0;
+T1CONbits.SOSCEN = 1;
+
+T1CONbits.T1CKPS0 = 1;
+T1CONbits.T1CKPS1 = 1;
+
+T1CONbits.nT1SYNC = 1;
+T1CONbits.RD16 = 1;
+T1CONbits.TMR1ON = 1;
+
+
+
+T1GCONbits.TMR1GE = 0;
 }
 
 void setup_Interrupt(){
+
 RCONbits.IPEN = 1;
 INTCONbits.GIEH = 1;
 INTCONbits.GIEL = 1;
+
+
+
 INTCONbits.TMR0IE = 1;
+heartBeatCounter = 0;
 
 
+PIE1bits.TMR1IE = 1;
+blinkCounter = 0;
+
+# 124
 }

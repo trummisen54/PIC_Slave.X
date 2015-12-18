@@ -11,9 +11,8 @@
 void InitDevice();
 void setup_Interrupt();
 
-int heartBeatCounter;
 int FIRST_SEND;
-long interruptCounter;
+
 
 //INPUTS
 

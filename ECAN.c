@@ -233,7 +233,7 @@ unsigned char ECAN_Receive(void)
         temp_SIDL = RXB0SIDL;
         temp_DLC = RXB0DLC;
         BITDATA = RXB0D0;
-        ACCELERATOR = RXB0D1; 
+        TEMP_ACCELERATOR = RXB0D1; 
         temp_D2 = RXB0D2;
         temp_D3 = RXB0D3;
         temp_D4 = RXB0D4;
@@ -251,7 +251,7 @@ unsigned char ECAN_Receive(void)
         temp_SIDL = RXB1SIDL;
         temp_DLC = RXB1DLC;
         BITDATA = RXB1D0;
-        ACCELERATOR = RXB1D1;
+        TEMP_ACCELERATOR = RXB1D1;
         temp_D2 = RXB1D2;
         temp_D3 = RXB1D3;
         temp_D4 = RXB1D4;
@@ -269,7 +269,7 @@ unsigned char ECAN_Receive(void)
         temp_SIDL = B0SIDL;
         temp_DLC = B0DLC;
         BITDATA = B0D0;
-        ACCELERATOR = B0D1;
+        TEMP_ACCELERATOR = B0D1;
         temp_D2 = B0D2;
         temp_D3 = B0D3;
         temp_D4 = B0D4;

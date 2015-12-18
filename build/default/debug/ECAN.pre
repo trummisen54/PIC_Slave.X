@@ -20979,7 +20979,7 @@ unsigned char DATA7);
 
 unsigned char count;
 unsigned char BITDATA;
-unsigned char ACCELERATOR;
+unsigned char TEMP_ACCELERATOR;
 unsigned char temp_D2;
 unsigned char temp_D3;
 unsigned char temp_D4;
@@ -21002,9 +21002,7 @@ void heartBeat();
 void InitDevice();
 void setup_Interrupt();
 
-int heartBeatCounter;
 int FIRST_SEND;
-long interruptCounter;
 
 # 11 "peripherals.h"
 void heartbeat();
@@ -21028,6 +21026,12 @@ TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
 
 # 39
 int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+
+
+long heartBeatCounter;
+long blinkCounter;
+
+long interruptCounter;
 
 # 95 "ECAN.c"
 unsigned char temp_EIDH;
@@ -21150,7 +21154,7 @@ temp_SIDH = RXB0SIDH;
 temp_SIDL = RXB0SIDL;
 temp_DLC = RXB0DLC;
 BITDATA = RXB0D0;
-ACCELERATOR = RXB0D1;
+TEMP_ACCELERATOR = RXB0D1;
 temp_D2 = RXB0D2;
 temp_D3 = RXB0D3;
 temp_D4 = RXB0D4;
@@ -21168,7 +21172,7 @@ temp_SIDH = RXB1SIDH;
 temp_SIDL = RXB1SIDL;
 temp_DLC = RXB1DLC;
 BITDATA = RXB1D0;
-ACCELERATOR = RXB1D1;
+TEMP_ACCELERATOR = RXB1D1;
 temp_D2 = RXB1D2;
 temp_D3 = RXB1D3;
 temp_D4 = RXB1D4;
@@ -21186,7 +21190,7 @@ temp_SIDH = B0SIDH;
 temp_SIDL = B0SIDL;
 temp_DLC = B0DLC;
 BITDATA = B0D0;
-ACCELERATOR = B0D1;
+TEMP_ACCELERATOR = B0D1;
 temp_D2 = B0D2;
 temp_D3 = B0D3;
 temp_D4 = B0D4;

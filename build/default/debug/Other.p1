@@ -16819,8 +16819,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _BITDATA `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 101: unsigned char BITDATA;
 "102
-[v _ACCELERATOR `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 102: unsigned char ACCELERATOR;
+[v _TEMP_ACCELERATOR `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 102: unsigned char TEMP_ACCELERATOR;
 "103
 [v _temp_D2 `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 103: unsigned char temp_D2;
@@ -16862,14 +16862,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;init.h: 11: void InitDevice();
 [; ;init.h: 12: void setup_Interrupt();
 "14 init.h
-[v _heartBeatCounter `i ~T0 @X0 1 e ]
-[; ;init.h: 14: int heartBeatCounter;
-"15
 [v _FIRST_SEND `i ~T0 @X0 1 e ]
-[; ;init.h: 15: int FIRST_SEND;
-"16
-[v _interruptCounter `l ~T0 @X0 1 e ]
-[; ;init.h: 16: long interruptCounter;
+[; ;init.h: 14: int FIRST_SEND;
 [; ;peripherals.h: 11: void heartbeat();
 [; ;peripherals.h: 12: void checkBrake();
 [; ;peripherals.h: 13: void checkBacklight();
@@ -16908,6 +16902,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _MAP_BATTERYSTATUS `i ~T0 @X0 1 e ]
 [v _MAP_VELOCITY `i ~T0 @X0 1 e ]
 [; ;peripherals.h: 39: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+"42
+[v _heartBeatCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 42: long heartBeatCounter;
+"43
+[v _blinkCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 43: long blinkCounter;
+"45
+[v _interruptCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 45: long interruptCounter;
 "11 Other.c
 [v _Delay `(v ~T0 @X0 1 ef1`ui ]
 "12

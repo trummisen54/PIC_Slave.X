@@ -39,6 +39,10 @@ int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
 int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
 //***********************************************
 
+long heartBeatCounter; //interrupt counter
+long blinkCounter;      //interrupt counter
+
+long interruptCounter;//used for test purposes
 
 #define HEARTBEAT_BIT   0
 #define BRAKE_BIT       1

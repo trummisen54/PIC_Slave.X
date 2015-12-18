@@ -20979,7 +20979,7 @@ unsigned char DATA7);
 
 unsigned char count;
 unsigned char BITDATA;
-unsigned char ACCELERATOR;
+unsigned char TEMP_ACCELERATOR;
 unsigned char temp_D2;
 unsigned char temp_D3;
 unsigned char temp_D4;
@@ -21002,9 +21002,7 @@ void heartBeat();
 void InitDevice();
 void setup_Interrupt();
 
-int heartBeatCounter;
 int FIRST_SEND;
-long interruptCounter;
 
 # 11 "peripherals.h"
 void heartbeat();
@@ -21029,6 +21027,12 @@ TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
 # 39
 int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
 
+
+long heartBeatCounter;
+long blinkCounter;
+
+long interruptCounter;
+
 # 10 "peripherals.c"
 void checkBrake(){
 if(TEMP_MAP_BRAKE != MAP_BRAKE){
@@ -21050,12 +21054,17 @@ LATBbits.LATB7 = MAP_BACKLIGHT;
 void checkV_blink(){
 if(TEMP_MAP_V_BLINK != MAP_V_BLINK){
 MAP_V_BLINK = TEMP_MAP_V_BLINK;
+
+blinkCounter = 0;
 LATBbits.LATB5 = MAP_V_BLINK;
 }
 }
 void checkH_blink(){
 if(TEMP_MAP_H_BLINK != MAP_H_BLINK){
 MAP_H_BLINK = TEMP_MAP_H_BLINK;
+LATBbits.LATB6 = MAP_H_BLINK;
+
+blinkCounter = 0;
 LATBbits.LATB6 = MAP_H_BLINK;
 }
 }
@@ -21072,9 +21081,9 @@ MAP_SAFETYPIN = TEMP_MAP_SAFETYPIN;
 }
 }
 void checkAccelerator(){
-if(TEMP_MAP_ACCELERATOR != MAP_ACCELERATOR){
-MAP_ACCELERATOR = TEMP_MAP_ACCELERATOR;
-LATB = MAP_ACCELERATOR;
+if(TEMP_ACCELERATOR != MAP_ACCELERATOR){
+LATC = TEMP_ACCELERATOR;
+MAP_ACCELERATOR = TEMP_ACCELERATOR;
 }
 }
 

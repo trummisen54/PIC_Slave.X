@@ -31,8 +31,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2170 . . . . . . . . . . ]
 "33188
 [v _LATBbits `VS2170 ~T0 @X0 0 e@3978 ]
-"33140
-[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
+"33272
+[v _LATC `Vuc ~T0 @X0 0 e@3979 ]
 "20 peripherals.h
 [v _readAnalog `(i ~T0 @X0 0 ef ]
 "37273 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f26k80.h
@@ -16826,8 +16826,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _BITDATA `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 101: unsigned char BITDATA;
 "102
-[v _ACCELERATOR `uc ~T0 @X0 1 e ]
-[; ;ECAN.h: 102: unsigned char ACCELERATOR;
+[v _TEMP_ACCELERATOR `uc ~T0 @X0 1 e ]
+[; ;ECAN.h: 102: unsigned char TEMP_ACCELERATOR;
 "103
 [v _temp_D2 `uc ~T0 @X0 1 e ]
 [; ;ECAN.h: 103: unsigned char temp_D2;
@@ -16869,14 +16869,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;init.h: 11: void InitDevice();
 [; ;init.h: 12: void setup_Interrupt();
 "14 init.h
-[v _heartBeatCounter `i ~T0 @X0 1 e ]
-[; ;init.h: 14: int heartBeatCounter;
-"15
 [v _FIRST_SEND `i ~T0 @X0 1 e ]
-[; ;init.h: 15: int FIRST_SEND;
-"16
-[v _interruptCounter `l ~T0 @X0 1 e ]
-[; ;init.h: 16: long interruptCounter;
+[; ;init.h: 14: int FIRST_SEND;
 [; ;peripherals.h: 11: void heartbeat();
 [; ;peripherals.h: 12: void checkBrake();
 [; ;peripherals.h: 13: void checkBacklight();
@@ -16915,6 +16909,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _MAP_BATTERYSTATUS `i ~T0 @X0 1 e ]
 [v _MAP_VELOCITY `i ~T0 @X0 1 e ]
 [; ;peripherals.h: 39: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+"42
+[v _heartBeatCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 42: long heartBeatCounter;
+"43
+[v _blinkCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 43: long blinkCounter;
+"45
+[v _interruptCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 45: long interruptCounter;
 "10 peripherals.c
 [v _checkBrake `(v ~T0 @X0 1 ef ]
 {
@@ -16989,153 +16992,162 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;peripherals.c: 29: MAP_V_BLINK = TEMP_MAP_V_BLINK;
 "29
 [e = _MAP_V_BLINK _TEMP_MAP_V_BLINK ]
-[; ;peripherals.c: 30: LATBbits.LATB5 = MAP_V_BLINK;
-"30
-[e = . . _LATBbits 0 5 -> _MAP_V_BLINK `uc ]
+[; ;peripherals.c: 31: blinkCounter = 0;
 "31
+[e = _blinkCounter -> -> 0 `i `l ]
+[; ;peripherals.c: 32: LATBbits.LATB5 = MAP_V_BLINK;
+"32
+[e = . . _LATBbits 0 5 -> _MAP_V_BLINK `uc ]
+"33
 }
 [e :U 2608 ]
-[; ;peripherals.c: 31: }
-[; ;peripherals.c: 32: }
-"32
+[; ;peripherals.c: 33: }
+[; ;peripherals.c: 34: }
+"34
 [e :UE 2607 ]
 }
-"33
+"35
 [v _checkH_blink `(v ~T0 @X0 1 ef ]
 {
-[; ;peripherals.c: 33: void checkH_blink(){
+[; ;peripherals.c: 35: void checkH_blink(){
 [e :U _checkH_blink ]
 [f ]
-[; ;peripherals.c: 34: if(TEMP_MAP_H_BLINK != MAP_H_BLINK){
-"34
+[; ;peripherals.c: 36: if(TEMP_MAP_H_BLINK != MAP_H_BLINK){
+"36
 [e $ ! != _TEMP_MAP_H_BLINK _MAP_H_BLINK 2610  ]
 {
-[; ;peripherals.c: 35: MAP_H_BLINK = TEMP_MAP_H_BLINK;
-"35
-[e = _MAP_H_BLINK _TEMP_MAP_H_BLINK ]
-[; ;peripherals.c: 36: LATBbits.LATB6 = MAP_H_BLINK;
-"36
-[e = . . _LATBbits 0 6 -> _MAP_H_BLINK `uc ]
+[; ;peripherals.c: 37: MAP_H_BLINK = TEMP_MAP_H_BLINK;
 "37
+[e = _MAP_H_BLINK _TEMP_MAP_H_BLINK ]
+[; ;peripherals.c: 38: LATBbits.LATB6 = MAP_H_BLINK;
+"38
+[e = . . _LATBbits 0 6 -> _MAP_H_BLINK `uc ]
+[; ;peripherals.c: 40: blinkCounter = 0;
+"40
+[e = _blinkCounter -> -> 0 `i `l ]
+[; ;peripherals.c: 41: LATBbits.LATB6 = MAP_H_BLINK;
+"41
+[e = . . _LATBbits 0 6 -> _MAP_H_BLINK `uc ]
+"42
 }
 [e :U 2610 ]
-[; ;peripherals.c: 37: }
-[; ;peripherals.c: 38: }
-"38
+[; ;peripherals.c: 42: }
+[; ;peripherals.c: 43: }
+"43
 [e :UE 2609 ]
 }
-"39
+"44
 [v _checkDirection `(v ~T0 @X0 1 ef ]
 {
-[; ;peripherals.c: 39: void checkDirection(){
+[; ;peripherals.c: 44: void checkDirection(){
 [e :U _checkDirection ]
 [f ]
-[; ;peripherals.c: 40: if(TEMP_MAP_DIRECTION != MAP_DIRECTION){
-"40
+[; ;peripherals.c: 45: if(TEMP_MAP_DIRECTION != MAP_DIRECTION){
+"45
 [e $ ! != _TEMP_MAP_DIRECTION _MAP_DIRECTION 2612  ]
 {
-[; ;peripherals.c: 41: MAP_DIRECTION = TEMP_MAP_DIRECTION;
-"41
+[; ;peripherals.c: 46: MAP_DIRECTION = TEMP_MAP_DIRECTION;
+"46
 [e = _MAP_DIRECTION _TEMP_MAP_DIRECTION ]
-"43
+"48
 }
 [e :U 2612 ]
-[; ;peripherals.c: 43: }
-[; ;peripherals.c: 44: }
-"44
+[; ;peripherals.c: 48: }
+[; ;peripherals.c: 49: }
+"49
 [e :UE 2611 ]
 }
-"45
+"50
 [v _checkSafetyPin `(v ~T0 @X0 1 ef ]
 {
-[; ;peripherals.c: 45: void checkSafetyPin(){
+[; ;peripherals.c: 50: void checkSafetyPin(){
 [e :U _checkSafetyPin ]
 [f ]
-[; ;peripherals.c: 46: if(TEMP_MAP_SAFETYPIN != MAP_SAFETYPIN){
-"46
+[; ;peripherals.c: 51: if(TEMP_MAP_SAFETYPIN != MAP_SAFETYPIN){
+"51
 [e $ ! != _TEMP_MAP_SAFETYPIN _MAP_SAFETYPIN 2614  ]
 {
-[; ;peripherals.c: 47: MAP_SAFETYPIN = TEMP_MAP_SAFETYPIN;
-"47
+[; ;peripherals.c: 52: MAP_SAFETYPIN = TEMP_MAP_SAFETYPIN;
+"52
 [e = _MAP_SAFETYPIN _TEMP_MAP_SAFETYPIN ]
-"49
+"54
 }
 [e :U 2614 ]
-[; ;peripherals.c: 49: }
-[; ;peripherals.c: 50: }
-"50
+[; ;peripherals.c: 54: }
+[; ;peripherals.c: 55: }
+"55
 [e :UE 2613 ]
 }
-"51
+"56
 [v _checkAccelerator `(v ~T0 @X0 1 ef ]
 {
-[; ;peripherals.c: 51: void checkAccelerator(){
+[; ;peripherals.c: 56: void checkAccelerator(){
 [e :U _checkAccelerator ]
 [f ]
-[; ;peripherals.c: 52: if(TEMP_MAP_ACCELERATOR != MAP_ACCELERATOR){
-"52
-[e $ ! != _TEMP_MAP_ACCELERATOR _MAP_ACCELERATOR 2616  ]
+[; ;peripherals.c: 57: if(TEMP_ACCELERATOR != MAP_ACCELERATOR){
+"57
+[e $ ! != -> _TEMP_ACCELERATOR `i _MAP_ACCELERATOR 2616  ]
 {
-[; ;peripherals.c: 53: MAP_ACCELERATOR = TEMP_MAP_ACCELERATOR;
-"53
-[e = _MAP_ACCELERATOR _TEMP_MAP_ACCELERATOR ]
-[; ;peripherals.c: 54: LATB = MAP_ACCELERATOR;
-"54
-[e = _LATB -> _MAP_ACCELERATOR `uc ]
-"55
+[; ;peripherals.c: 58: LATC = TEMP_ACCELERATOR;
+"58
+[e = _LATC _TEMP_ACCELERATOR ]
+[; ;peripherals.c: 59: MAP_ACCELERATOR = TEMP_ACCELERATOR;
+"59
+[e = _MAP_ACCELERATOR -> _TEMP_ACCELERATOR `i ]
+"60
 }
 [e :U 2616 ]
-[; ;peripherals.c: 55: }
-[; ;peripherals.c: 56: }
-"56
+[; ;peripherals.c: 60: }
+[; ;peripherals.c: 61: }
+"61
 [e :UE 2615 ]
 }
-"59
+"64
 [v _updateInputs `(v ~T0 @X0 1 ef ]
 {
-[; ;peripherals.c: 59: void updateInputs(){
+[; ;peripherals.c: 64: void updateInputs(){
 [e :U _updateInputs ]
 [f ]
-[; ;peripherals.c: 62: MAP_BATTERYSTATUS = readAnalog();
-"62
+[; ;peripherals.c: 67: MAP_BATTERYSTATUS = readAnalog();
+"67
 [e = _MAP_BATTERYSTATUS ( _readAnalog ..  ]
-[; ;peripherals.c: 66: }
-"66
+[; ;peripherals.c: 71: }
+"71
 [e :UE 2617 ]
 }
-"68
+"73
 [v _readAnalog `(i ~T0 @X0 1 ef ]
 {
-[; ;peripherals.c: 68: int readAnalog(){
+[; ;peripherals.c: 73: int readAnalog(){
 [e :U _readAnalog ]
 [f ]
-[; ;peripherals.c: 71: ADCON0 = 0x00;
-"71
+[; ;peripherals.c: 76: ADCON0 = 0x00;
+"76
 [e = _ADCON0 -> -> 0 `i `uc ]
-[; ;peripherals.c: 73: ADCON0bits.ADON = 1;
-"73
+[; ;peripherals.c: 78: ADCON0bits.ADON = 1;
+"78
 [e = . . _ADCON0bits 1 0 -> -> 1 `i `uc ]
-[; ;peripherals.c: 77: Delay((unsigned int)(64/4)*80 * 100);
-"77
+[; ;peripherals.c: 82: Delay((unsigned int)(64/4)*80 * 100);
+"82
 [e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 100 `i `ui ]
-[; ;peripherals.c: 79: ADCON0bits.GO_DONE = 1;
-"79
+[; ;peripherals.c: 84: ADCON0bits.GO_DONE = 1;
+"84
 [e = . . _ADCON0bits 7 1 -> -> 1 `i `uc ]
-[; ;peripherals.c: 80: while(ADCON0bits.GO_DONE);
-"80
+[; ;peripherals.c: 85: while(ADCON0bits.GO_DONE);
+"85
 [e $U 2619  ]
 [e :U 2620 ]
 [e :U 2619 ]
 [e $ != -> . . _ADCON0bits 7 1 `i -> -> -> 0 `i `Vuc `i 2620  ]
 [e :U 2621 ]
-[; ;peripherals.c: 82: ADCON0bits.ADON = 0;
-"82
+[; ;peripherals.c: 87: ADCON0bits.ADON = 0;
+"87
 [e = . . _ADCON0bits 1 0 -> -> 0 `i `uc ]
-[; ;peripherals.c: 86: return ADRESH;
-"86
+[; ;peripherals.c: 91: return ADRESH;
+"91
 [e ) -> _ADRESH `i ]
 [e $UE 2618  ]
-[; ;peripherals.c: 88: }
-"88
+[; ;peripherals.c: 93: }
+"93
 [e :UE 2618 ]
 }
