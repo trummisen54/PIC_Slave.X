@@ -207,6 +207,9 @@ void CANSetup(void)
     RXB0CON = 0x00;
     RXB1CON = 0x00;
     
+    
+    CAN_ERRORBIT = 0;
+    
 }
 
 
@@ -378,5 +381,8 @@ void unZipCAN(){
     
     TEMP_MAP_SAFETYPIN = BITDATA & (1 << SAFETYPIN_BIT);
     TEMP_MAP_SAFETYPIN = (TEMP_MAP_SAFETYPIN >> SAFETYPIN_BIT);
+    
+    TEMP_MAP_STOP = BITDATA & (1 << STOP_BIT);
+    TEMP_MAP_STOP = (TEMP_MAP_STOP >> STOP_BIT);
     
 }

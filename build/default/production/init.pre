@@ -20766,7 +20766,7 @@ extern __nonreentrant void _delay3(unsigned char);
 # 22 "config.h"
 #pragma config RETEN = OFF
 #pragma config INTOSCSEL = HIGH
-#pragma config SOSCSEL = HIGH
+#pragma config SOSCSEL = 0b10
 #pragma config XINST = OFF
 
 
@@ -20997,12 +20997,19 @@ unsigned char buttonWasPressed;
 # 12 "Other.h"
 void Delay(unsigned int count);
 void heartBeat();
+void danger(int errorCode);
 
 # 11 "init.h"
 void InitDevice();
 void setup_Interrupt();
 
 int FIRST_SEND;
+
+# 35
+int HEARTBEAT_ERRORCODE = 3;
+int CAN_ERRORCODE = 4;
+
+int CAN_ERRORBIT;
 
 # 11 "peripherals.h"
 void heartbeat();
@@ -21012,26 +21019,33 @@ void checkV_blink();
 void checkH_blink();
 void checkDirection();
 void checkSafetyPin();
+void checkStop();
 void checkAccelerator();
 void updateInputs();
 int readAnalog();
+void startMotor();
 
-# 28
+# 30
 int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
-MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
+MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_STOP, MAP_ACCELERATOR;
 
 
 int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
-TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
+TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_STOP, TEMP_MAP_ACCELERATOR;
 
-# 39
+# 41
 int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+
+
+int deadArea_gas;
 
 
 long heartBeatCounter;
 long blinkCounter;
 
 long interruptCounter;
+
+int OFFSET_ACCELERATOR;
 
 # 11 "init.c"
 void InitDevice(){
@@ -21040,6 +21054,8 @@ count = 0x01;
 
 OSCCONbits.IRCF = 7;
 OSCTUNEbits.PLLEN = 1;
+
+
 
 
 heartbeatCount = 0;
@@ -21055,7 +21071,7 @@ ANCON1 = 0x00;
 
 ADCON0 = 0x00;
 ADCON1 = 0x00;
-ADCON2 = 0x00;
+ADCON2 = 0b10000000;
 
 
 
@@ -21067,20 +21083,20 @@ ADCON2bits.ADCS=2;
 
 LATA = 0x00;
 
-TRISB = 0b00011101;
+TRISB = 0b00001100;
 LATB = 0x00;
 
 TRISC = 0x00;
-LATC = 0x00;
+LATC = 0b10001000;
 
-
-
+# 56
 MAP_BRAKE = 0;
 MAP_BACKLIGHT = 0;
 MAP_V_BLINK = 0;
 MAP_H_BLINK = 0;
 MAP_DIRECTION = 0;
 MAP_SAFETYPIN = 0;
+MAP_STOP = 0;
 MAP_ACCELERATOR = 0;
 
 TEMP_MAP_HEARTBEAT = 0;
@@ -21090,21 +21106,27 @@ TEMP_MAP_V_BLINK = 0;
 TEMP_MAP_H_BLINK = 0;
 TEMP_MAP_DIRECTION = 0;
 TEMP_MAP_SAFETYPIN = 0;
+TEMP_MAP_STOP = 0;
 TEMP_MAP_ACCELERATOR = 0;
 
 MAP_BATTERYSTATUS = 0;
 MAP_VELOCITY = 0;
 MAP_HEARTBEAT = 0;
 
-# 77
+deadArea_gas = 5;
+
+
+OFFSET_ACCELERATOR = 0b00000000;
+
+# 88
 T0CONbits.TMR0ON = 1;
 T0CONbits.T08BIT = 0;
 T0CONbits.T0CS = 0;
 
 T0CONbits.PSA = 0;
-T0CONbits.T0PS = 7;
+T0CONbits.T0PS = 3;
 
-# 89
+# 102
 T1CONbits.TMR1CS0 = 0;
 T1CONbits.TMR1CS1 = 0;
 T1CONbits.SOSCEN = 1;
@@ -21136,5 +21158,5 @@ heartBeatCounter = 0;
 PIE1bits.TMR1IE = 1;
 blinkCounter = 0;
 
-# 124
+# 137
 }

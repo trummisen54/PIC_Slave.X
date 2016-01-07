@@ -11,11 +11,11 @@
 
 void Delay(unsigned int count);
 void heartBeat();
+void danger(int errorCode);
 
 
 #define DEVICE_OSC  64
 #define ONE_MS      (unsigned int)(DEVICE_OSC/4)*80
-
 
 #endif	/* OTHER_H */
 

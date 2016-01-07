@@ -20766,7 +20766,7 @@ extern __nonreentrant void _delay3(unsigned char);
 # 22 "config.h"
 #pragma config RETEN = OFF
 #pragma config INTOSCSEL = HIGH
-#pragma config SOSCSEL = HIGH
+#pragma config SOSCSEL = 0b10
 #pragma config XINST = OFF
 
 
@@ -20997,12 +20997,19 @@ unsigned char buttonWasPressed;
 # 12 "Other.h"
 void Delay(unsigned int count);
 void heartBeat();
+void danger(int errorCode);
 
 # 11 "init.h"
 void InitDevice();
 void setup_Interrupt();
 
 int FIRST_SEND;
+
+# 35
+int HEARTBEAT_ERRORCODE = 3;
+int CAN_ERRORCODE = 4;
+
+int CAN_ERRORBIT;
 
 # 11 "peripherals.h"
 void heartbeat();
@@ -21012,20 +21019,24 @@ void checkV_blink();
 void checkH_blink();
 void checkDirection();
 void checkSafetyPin();
+void checkStop();
 void checkAccelerator();
 void updateInputs();
 int readAnalog();
 
-# 28
+# 29
 int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
-MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
+MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_STOP, MAP_ACCELERATOR;
 
 
 int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
-TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
+TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_STOP, TEMP_MAP_ACCELERATOR;
 
-# 39
+# 40
 int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+
+
+int deadArea_gas;
 
 
 long heartBeatCounter;
@@ -21033,15 +21044,17 @@ long blinkCounter;
 
 long interruptCounter;
 
+int OFFSET_ACCELERATOR;
+
 # 10 "peripherals.c"
 void checkBrake(){
 if(TEMP_MAP_BRAKE != MAP_BRAKE){
 MAP_BRAKE = TEMP_MAP_BRAKE;
 if(MAP_BRAKE == 1){
-
+LATBbits.LATB0 = 0;
 }
 else{
-
+LATBbits.LATB0 = 1;
 }
 }
 }
@@ -21080,11 +21093,43 @@ MAP_SAFETYPIN = TEMP_MAP_SAFETYPIN;
 
 }
 }
-void checkAccelerator(){
-if(TEMP_ACCELERATOR != MAP_ACCELERATOR){
-LATC = TEMP_ACCELERATOR;
-MAP_ACCELERATOR = TEMP_ACCELERATOR;
+void checkStop(){
+if(TEMP_MAP_STOP != MAP_STOP){
+MAP_STOP = TEMP_MAP_STOP;
+if(MAP_STOP == 1){
+LATBbits.LATB0 = 0;
+LATBbits.LATB4 = 1;
+
+# 73
 }
+}
+
+}
+void checkAccelerator(){
+
+# 96
+if(TEMP_ACCELERATOR != MAP_ACCELERATOR){
+MAP_ACCELERATOR = TEMP_ACCELERATOR;
+
+int HALF_ACCELERATOR = TEMP_ACCELERATOR/2;
+
+if(MAP_DIRECTION == 1){
+LATC = 0b10000000 + HALF_ACCELERATOR;
+}
+else if(MAP_DIRECTION == 0){
+LATC = 0b10000000 - HALF_ACCELERATOR;
+}
+
+if(TEMP_ACCELERATOR < deadArea_gas){
+LATBbits.LATB0 = 0;
+}
+else{
+LATBbits.LATB0 = 1;
+}
+
+
+}
+
 }
 
 
@@ -21104,8 +21149,6 @@ ADCON0 = 0x00;
 
 ADCON0bits.ADON = 1;
 
-
-
 Delay((unsigned int)(64/4)*80 * 100);
 
 ADCON0bits.GO_DONE = 1;
@@ -21113,9 +21156,15 @@ while(ADCON0bits.GO_DONE);
 
 ADCON0bits.ADON = 0;
 
+int low = ADRESL;
+int high = (ADRESH << 8);
+int totBattery = (high | low);
+if(totBattery < 0){
+totBattery = 0;
+}
 
 
-return ADRESH;
+return totBattery;
 
 }
 

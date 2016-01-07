@@ -20766,7 +20766,7 @@ extern __nonreentrant void _delay3(unsigned char);
 # 22 "config.h"
 #pragma config RETEN = OFF
 #pragma config INTOSCSEL = HIGH
-#pragma config SOSCSEL = HIGH
+#pragma config SOSCSEL = 0b10
 #pragma config XINST = OFF
 
 
@@ -20997,12 +20997,19 @@ unsigned char buttonWasPressed;
 # 12 "Other.h"
 void Delay(unsigned int count);
 void heartBeat();
+void danger(int errorCode);
 
 # 11 "init.h"
 void InitDevice();
 void setup_Interrupt();
 
 int FIRST_SEND;
+
+# 35
+int HEARTBEAT_ERRORCODE = 3;
+int CAN_ERRORCODE = 4;
+
+int CAN_ERRORBIT;
 
 # 11 "peripherals.h"
 void heartbeat();
@@ -21012,26 +21019,33 @@ void checkV_blink();
 void checkH_blink();
 void checkDirection();
 void checkSafetyPin();
+void checkStop();
 void checkAccelerator();
 void updateInputs();
 int readAnalog();
+void startMotor();
 
-# 28
+# 30
 int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
-MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
+MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_STOP, MAP_ACCELERATOR;
 
 
 int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
-TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
+TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_STOP, TEMP_MAP_ACCELERATOR;
 
-# 39
+# 41
 int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+
+
+int deadArea_gas;
 
 
 long heartBeatCounter;
 long blinkCounter;
 
 long interruptCounter;
+
+int OFFSET_ACCELERATOR;
 
 # 9 "main.c"
 int main(void){
@@ -21045,15 +21059,15 @@ heartBeatCounter = 0;
 FIRST_SEND = 1;
 interruptCounter = 0;
 
-LATAbits.LATA7 = 1;
-LATBbits.LATB1 = 0;
+LATAbits.LATA6 = 1;
+LATAbits.LATA7 = 0;
 
 while(1){
 
 
 if(ECAN_Receive()){
 FIRST_SEND = 0;
-LATAbits.LATA6 = 1;
+LATBbits.LATB1 = 1;
 unZipCAN();
 if(TEMP_MAP_HEARTBEAT == 1){
 heartBeatCounter = 0;
@@ -21061,35 +21075,32 @@ heartBeatCounter = 0;
 
 }
 
-if(heartBeatCounter > 3){
-danger();
-}
-
+# 41
 checkBrake();
 checkBacklight();
 checkV_blink();
 checkH_blink();
 checkDirection();
 checkSafetyPin();
+checkStop();
 checkAccelerator();
-
 
 
 
 updateInputs();
 
 ECAN_Transmit(0x32,0xC0, 0x08,
-MAP_BATTERYSTATUS,
+0,
 MAP_VELOCITY,
 0x01,
-temp_D3,
-temp_D4,
+MAP_BATTERYSTATUS & 0x00FF,
+(MAP_BATTERYSTATUS & 0xFF00) >> 8,
 temp_D5,
 temp_D6,
 temp_D7);
 
 
-Delay(10);
+Delay((unsigned int)(64/4)*80 * 5);
 
 }
 return 0;
@@ -21102,7 +21113,7 @@ void interrupt ISR(){
 
 if(IRXIF){
 if(TXB0CONbits.TXERR){
-LATBbits.LATB1 = 1;
+CAN_ERRORBIT = 1;
 
 }
 IRXIF = 0;
@@ -21113,6 +21124,9 @@ IRXIF = 0;
 if(TMR0IF == 1){
 if(!FIRST_SEND){
 heartBeatCounter++;
+if(heartBeatCounter > 35){
+danger(HEARTBEAT_ERRORCODE);
+}
 }
 TMR0IF = 0;
 }
@@ -21145,9 +21159,6 @@ blinkCounter = 0;
 }
 
 }
-
-
-
 
 TMR1IF = 0;
 }

@@ -12,37 +12,43 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $dist/default/production\PIC_Slave.X.production.obj
-cinit CODE 0 728 728 2E 1
-text0 CODE 0 4B8 4B8 E2 1
-text1 CODE 0 850 850 E 1
-text2 CODE 0 782 782 26 1
-text3 CODE 0 7F0 7F0 18 1
-text4 CODE 0 13E 13E 144 1
-text5 CODE 0 756 756 2C 1
-text6 CODE 0 85E 85E 6 1
-text7 CODE 0 6F6 6F6 32 1
-text8 CODE 0 808 808 18 1
-text9 CODE 0 6BA 6BA 3C 1
-nvCOMRAM COMRAM 1 53 53 1 1
-text10 CODE 0 820 820 18 1
-text11 CODE 0 838 838 18 1
-text12 CODE 0 7CE 7CE 22 1
-text13 CODE 0 7A8 7A8 26 1
-text14 CODE 0 3AC 3AC 10C 1
-text15 CODE 0 678 678 42 1
-text16 CODE 0 59A 59A DE 1
-text17 CODE 0 282 282 12A 1
-idataCOMRAM CODE 0 864 864 2 1
-cstackCOMRAM COMRAM 1 43 43 E 1
-cstackBANK0 BANK0 1 60 60 B 1
-temp COMRAM 1 54 54 1 1
-intcode CODE 0 8 8 132 1
-dataCOMRAM COMRAM 1 51 51 2 1
-bssCOMRAM COMRAM 1 1 1 42 1
-$C:\Users\E\AppData\Local\Temp\s52s.obj
+cinit CODE 0 9DE 9DE 42 1
+text0 CODE 0 65A 65A DE 1
+text1 CODE 0 BC4 BC4 E 1
+text2 CODE 0 980 980 5E 1
+text3 CODE 0 B82 B82 18 1
+text4 CODE 0 174 174 17C 1
+text5 CODE 0 AD0 AD0 2E 1
+text6 CODE 0 A9E A9E 32 1
+text7 CODE 0 AFE AFE 24 1
+text8 CODE 0 B66 B66 1C 1
+text9 CODE 0 A62 A62 3C 1
+nvCOMRAM COMRAM 1 4E 4E 1 1
+text10 CODE 0 B9A B9A 18 1
+text11 CODE 0 B22 B22 22 1
+text12 CODE 0 B44 B44 22 1
+text13 CODE 0 564 564 F6 1
+text14 CODE 0 BD2 BD2 C 1
+text15 CODE 0 816 816 BE 1
+text16 CODE 0 2F0 2F0 140 1
+text17 CODE 0 A20 A20 42 1
+text18 CODE 0 738 738 DE 1
+text19 CODE 0 430 430 134 1
+text21 CODE 0 8D4 8D4 AC 1
+text22 CODE 0 BB2 BB2 12 1
+nvBANK0 BANK0 1 8A 8A 2 1
+idataCOMRAM CODE 0 BDE BDE 6 1
+cstackCOMRAM COMRAM 1 31 31 17 1
+cstackBANK0 BANK0 1 7A 7A 10 1
+temp COMRAM 1 4F 4F 1 1
+bssBANK0 BANK0 1 60 60 1A 1
+intcode CODE 0 8 8 168 1
+dataCOMRAM COMRAM 1 48 48 6 1
+bssCOMRAM COMRAM 1 1 1 30 1
+$C:\Users\E\AppData\Local\Temp\s7ro.obj
 idloc IDLOC 0 200000 200000 8 1
 reset_vec CODE 0 0 0 4 1
-end_init CODE 0 13A 13A 4 1
+end_init CODE 0 170 170 4 1
 config CONFIG 0 300000 300000 E 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -50,9 +56,9 @@ config CONFIG 0 300000 300000 E 1
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 6B-E40 1
+RAM 8C-E40 1
 SFR E41-FFF 1
-BANK0 6B-FF 1
+BANK0 8C-FF 1
 BANK1 100-1FF 1
 BANK2 200-2FF 1
 BANK3 300-3FF 1
@@ -63,19 +69,19 @@ BANK7 700-7FF 1
 BANK8 800-8FF 1
 BANK9 900-9FF 1
 CONST 4-7 1
-CONST 866-FFFF 1
-STACK 6B-E40 1
+CONST BE4-FFFF 1
+STACK 8C-E40 1
 SMALLCONST F00-FFFF 1
 CODE 4-7 1
-CODE 866-FFFF 1
+CODE BE4-FFFF 1
 BANK10 A00-AFF 1
 BANK11 B00-BFF 1
 BANK12 C00-CFF 1
 BANK13 D00-DFF 1
 BANK14 E00-E40 1
-BIGRAM 55-5F 1
-BIGRAM 6B-E40 1
-COMRAM 55-5F 1
+BIGRAM 50-5F 1
+BIGRAM 8C-E40 1
+COMRAM 50-5F 1
 EEDATA F00000-F003FF 1
 MEDIUMCONST F00-FFFF 1
 # %LINETAB Section
@@ -92,334 +98,425 @@ MEDIUMCONST F00-FFFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\PIC_Slave.X.production.obj
-8 intcode CODE >210:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-8 intcode CODE >71:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-42 intcode CODE >75:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-46 intcode CODE >76:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4A intcode CODE >77:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4C intcode CODE >80:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4E intcode CODE >81:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4E intcode CODE >85:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-52 intcode CODE >86:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-5A intcode CODE >87:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-66 intcode CODE >89:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-68 intcode CODE >94:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-6C intcode CODE >95:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-74 intcode CODE >96:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-80 intcode CODE >98:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-8C intcode CODE >99:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-8E intcode CODE >101:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-A2 intcode CODE >102:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-A4 intcode CODE >103:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-B4 intcode CODE >108:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-BC intcode CODE >109:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-C8 intcode CODE >111:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-D4 intcode CODE >112:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-D6 intcode CODE >114:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-EA intcode CODE >115:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-EC intcode CODE >116:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-FC intcode CODE >124:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-FE intcode CODE >127:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-282 text17 CODE >111:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-282 text17 CODE >114:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-286 text17 CODE >115:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-292 text17 CODE >118:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-296 text17 CODE >122:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-29C text17 CODE >123:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2A2 text17 CODE >124:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2A8 text17 CODE >129:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2AE text17 CODE >133:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2B4 text17 CODE >134:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2BA text17 CODE >135:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2BE text17 CODE >136:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2C4 text17 CODE >139:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2CA text17 CODE >140:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2D0 text17 CODE >141:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2D4 text17 CODE >142:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2DA text17 CODE >146:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2E0 text17 CODE >147:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2E6 text17 CODE >150:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2EC text17 CODE >151:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2F0 text17 CODE >152:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2F4 text17 CODE >153:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2F8 text17 CODE >157:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-2FE text17 CODE >158:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-304 text17 CODE >160:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-308 text17 CODE >161:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-30C text17 CODE >162:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-310 text17 CODE >163:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-314 text17 CODE >164:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-318 text17 CODE >165:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-31C text17 CODE >171:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-322 text17 CODE >172:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-328 text17 CODE >173:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-32E text17 CODE >174:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-334 text17 CODE >175:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-33A text17 CODE >176:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-340 text17 CODE >177:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-346 text17 CODE >178:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-34C text17 CODE >179:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-352 text17 CODE >180:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-358 text17 CODE >181:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-35E text17 CODE >182:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-364 text17 CODE >185:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-366 text17 CODE >188:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-374 text17 CODE >193:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-382 text17 CODE >196:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-386 text17 CODE >197:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-394 text17 CODE >203:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-3A0 text17 CODE >207:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-3A4 text17 CODE >208:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-3AA text17 CODE >210:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-59A text16 CODE >222:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-59A text16 CODE >226:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5A0 text16 CODE >228:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5A4 text16 CODE >230:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5A8 text16 CODE >231:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5AC text16 CODE >232:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5B0 text16 CODE >233:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5B4 text16 CODE >234:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5B8 text16 CODE >235:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5BC text16 CODE >236:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5C0 text16 CODE >237:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5C4 text16 CODE >238:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5C8 text16 CODE >239:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5CC text16 CODE >240:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5D0 text16 CODE >241:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5D4 text16 CODE >242:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5D8 text16 CODE >243:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5DA text16 CODE >244:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5DC text16 CODE >246:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5E2 text16 CODE >248:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5E6 text16 CODE >249:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5EA text16 CODE >250:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5EE text16 CODE >251:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5F2 text16 CODE >252:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5F6 text16 CODE >253:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5FA text16 CODE >254:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-5FE text16 CODE >255:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-602 text16 CODE >256:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-606 text16 CODE >257:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-60A text16 CODE >258:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-60E text16 CODE >259:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-612 text16 CODE >260:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-616 text16 CODE >261:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-61A text16 CODE >262:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-61C text16 CODE >264:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-622 text16 CODE >266:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-626 text16 CODE >267:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-62A text16 CODE >268:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-62E text16 CODE >269:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-632 text16 CODE >270:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-636 text16 CODE >271:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-63A text16 CODE >272:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-63E text16 CODE >273:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-642 text16 CODE >274:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-646 text16 CODE >275:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-64A text16 CODE >276:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-64E text16 CODE >277:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-652 text16 CODE >278:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-656 text16 CODE >280:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-65A text16 CODE >281:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-660 text16 CODE >284:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-668 text16 CODE >286:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-66E text16 CODE >287:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-670 text16 CODE >288:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-672 text16 CODE >289:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-674 text16 CODE >292:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-678 text15 CODE >303:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-67C text15 CODE >315:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-682 text15 CODE >316:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-688 text15 CODE >319:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-68C text15 CODE >320:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-690 text15 CODE >321:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-694 text15 CODE >330:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-698 text15 CODE >331:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-69C text15 CODE >332:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-6A0 text15 CODE >333:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-6A4 text15 CODE >334:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-6A8 text15 CODE >335:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-6AC text15 CODE >336:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-6B0 text15 CODE >337:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-6B4 text15 CODE >339:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-6B8 text15 CODE >353:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-3AC text14 CODE >11:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3AC text14 CODE >12:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3B0 text14 CODE >15:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3B6 text14 CODE >16:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3B8 text14 CODE >19:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3C0 text14 CODE >20:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3C4 text14 CODE >25:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3C8 text14 CODE >26:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3CE text14 CODE >27:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3D4 text14 CODE >30:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3D8 text14 CODE >31:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3DC text14 CODE >32:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3E0 text14 CODE >36:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3E2 text14 CODE >37:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3EA text14 CODE >38:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3F2 text14 CODE >42:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3F6 text14 CODE >44:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3FA text14 CODE >45:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-3FE text14 CODE >47:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-402 text14 CODE >48:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-406 text14 CODE >52:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-40E text14 CODE >53:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-416 text14 CODE >54:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-41E text14 CODE >55:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-426 text14 CODE >56:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-42E text14 CODE >57:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-436 text14 CODE >58:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-43E text14 CODE >60:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-446 text14 CODE >61:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-44E text14 CODE >62:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-456 text14 CODE >63:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-45E text14 CODE >64:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-466 text14 CODE >65:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-46E text14 CODE >66:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-476 text14 CODE >67:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-47E text14 CODE >69:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-486 text14 CODE >70:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-48E text14 CODE >71:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-496 text14 CODE >77:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-498 text14 CODE >78:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-49A text14 CODE >79:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-49C text14 CODE >81:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-49E text14 CODE >82:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-4A4 text14 CODE >89:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-4A6 text14 CODE >90:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-4A8 text14 CODE >91:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-4AA text14 CODE >93:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-4AC text14 CODE >94:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-4AE text14 CODE >96:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-4B0 text14 CODE >97:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-4B2 text14 CODE >98:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-4B4 text14 CODE >102:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-4B6 text14 CODE >103:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-7A8 text13 CODE >56:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-7A8 text13 CODE >57:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-7C2 text13 CODE >58:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-7C6 text13 CODE >59:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-7CE text12 CODE >21:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-7CE text12 CODE >22:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-7DC text12 CODE >23:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-7E4 text12 CODE >24:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-838 text11 CODE >10:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-838 text11 CODE >11:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-846 text11 CODE >12:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-84E text11 CODE >18:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-820 text10 CODE >44:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-820 text10 CODE >45:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-82E text10 CODE >46:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-6BA text9 CODE >35:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-6BA text9 CODE >36:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-6C8 text9 CODE >37:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-6D0 text9 CODE >38:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-6DA text9 CODE >40:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-6EA text9 CODE >41:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-808 text8 CODE >50:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-808 text8 CODE >51:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-816 text8 CODE >52:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-6F6 text7 CODE >27:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-6F6 text7 CODE >28:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-704 text7 CODE >29:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-70C text7 CODE >31:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-71C text7 CODE >32:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-85E text6 CODE >17:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
-85E text6 CODE >18:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
-85E text6 CODE >19:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
-860 text6 CODE >20:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
-862 text6 CODE >18:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
-756 text5 CODE >105:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-756 text5 CODE >107:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-758 text5 CODE >108:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-75A text5 CODE >109:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-75C text5 CODE >113:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-75E text5 CODE >114:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-76E text5 CODE >117:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-770 text5 CODE >118:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-780 text5 CODE >124:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
-13E text4 CODE >359:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-13E text4 CODE >361:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-150 text4 CODE >364:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-162 text4 CODE >365:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-172 text4 CODE >367:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-184 text4 CODE >368:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-1A4 text4 CODE >370:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-1B6 text4 CODE >371:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-1DE text4 CODE >373:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-1F0 text4 CODE >374:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-214 text4 CODE >376:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-226 text4 CODE >377:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-24A text4 CODE >379:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-25C text4 CODE >380:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-280 text4 CODE >382:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
-7F0 text3 CODE >11:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
-7F0 text3 CODE >14:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
-782 text2 CODE >73:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-782 text2 CODE >76:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-786 text2 CODE >78:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-788 text2 CODE >82:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-796 text2 CODE >84:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-798 text2 CODE >85:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-79C text2 CODE >87:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-79E text2 CODE >91:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-7A6 text2 CODE >93:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-850 text1 CODE >64:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-850 text1 CODE >67:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-85C text1 CODE >71:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
-4B8 text0 CODE >9:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4B8 text0 CODE >12:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4BC text0 CODE >13:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4C0 text0 CODE >14:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4C4 text0 CODE >16:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4D4 text0 CODE >17:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4DC text0 CODE >18:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4EC text0 CODE >20:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4EE text0 CODE >21:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4F0 text0 CODE >26:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-4FA text0 CODE >27:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-502 text0 CODE >28:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-504 text0 CODE >29:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-508 text0 CODE >30:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-510 text0 CODE >31:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-520 text0 CODE >36:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-532 text0 CODE >37:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-536 text0 CODE >40:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-53A text0 CODE >41:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-53E text0 CODE >42:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-542 text0 CODE >43:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-546 text0 CODE >44:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-54A text0 CODE >45:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-54E text0 CODE >46:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-552 text0 CODE >51:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-556 text0 CODE >61:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-58A text0 CODE >64:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-598 text0 CODE >23:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
-728 cinit CODE >5138:C:\Users\E\AppData\Local\Temp\s52s.
-728 cinit CODE >5140:C:\Users\E\AppData\Local\Temp\s52s.
-728 cinit CODE >5143:C:\Users\E\AppData\Local\Temp\s52s.
-728 cinit CODE >5279:C:\Users\E\AppData\Local\Temp\s52s.
-72C cinit CODE >5280:C:\Users\E\AppData\Local\Temp\s52s.
-72E cinit CODE >5281:C:\Users\E\AppData\Local\Temp\s52s.
-72E cinit CODE >5282:C:\Users\E\AppData\Local\Temp\s52s.
-730 cinit CODE >5283:C:\Users\E\AppData\Local\Temp\s52s.
-732 cinit CODE >5284:C:\Users\E\AppData\Local\Temp\s52s.
-734 cinit CODE >5289:C:\Users\E\AppData\Local\Temp\s52s.
-736 cinit CODE >5290:C:\Users\E\AppData\Local\Temp\s52s.
-738 cinit CODE >5291:C:\Users\E\AppData\Local\Temp\s52s.
-73A cinit CODE >5292:C:\Users\E\AppData\Local\Temp\s52s.
-73C cinit CODE >5293:C:\Users\E\AppData\Local\Temp\s52s.
-73E cinit CODE >5294:C:\Users\E\AppData\Local\Temp\s52s.
-740 cinit CODE >5295:C:\Users\E\AppData\Local\Temp\s52s.
-742 cinit CODE >5296:C:\Users\E\AppData\Local\Temp\s52s.
-746 cinit CODE >5297:C:\Users\E\AppData\Local\Temp\s52s.
-748 cinit CODE >5298:C:\Users\E\AppData\Local\Temp\s52s.
-74C cinit CODE >5304:C:\Users\E\AppData\Local\Temp\s52s.
-74C cinit CODE >5306:C:\Users\E\AppData\Local\Temp\s52s.
-74E cinit CODE >5307:C:\Users\E\AppData\Local\Temp\s52s.
-750 cinit CODE >5308:C:\Users\E\AppData\Local\Temp\s52s.
-752 cinit CODE >5309:C:\Users\E\AppData\Local\Temp\s52s.
+8 intcode CODE >213:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+8 intcode CODE >72:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+42 intcode CODE >76:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+46 intcode CODE >77:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+4C intcode CODE >78:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+56 intcode CODE >81:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+58 intcode CODE >86:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+5C intcode CODE >87:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+64 intcode CODE >88:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+72 intcode CODE >89:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+90 intcode CODE >90:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+9C intcode CODE >93:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+9E intcode CODE >98:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+A2 intcode CODE >99:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+AA intcode CODE >100:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+B6 intcode CODE >102:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+C2 intcode CODE >103:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+C4 intcode CODE >105:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+D8 intcode CODE >106:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+DA intcode CODE >107:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+EA intcode CODE >112:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+F2 intcode CODE >113:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+FE intcode CODE >115:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+10A intcode CODE >116:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+10C intcode CODE >118:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+120 intcode CODE >119:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+122 intcode CODE >120:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+132 intcode CODE >125:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+134 intcode CODE >128:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+BB2 text22 CODE >10:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+BB2 text22 CODE >13:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+8D4 text21 CODE >16:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+8D4 text21 CODE >19:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+8D6 text21 CODE >20:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+8D8 text21 CODE >22:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+8DA text21 CODE >23:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+8DC text21 CODE >24:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+8DE text21 CODE >27:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+8E8 text21 CODE >28:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+8EA text21 CODE >29:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+8F6 text21 CODE >30:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+8F8 text21 CODE >31:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+904 text21 CODE >27:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+91C text21 CODE >35:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+928 text21 CODE >37:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+934 text21 CODE >38:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+93E text21 CODE >39:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+940 text21 CODE >40:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+94C text21 CODE >41:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+94E text21 CODE >42:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+95A text21 CODE >38:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+972 text21 CODE >47:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+97E text21 CODE >26:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+430 text19 CODE >111:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+430 text19 CODE >114:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+434 text19 CODE >115:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+440 text19 CODE >118:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+444 text19 CODE >122:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+44A text19 CODE >123:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+450 text19 CODE >124:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+456 text19 CODE >129:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+45C text19 CODE >133:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+462 text19 CODE >134:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+468 text19 CODE >135:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+46C text19 CODE >136:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+472 text19 CODE >139:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+478 text19 CODE >140:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+47E text19 CODE >141:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+482 text19 CODE >142:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+488 text19 CODE >146:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+48E text19 CODE >147:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+494 text19 CODE >150:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+49A text19 CODE >151:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+49E text19 CODE >152:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4A2 text19 CODE >153:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4A6 text19 CODE >157:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4AC text19 CODE >158:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4B2 text19 CODE >160:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4B6 text19 CODE >161:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4BA text19 CODE >162:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4BE text19 CODE >163:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4C2 text19 CODE >164:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4C6 text19 CODE >165:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4CA text19 CODE >171:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4D0 text19 CODE >172:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4D6 text19 CODE >173:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4DC text19 CODE >174:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4E2 text19 CODE >175:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4E8 text19 CODE >176:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4EE text19 CODE >177:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4F4 text19 CODE >178:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+4FA text19 CODE >179:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+500 text19 CODE >180:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+506 text19 CODE >181:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+50C text19 CODE >182:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+512 text19 CODE >185:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+514 text19 CODE >188:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+522 text19 CODE >193:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+530 text19 CODE >196:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+534 text19 CODE >197:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+542 text19 CODE >203:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+54E text19 CODE >207:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+552 text19 CODE >208:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+558 text19 CODE >211:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+562 text19 CODE >213:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+738 text18 CODE >225:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+738 text18 CODE >229:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+73E text18 CODE >231:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+742 text18 CODE >233:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+746 text18 CODE >234:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+74A text18 CODE >235:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+74E text18 CODE >236:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+752 text18 CODE >237:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+756 text18 CODE >238:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+75A text18 CODE >239:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+75E text18 CODE >240:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+762 text18 CODE >241:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+766 text18 CODE >242:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+76A text18 CODE >243:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+76E text18 CODE >244:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+772 text18 CODE >245:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+776 text18 CODE >246:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+778 text18 CODE >247:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+77A text18 CODE >249:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+780 text18 CODE >251:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+784 text18 CODE >252:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+788 text18 CODE >253:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+78C text18 CODE >254:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+790 text18 CODE >255:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+794 text18 CODE >256:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+798 text18 CODE >257:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+79C text18 CODE >258:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7A0 text18 CODE >259:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7A4 text18 CODE >260:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7A8 text18 CODE >261:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7AC text18 CODE >262:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7B0 text18 CODE >263:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7B4 text18 CODE >264:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7B8 text18 CODE >265:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7BA text18 CODE >267:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7C0 text18 CODE >269:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7C4 text18 CODE >270:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7C8 text18 CODE >271:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7CC text18 CODE >272:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7D0 text18 CODE >273:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7D4 text18 CODE >274:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7D8 text18 CODE >275:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7DC text18 CODE >276:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7E0 text18 CODE >277:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7E4 text18 CODE >278:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7E8 text18 CODE >279:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7EC text18 CODE >280:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7F0 text18 CODE >281:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7F4 text18 CODE >283:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7F8 text18 CODE >284:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+7FE text18 CODE >287:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+806 text18 CODE >289:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+80C text18 CODE >290:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+80E text18 CODE >291:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+810 text18 CODE >292:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+812 text18 CODE >295:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A20 text17 CODE >306:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A24 text17 CODE >318:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A2A text17 CODE >319:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A30 text17 CODE >322:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A34 text17 CODE >323:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A38 text17 CODE >324:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A3C text17 CODE >333:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A40 text17 CODE >334:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A44 text17 CODE >335:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A48 text17 CODE >336:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A4C text17 CODE >337:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A50 text17 CODE >338:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A54 text17 CODE >339:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A58 text17 CODE >340:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A5C text17 CODE >342:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+A60 text17 CODE >356:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+2F0 text16 CODE >11:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+2F0 text16 CODE >12:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+2F4 text16 CODE >15:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+2FA text16 CODE >16:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+2FC text16 CODE >21:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+306 text16 CODE >22:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+30A text16 CODE >27:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+30E text16 CODE >28:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+314 text16 CODE >29:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+31A text16 CODE >32:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+31E text16 CODE >33:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+322 text16 CODE >34:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+326 text16 CODE >38:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+328 text16 CODE >39:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+330 text16 CODE >40:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+338 text16 CODE >44:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+33C text16 CODE >46:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+340 text16 CODE >47:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+344 text16 CODE >49:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+348 text16 CODE >50:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+34C text16 CODE >56:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+354 text16 CODE >57:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+35C text16 CODE >58:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+364 text16 CODE >59:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+36C text16 CODE >60:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+374 text16 CODE >61:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+37E text16 CODE >62:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+386 text16 CODE >63:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+390 text16 CODE >65:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+39A text16 CODE >66:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+3A2 text16 CODE >67:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+3AA text16 CODE >68:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+3B2 text16 CODE >69:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+3BA text16 CODE >70:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+3C2 text16 CODE >71:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+3CA text16 CODE >72:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+3D2 text16 CODE >73:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+3DC text16 CODE >75:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+3E4 text16 CODE >76:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+3EE text16 CODE >77:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+3F8 text16 CODE >79:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+402 text16 CODE >82:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+40C text16 CODE >88:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+40E text16 CODE >89:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+410 text16 CODE >90:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+412 text16 CODE >92:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+414 text16 CODE >93:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+41C text16 CODE >102:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+41E text16 CODE >103:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+420 text16 CODE >104:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+422 text16 CODE >106:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+424 text16 CODE >107:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+426 text16 CODE >109:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+428 text16 CODE >110:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+42A text16 CODE >111:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+42C text16 CODE >115:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+42E text16 CODE >116:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+816 text15 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+816 text15 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+81C text15 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+822 text15 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+82C text15 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+832 text15 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+838 text15 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+842 text15 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+848 text15 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+852 text15 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+85E text15 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+864 text15 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+866 text15 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+86E text15 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+872 text15 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+878 text15 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+880 text15 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+894 text15 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+8A4 text15 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+8A8 text15 CODE >36:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+8B0 text15 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+8B6 text15 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+8C0 text15 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+8CA text15 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+BD2 text14 CODE >128:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+BD2 text14 CODE >129:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+BDA text14 CODE >130:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+564 text13 CODE >74:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+564 text13 CODE >93:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+582 text13 CODE >94:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+58A text13 CODE >96:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+5A8 text13 CODE >98:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+5AE text13 CODE >100:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+5B6 text13 CODE >102:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+5CC text13 CODE >104:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+5DA text13 CODE >105:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+5E4 text13 CODE >109:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+5EC text13 CODE >111:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+614 text13 CODE >113:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+61A text13 CODE >114:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+624 text13 CODE >116:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+628 text13 CODE >119:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+650 text13 CODE >120:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+652 text13 CODE >121:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+654 text13 CODE >123:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+658 text13 CODE >124:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B44 text12 CODE >18:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B44 text12 CODE >19:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B52 text12 CODE >20:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B5A text12 CODE >21:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B22 text11 CODE >10:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B22 text11 CODE >11:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B30 text11 CODE >12:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B38 text11 CODE >13:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B40 text11 CODE >14:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B42 text11 CODE >15:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B9A text10 CODE >41:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B9A text10 CODE >42:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+BA8 text10 CODE >43:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+A62 text9 CODE >32:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+A62 text9 CODE >33:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+A70 text9 CODE >34:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+A78 text9 CODE >35:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+A82 text9 CODE >37:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+A92 text9 CODE >38:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B66 text8 CODE >47:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B66 text8 CODE >48:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B78 text8 CODE >49:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+AFE text7 CODE >53:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+AFE text7 CODE >54:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B0C text7 CODE >55:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B14 text7 CODE >56:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B1C text7 CODE >57:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B1E text7 CODE >58:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+B20 text7 CODE >70:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+A9E text6 CODE >24:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+A9E text6 CODE >25:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+AAC text6 CODE >26:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+AB4 text6 CODE >28:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+AC4 text6 CODE >29:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+AD0 text5 CODE >118:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+AD0 text5 CODE >120:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+AD2 text5 CODE >121:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+AD4 text5 CODE >122:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+AD6 text5 CODE >126:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+AD8 text5 CODE >127:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+AEA text5 CODE >130:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+AEC text5 CODE >131:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+AFC text5 CODE >137:C:\Users\E\MPLABXProjects\PIC_Slave.X\init.c
+174 text4 CODE >362:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+174 text4 CODE >364:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+188 text4 CODE >367:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+19A text4 CODE >368:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+1AA text4 CODE >370:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+1BC text4 CODE >371:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+1DC text4 CODE >373:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+1EE text4 CODE >374:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+216 text4 CODE >376:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+228 text4 CODE >377:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+24C text4 CODE >379:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+25E text4 CODE >380:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+282 text4 CODE >382:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+294 text4 CODE >383:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+2B8 text4 CODE >385:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+2CA text4 CODE >386:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+2EE text4 CODE >388:C:\Users\E\MPLABXProjects\PIC_Slave.X\ECAN.c
+B82 text3 CODE >10:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+B82 text3 CODE >13:C:\Users\E\MPLABXProjects\PIC_Slave.X\Other.c
+980 text2 CODE >144:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+980 text2 CODE >147:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+984 text2 CODE >149:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+986 text2 CODE >151:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+994 text2 CODE >153:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+996 text2 CODE >154:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+99A text2 CODE >156:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+99C text2 CODE >158:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+9A4 text2 CODE >159:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+9AC text2 CODE >160:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+9C4 text2 CODE >161:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+9CA text2 CODE >162:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+9D4 text2 CODE >166:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+BC4 text1 CODE >135:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+BC4 text1 CODE >138:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+BD0 text1 CODE >142:C:\Users\E\MPLABXProjects\PIC_Slave.X\peripherals.c
+65A text0 CODE >9:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+65A text0 CODE >12:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+65E text0 CODE >13:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+662 text0 CODE >14:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+666 text0 CODE >16:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+678 text0 CODE >17:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+680 text0 CODE >18:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+692 text0 CODE >20:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+694 text0 CODE >21:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+696 text0 CODE >26:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6A0 text0 CODE >27:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6A8 text0 CODE >28:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6AA text0 CODE >29:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6AE text0 CODE >30:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6BA text0 CODE >31:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6CC text0 CODE >41:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6D0 text0 CODE >42:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6D4 text0 CODE >43:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6D8 text0 CODE >44:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6DC text0 CODE >45:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6E0 text0 CODE >46:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6E4 text0 CODE >47:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6E8 text0 CODE >48:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6EC text0 CODE >52:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+6F0 text0 CODE >62:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+728 text0 CODE >65:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+736 text0 CODE >23:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
+9DE cinit CODE >5166:C:\Users\E\AppData\Local\Temp\s7ro.
+9DE cinit CODE >5168:C:\Users\E\AppData\Local\Temp\s7ro.
+9DE cinit CODE >5171:C:\Users\E\AppData\Local\Temp\s7ro.
+9DE cinit CODE >5334:C:\Users\E\AppData\Local\Temp\s7ro.
+9E2 cinit CODE >5335:C:\Users\E\AppData\Local\Temp\s7ro.
+9E4 cinit CODE >5336:C:\Users\E\AppData\Local\Temp\s7ro.
+9E4 cinit CODE >5337:C:\Users\E\AppData\Local\Temp\s7ro.
+9E6 cinit CODE >5338:C:\Users\E\AppData\Local\Temp\s7ro.
+9E8 cinit CODE >5339:C:\Users\E\AppData\Local\Temp\s7ro.
+9EA cinit CODE >5342:C:\Users\E\AppData\Local\Temp\s7ro.
+9EE cinit CODE >5343:C:\Users\E\AppData\Local\Temp\s7ro.
+9F0 cinit CODE >5344:C:\Users\E\AppData\Local\Temp\s7ro.
+9F0 cinit CODE >5345:C:\Users\E\AppData\Local\Temp\s7ro.
+9F2 cinit CODE >5346:C:\Users\E\AppData\Local\Temp\s7ro.
+9F4 cinit CODE >5347:C:\Users\E\AppData\Local\Temp\s7ro.
+9F6 cinit CODE >5352:C:\Users\E\AppData\Local\Temp\s7ro.
+9F8 cinit CODE >5353:C:\Users\E\AppData\Local\Temp\s7ro.
+9FA cinit CODE >5354:C:\Users\E\AppData\Local\Temp\s7ro.
+9FC cinit CODE >5355:C:\Users\E\AppData\Local\Temp\s7ro.
+9FE cinit CODE >5356:C:\Users\E\AppData\Local\Temp\s7ro.
+A00 cinit CODE >5357:C:\Users\E\AppData\Local\Temp\s7ro.
+A02 cinit CODE >5358:C:\Users\E\AppData\Local\Temp\s7ro.
+A06 cinit CODE >5359:C:\Users\E\AppData\Local\Temp\s7ro.
+A0A cinit CODE >5360:C:\Users\E\AppData\Local\Temp\s7ro.
+A0A cinit CODE >5361:C:\Users\E\AppData\Local\Temp\s7ro.
+A0C cinit CODE >5362:C:\Users\E\AppData\Local\Temp\s7ro.
+A10 cinit CODE >5363:C:\Users\E\AppData\Local\Temp\s7ro.
+A12 cinit CODE >5364:C:\Users\E\AppData\Local\Temp\s7ro.
+A14 cinit CODE >5365:C:\Users\E\AppData\Local\Temp\s7ro.
+A16 cinit CODE >5371:C:\Users\E\AppData\Local\Temp\s7ro.
+A16 cinit CODE >5373:C:\Users\E\AppData\Local\Temp\s7ro.
+A18 cinit CODE >5374:C:\Users\E\AppData\Local\Temp\s7ro.
+A1A cinit CODE >5375:C:\Users\E\AppData\Local\Temp\s7ro.
+A1C cinit CODE >5376:C:\Users\E\AppData\Local\Temp\s7ro.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -432,13 +529,16 @@ FE intcode CODE >127:C:\Users\E\MPLABXProjects\PIC_Slave.X\main.c
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
+___awdiv@counter 7E 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
 __Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\PIC_Slave.X.production.obj
 __Hspace_0 30000E 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__Hspace_1 6B 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
+__Hspace_1 8C 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Hspace_2 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-ECAN_Transmit@TRANSMIT_ID 62 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+ECAN_Transmit@TRANSMIT_ID 7C 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+__end_of_startMotor BDE 0 CODE 0 text14 dist/default/production\PIC_Slave.X.production.obj
 __size_of_checkH_blink 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
+readAnalog@totBattery 82 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
 _RXM0EIDH EFA 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXM0EIDL EFB 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXM0SIDH EF8 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
@@ -448,11 +548,12 @@ _RXM1EIDL EFF 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXM1SIDH EFC 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXM1SIDL EFD 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production\PIC_Slave.X.production.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\E\AppData\Local\Temp\s52s.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\E\AppData\Local\Temp\s7ro.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\PIC_Slave.X.production.obj
+_checkStop AFE 0 CODE 0 text7 dist/default/production\PIC_Slave.X.production.obj
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _T1CONbits FCD 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_InitDevice 3AC 0 CODE 0 text14 dist/default/production\PIC_Slave.X.production.obj
+_InitDevice 2F0 0 CODE 0 text16 dist/default/production\PIC_Slave.X.production.obj
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\PIC_Slave.X.production.obj
 _B0D0 E86 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _B0D1 E87 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
@@ -465,28 +566,30 @@ _B0D7 E8D 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _LATA F89 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _LATB F8A 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _LATC F8B 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\E\AppData\Local\Temp\s52s.obj
-_main 4B8 0 CODE 0 text0 dist/default/production\PIC_Slave.X.production.obj
-btemp 54 0 COMRAM 1 temp dist/default/production\PIC_Slave.X.production.obj
-start 13A 0 CODE 0 init C:\Users\E\AppData\Local\Temp\s52s.obj
+___sp 0 0 STACK 2 stack C:\Users\E\AppData\Local\Temp\s7ro.obj
+_main 65A 0 CODE 0 text0 dist/default/production\PIC_Slave.X.production.obj
+btemp 4F 0 COMRAM 1 temp dist/default/production\PIC_Slave.X.production.obj
+start 170 0 CODE 0 init C:\Users\E\AppData\Local\Temp\s7ro.obj
+__size_of___awdiv 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_unZipCAN 13E 0 CODE 0 text4 dist/default/production\PIC_Slave.X.production.obj
-__end_of_checkH_blink 6F6 0 CODE 0 text9 dist/default/production\PIC_Slave.X.production.obj
-__end_of_unZipCAN 282 0 CODE 0 text4 dist/default/production\PIC_Slave.X.production.obj
-__Hpowerup 13A 0 CODE 0 powerup dist/default/production\PIC_Slave.X.production.obj
-__end_of_checkDirection 838 0 CODE 0 text10 dist/default/production\PIC_Slave.X.production.obj
+_unZipCAN 174 0 CODE 0 text4 dist/default/production\PIC_Slave.X.production.obj
+__end_of_checkH_blink A9E 0 CODE 0 text9 dist/default/production\PIC_Slave.X.production.obj
+__end_of_unZipCAN 2F0 0 CODE 0 text4 dist/default/production\PIC_Slave.X.production.obj
+__Hpowerup 170 0 CODE 0 powerup dist/default/production\PIC_Slave.X.production.obj
+__end_of_checkDirection BB2 0 CODE 0 text10 dist/default/production\PIC_Slave.X.production.obj
+_CAN_ERRORBIT 68 0 BANK0 1 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
 _T0CONbits FD5 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __LnvCOMRAM 0 0 ABS 0 nvCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_MAP_DIRECTION 17 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_checkV_blink 6F6 0 CODE 0 text7 dist/default/production\PIC_Slave.X.production.obj
-__accesstop 60 0 ABS 0 - C:\Users\E\AppData\Local\Temp\s52s.obj
-intlevel0 0 0 CODE 0 text C:\Users\E\AppData\Local\Temp\s52s.obj
-intlevel1 0 0 CODE 0 text C:\Users\E\AppData\Local\Temp\s52s.obj
-intlevel2 0 0 CODE 0 text C:\Users\E\AppData\Local\Temp\s52s.obj
-intlevel3 0 0 CODE 0 text C:\Users\E\AppData\Local\Temp\s52s.obj
-ECAN_Transmit@DLC 61 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+_MAP_DIRECTION D 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_checkV_blink A9E 0 CODE 0 text6 dist/default/production\PIC_Slave.X.production.obj
+__accesstop 60 0 ABS 0 - C:\Users\E\AppData\Local\Temp\s7ro.obj
+intlevel0 0 0 CODE 0 text C:\Users\E\AppData\Local\Temp\s7ro.obj
+intlevel1 0 0 CODE 0 text C:\Users\E\AppData\Local\Temp\s7ro.obj
+intlevel2 0 0 CODE 0 text C:\Users\E\AppData\Local\Temp\s7ro.obj
+intlevel3 0 0 CODE 0 text C:\Users\E\AppData\Local\Temp\s7ro.obj
+ECAN_Transmit@DLC 7B 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 _OSCCONbits FD3 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\PIC_Slave.X.production.obj
@@ -494,60 +597,73 @@ __CFG_EBTR0$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_EBTR1$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_EBTR2$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_EBTR3$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_TEMP_MAP_SAFETYPIN 2F 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_TEMP_MAP_SAFETYPIN 1D 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __CFG_EBTRB$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_FIRST_SEND D 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_FIRST_SEND 5 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __Hifardata 0 0 CODE 0 ifardata dist/default/production\PIC_Slave.X.production.obj
 __size_of_CANSetup 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
+___awdiv@sign 7F 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production\PIC_Slave.X.production.obj
-__pidataCOMRAM 864 0 CODE 0 idataCOMRAM dist/default/production\PIC_Slave.X.production.obj
-__end_of_InitDevice 4B8 0 CODE 0 text14 dist/default/production\PIC_Slave.X.production.obj
+__pidataCOMRAM BDE 0 CODE 0 idataCOMRAM dist/default/production\PIC_Slave.X.production.obj
+__end_of_InitDevice 430 0 CODE 0 text16 dist/default/production\PIC_Slave.X.production.obj
 _ADCON0 FC2 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _ADCON1 FC1 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _ADCON2 FC0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _ADRESH FC4 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
+_ADRESL FC3 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _ANCON0 F5D 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _ANCON1 F5C 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _B0EIDH E83 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _B0EIDL E84 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _B0SIDH E81 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _B0SIDL E82 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-___inthi_sp 0 0 STACK 2 stack C:\Users\E\AppData\Local\Temp\s52s.obj
-___intlo_sp 0 0 STACK 2 stack C:\Users\E\AppData\Local\Temp\s52s.obj
+___awdiv@dividend 7A 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+___inthi_sp 0 0 STACK 2 stack C:\Users\E\AppData\Local\Temp\s7ro.obj
+___intlo_sp 0 0 STACK 2 stack C:\Users\E\AppData\Local\Temp\s7ro.obj
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production\PIC_Slave.X.production.obj
 _CANCON F6F 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-ECAN_Transmit@DATA1 63 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-ECAN_Transmit@DATA2 64 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-ECAN_Transmit@DATA3 65 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-ECAN_Transmit@DATA4 66 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-ECAN_Transmit@DATA5 67 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-ECAN_Transmit@DATA6 68 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-ECAN_Transmit@DATA7 69 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+ECAN_Transmit@DATA1 7D 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+ECAN_Transmit@DATA2 7E 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+ECAN_Transmit@DATA3 7F 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+ECAN_Transmit@DATA4 80 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+ECAN_Transmit@DATA5 81 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+ECAN_Transmit@DATA6 82 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+ECAN_Transmit@DATA7 83 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+i2Delay@count 31 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\PIC_Slave.X.production.obj
 __size_of_checkV_blink 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\PIC_Slave.X.production.obj
 _TXB0DLC F25 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
+_TEMP_MAP_STOP 1F 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\PIC_Slave.X.production.obj
-__Hintcodelo 13A 0 CODE 0 intcodelo dist/default/production\PIC_Slave.X.production.obj
-_checkBacklight 7CE 0 CODE 0 text12 dist/default/production\PIC_Slave.X.production.obj
-_MAP_H_BLINK 1B 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-__end_of_danger 864 0 CODE 0 text6 dist/default/production\PIC_Slave.X.production.obj
-_checkBrake 838 0 CODE 0 text11 dist/default/production\PIC_Slave.X.production.obj
-_MAP_HEARTBEAT 19 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+__CFG_SOSCSEL$ 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
+__LnvBANK0 0 0 ABS 0 nvBANK0 dist/default/production\PIC_Slave.X.production.obj
+__Hintcodelo 170 0 CODE 0 intcodelo dist/default/production\PIC_Slave.X.production.obj
+___awdiv@divisor 7C 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+_checkBacklight B44 0 CODE 0 text12 dist/default/production\PIC_Slave.X.production.obj
+__end_of___awdiv 8D4 0 CODE 0 text15 dist/default/production\PIC_Slave.X.production.obj
+_MAP_H_BLINK F 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+__end_of_danger 980 0 CODE 0 text21 dist/default/production\PIC_Slave.X.production.obj
+_checkBrake B22 0 CODE 0 text11 dist/default/production\PIC_Slave.X.production.obj
+_MAP_HEARTBEAT 6C 0 BANK0 1 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
 _OSCTUNEbits F9B 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_ECAN_Transmit 678 0 CODE 0 text15 dist/default/production\PIC_Slave.X.production.obj
+_ECAN_Transmit A20 0 CODE 0 text17 dist/default/production\PIC_Slave.X.production.obj
 __size_of_Delay 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_CANSetup 282 0 CODE 0 text17 dist/default/production\PIC_Slave.X.production.obj
-__end_of_checkV_blink 728 0 CODE 0 text7 dist/default/production\PIC_Slave.X.production.obj
+_CANSetup 430 0 CODE 0 text19 dist/default/production\PIC_Slave.X.production.obj
+__end_of_checkV_blink AD0 0 CODE 0 text6 dist/default/production\PIC_Slave.X.production.obj
 __LidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production\PIC_Slave.X.production.obj
+danger@i_1322 38 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __HnvCOMRAM 0 0 ABS 0 nvCOMRAM dist/default/production\PIC_Slave.X.production.obj
-__Lintcodelo 13A 0 CODE 0 intcodelo dist/default/production\PIC_Slave.X.production.obj
+i2_Delay BB2 0 CODE 0 text22 dist/default/production\PIC_Slave.X.production.obj
+__Lintcodelo 170 0 CODE 0 intcodelo dist/default/production\PIC_Slave.X.production.obj
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_TEMP_MAP_DIRECTION 29 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-__end_of_CANSetup 3AC 0 CODE 0 text17 dist/default/production\PIC_Slave.X.production.obj
-start_initialization 728 0 CODE 0 cinit dist/default/production\PIC_Slave.X.production.obj
+_TEMP_MAP_DIRECTION 19 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+checkAccelerator@HALF_ACCELERATOR 85 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+__end_of_CANSetup 564 0 CODE 0 text19 dist/default/production\PIC_Slave.X.production.obj
+start_initialization 9DE 0 CODE 0 cinit dist/default/production\PIC_Slave.X.production.obj
 __CFG_BORPWR$ZPBORMV 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\PIC_Slave.X.production.obj
+__size_of_startMotor 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_MSSPMSK$MSK7 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 ___rparam_used 1 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXB0D0 F66 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
@@ -566,10 +682,10 @@ _RXB1D4 F3A 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXB1D5 F3B 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXB1D6 F3C 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXB1D7 F3D 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_TEMP_ACCELERATOR 36 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-__pcstackBANK0 60 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-_buttonWasPressed 37 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-__end_of_checkBacklight 7F0 0 CODE 0 text12 dist/default/production\PIC_Slave.X.production.obj
+_TEMP_ACCELERATOR 24 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+__pcstackBANK0 7A 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+_buttonWasPressed 25 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+__end_of_checkBacklight B66 0 CODE 0 text12 dist/default/production\PIC_Slave.X.production.obj
 _TMR0IF 7F92 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _TMR1IF 7CF0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _TXB0D0 F26 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
@@ -580,12 +696,12 @@ _TXB0D4 F2A 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _TXB0D5 F2B 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _TXB0D6 F2C 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _TXB0D7 F2D 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-ECAN_Receive@RXMsgFlag 60 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-_readAnalog 782 0 CODE 0 text2 dist/default/production\PIC_Slave.X.production.obj
-_MAP_BACKLIGHT 11 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+ECAN_Receive@RXMsgFlag 7A 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+_readAnalog 980 0 CODE 0 text2 dist/default/production\PIC_Slave.X.production.obj
+_MAP_BACKLIGHT 7 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __size_of_checkSafetyPin 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_heartbeatCount 33 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-__end_of_checkBrake 850 0 CODE 0 text11 dist/default/production\PIC_Slave.X.production.obj
+_heartbeatCount 78 0 BANK0 1 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
+__end_of_checkBrake B44 0 CODE 0 text11 dist/default/production\PIC_Slave.X.production.obj
 __CFG_WDTPS$1048576 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _CANSTATbits F6E 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Hbank0 0 0 ABS 0 bank0 dist/default/production\PIC_Slave.X.production.obj
@@ -623,11 +739,11 @@ __Hbank13 0 0 ABS 0 bank13 dist/default/production\PIC_Slave.X.production.obj
 __Hbank14 0 0 ABS 0 bank14 dist/default/production\PIC_Slave.X.production.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\PIC_Slave.X.production.obj
 __Hbigram 0 0 ABS 0 bigram dist/default/production\PIC_Slave.X.production.obj
-__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\E\AppData\Local\Temp\s52s.obj
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\E\AppData\Local\Temp\s7ro.obj
 __CFG_FOSC$INTIO2 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Hcomram 0 0 ABS 0 comram dist/default/production\PIC_Slave.X.production.obj
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production\PIC_Slave.X.production.obj
-_updateInputs 850 0 CODE 0 text1 dist/default/production\PIC_Slave.X.production.obj
+_updateInputs BC4 0 CODE 0 text1 dist/default/production\PIC_Slave.X.production.obj
 __Lbank0 0 0 ABS 0 bank0 dist/default/production\PIC_Slave.X.production.obj
 __Lbank1 0 0 ABS 0 bank1 dist/default/production\PIC_Slave.X.production.obj
 __Lbank2 0 0 ABS 0 bank2 dist/default/production\PIC_Slave.X.production.obj
@@ -657,65 +773,71 @@ __Ltext6 0 0 ABS 0 text6 dist/default/production\PIC_Slave.X.production.obj
 __Ltext7 0 0 ABS 0 text7 dist/default/production\PIC_Slave.X.production.obj
 __Ltext8 0 0 ABS 0 text8 dist/default/production\PIC_Slave.X.production.obj
 __Ltext9 0 0 ABS 0 text9 dist/default/production\PIC_Slave.X.production.obj
-_TEMP_MAP_HEARTBEAT 2B 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_TEMP_MAP_HEARTBEAT 76 0 BANK0 1 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
 __Hfarbss 0 0 FARRAM 0 farbss dist/default/production\PIC_Slave.X.production.obj
 __Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\PIC_Slave.X.production.obj
 _INTCONbits FF2 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Habs1 0 0 ABS 0 abs1 dist/default/production\PIC_Slave.X.production.obj
 __Hdata 0 0 ABS 0 data dist/default/production\PIC_Slave.X.production.obj
-__Hinit 13A 0 CODE 0 init dist/default/production\PIC_Slave.X.production.obj
+__Hinit 170 0 CODE 0 init dist/default/production\PIC_Slave.X.production.obj
 __Hrbit 0 0 COMRAM 1 rbit dist/default/production\PIC_Slave.X.production.obj
 __Hrbss 0 0 COMRAM 1 rbss dist/default/production\PIC_Slave.X.production.obj
-__Htemp 55 0 COMRAM 1 temp dist/default/production\PIC_Slave.X.production.obj
+__Htemp 50 0 COMRAM 1 temp dist/default/production\PIC_Slave.X.production.obj
 __Htext 0 0 ABS 0 text dist/default/production\PIC_Slave.X.production.obj
 __Labs1 0 0 ABS 0 abs1 dist/default/production\PIC_Slave.X.production.obj
 __Ldata 0 0 ABS 0 data dist/default/production\PIC_Slave.X.production.obj
-__Linit 13A 0 CODE 0 init dist/default/production\PIC_Slave.X.production.obj
+__Linit 170 0 CODE 0 init dist/default/production\PIC_Slave.X.production.obj
 __Lrbit 0 0 COMRAM 1 rbit dist/default/production\PIC_Slave.X.production.obj
 __Lrbss 0 0 COMRAM 1 rbss dist/default/production\PIC_Slave.X.production.obj
-__Ltemp 54 0 COMRAM 1 temp dist/default/production\PIC_Slave.X.production.obj
+__Ltemp 4F 0 COMRAM 1 temp dist/default/production\PIC_Slave.X.production.obj
 __Ltext 0 0 ABS 0 text dist/default/production\PIC_Slave.X.production.obj
 __CFG_XINST$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_MAP_V_BLINK 21 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+__pnvBANK0 8A 0 BANK0 1 nvBANK0 dist/default/production\PIC_Slave.X.production.obj
+_MAP_V_BLINK 13 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __size_of_ECAN_Transmit 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-int$flags 54 0 COMRAM 1 temp dist/default/production\PIC_Slave.X.production.obj
+int$flags 4F 0 COMRAM 1 temp dist/default/production\PIC_Slave.X.production.obj
 __HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __Hintret 0 0 ABS 0 intret dist/default/production\PIC_Slave.X.production.obj
 __Hirdata 0 0 CODE 0 irdata dist/default/production\PIC_Slave.X.production.obj
 _ISR 8 0 CODE 0 intcode dist/default/production\PIC_Slave.X.production.obj
 __S0 30000E 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__S1 6B 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
+__S1 8C 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __S2 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __size_of_InitDevice 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-ECAN_Transmit@SIDH 6A 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-ECAN_Transmit@SIDL 60 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-__pnvCOMRAM 53 0 COMRAM 1 nvCOMRAM dist/default/production\PIC_Slave.X.production.obj
-__end_of_readAnalog 7A8 0 CODE 0 text2 dist/default/production\PIC_Slave.X.production.obj
-_TEMP_MAP_H_BLINK 2D 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_danger 85E 0 CODE 0 text6 dist/default/production\PIC_Slave.X.production.obj
-_temp_EIDH 3F 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_temp_EIDL 40 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_temp_SIDH 41 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_temp_SIDL 42 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+ECAN_Transmit@SIDH 84 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+ECAN_Transmit@SIDL 7A 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+_OFFSET_ACCELERATOR 72 0 BANK0 1 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
+__pnvCOMRAM 4E 0 COMRAM 1 nvCOMRAM dist/default/production\PIC_Slave.X.production.obj
+readAnalog@low 7E 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+__end_of_readAnalog 9DE 0 CODE 0 text2 dist/default/production\PIC_Slave.X.production.obj
+_TEMP_MAP_H_BLINK 1B 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_danger 8D4 0 CODE 0 text21 dist/default/production\PIC_Slave.X.production.obj
+_temp_EIDH 2D 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_temp_EIDL 2E 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_temp_SIDH 2F 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_temp_SIDL 30 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __HidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production\PIC_Slave.X.production.obj
 _blinkCounter 1 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_interruptCounter 9 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_interruptCounter 64 0 BANK0 1 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
 __size_of_updateInputs 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Hnvrram 0 0 COMRAM 1 nvrram dist/default/production\PIC_Slave.X.production.obj
 _ECANCON F72 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
+_MAP_STOP 11 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __CFG_WDTEN$SWDTDIS 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__end_of_ISR 13A 0 CODE 0 intcode dist/default/production\PIC_Slave.X.production.obj
+__end_of_ISR 170 0 CODE 0 intcode dist/default/production\PIC_Slave.X.production.obj
 __size_of_checkDirection 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__end_of_ECAN_Transmit 6BA 0 CODE 0 text15 dist/default/production\PIC_Slave.X.production.obj
+__end_of_ECAN_Transmit A62 0 CODE 0 text17 dist/default/production\PIC_Slave.X.production.obj
+__HnvBANK0 0 0 ABS 0 nvBANK0 dist/default/production\PIC_Slave.X.production.obj
 __Lintentry 0 0 ABS 0 intentry dist/default/production\PIC_Slave.X.production.obj
 __Hramtop F00 0 RAM 0 ramtop dist/default/production\PIC_Slave.X.production.obj
-_TEMP_MAP_BACKLIGHT 25 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_TEMP_MAP_BACKLIGHT 15 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __Hrparam 0 0 COMRAM 1 rparam dist/default/production\PIC_Slave.X.production.obj
 __CFG_PWRTEN$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __activetblptr 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Hstruct 0 0 COMRAM 1 struct dist/default/production\PIC_Slave.X.production.obj
+__LbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
 __Htext10 0 0 ABS 0 text10 dist/default/production\PIC_Slave.X.production.obj
 __Htext11 0 0 ABS 0 text11 dist/default/production\PIC_Slave.X.production.obj
 __Htext12 0 0 ABS 0 text12 dist/default/production\PIC_Slave.X.production.obj
@@ -724,31 +846,41 @@ __Htext14 0 0 ABS 0 text14 dist/default/production\PIC_Slave.X.production.obj
 __Htext15 0 0 ABS 0 text15 dist/default/production\PIC_Slave.X.production.obj
 __Htext16 0 0 ABS 0 text16 dist/default/production\PIC_Slave.X.production.obj
 __Htext17 0 0 ABS 0 text17 dist/default/production\PIC_Slave.X.production.obj
+__Htext18 0 0 ABS 0 text18 dist/default/production\PIC_Slave.X.production.obj
+__Htext19 0 0 ABS 0 text19 dist/default/production\PIC_Slave.X.production.obj
+__Htext21 0 0 ABS 0 text21 dist/default/production\PIC_Slave.X.production.obj
+__Htext22 0 0 ABS 0 text22 dist/default/production\PIC_Slave.X.production.obj
 __CFG_BBSIZ$BB2K 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__end_of_updateInputs 85E 0 CODE 0 text1 dist/default/production\PIC_Slave.X.production.obj
-Delay@count 60 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-_MAP_BATTERYSTATUS 13 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+__end_of_updateInputs BD2 0 CODE 0 text1 dist/default/production\PIC_Slave.X.production.obj
+Delay@count 7A 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+_MAP_BATTERYSTATUS 9 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 _PIE1bits F9D 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__ptext10 820 0 CODE 0 text10 dist/default/production\PIC_Slave.X.production.obj
-__ptext11 838 0 CODE 0 text11 dist/default/production\PIC_Slave.X.production.obj
-__ptext12 7CE 0 CODE 0 text12 dist/default/production\PIC_Slave.X.production.obj
-__ptext13 7A8 0 CODE 0 text13 dist/default/production\PIC_Slave.X.production.obj
-__ptext14 3AC 0 CODE 0 text14 dist/default/production\PIC_Slave.X.production.obj
-__ptext15 678 0 CODE 0 text15 dist/default/production\PIC_Slave.X.production.obj
-__ptext16 59A 0 CODE 0 text16 dist/default/production\PIC_Slave.X.production.obj
-__ptext17 282 0 CODE 0 text17 dist/default/production\PIC_Slave.X.production.obj
+__ptext10 B9A 0 CODE 0 text10 dist/default/production\PIC_Slave.X.production.obj
+__ptext11 B22 0 CODE 0 text11 dist/default/production\PIC_Slave.X.production.obj
+__ptext12 B44 0 CODE 0 text12 dist/default/production\PIC_Slave.X.production.obj
+__ptext13 564 0 CODE 0 text13 dist/default/production\PIC_Slave.X.production.obj
+__ptext14 BD2 0 CODE 0 text14 dist/default/production\PIC_Slave.X.production.obj
+__ptext15 816 0 CODE 0 text15 dist/default/production\PIC_Slave.X.production.obj
+__ptext16 2F0 0 CODE 0 text16 dist/default/production\PIC_Slave.X.production.obj
+__ptext17 A20 0 CODE 0 text17 dist/default/production\PIC_Slave.X.production.obj
+__ptext18 738 0 CODE 0 text18 dist/default/production\PIC_Slave.X.production.obj
+__ptext19 430 0 CODE 0 text19 dist/default/production\PIC_Slave.X.production.obj
+__ptext21 8D4 0 CODE 0 text21 dist/default/production\PIC_Slave.X.production.obj
+__ptext22 BB2 0 CODE 0 text22 dist/default/production\PIC_Slave.X.production.obj
+___awdiv 816 0 CODE 0 text15 dist/default/production\PIC_Slave.X.production.obj
 __Lbank10 0 0 ABS 0 bank10 dist/default/production\PIC_Slave.X.production.obj
 __Lbank11 0 0 ABS 0 bank11 dist/default/production\PIC_Slave.X.production.obj
 __Lbank12 0 0 ABS 0 bank12 dist/default/production\PIC_Slave.X.production.obj
 __Lbank13 0 0 ABS 0 bank13 dist/default/production\PIC_Slave.X.production.obj
 __Lbank14 0 0 ABS 0 bank14 dist/default/production\PIC_Slave.X.production.obj
-_temp_DLC 3E 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+readAnalog@high 80 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+_temp_DLC 2C 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production\PIC_Slave.X.production.obj
 __Lbigram 0 0 ABS 0 bigram dist/default/production\PIC_Slave.X.production.obj
 __CFG_INTOSCSEL$HIGH 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __size_of_danger 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_BORV$3 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__end_of_setup_Interrupt 782 0 CODE 0 text5 dist/default/production\PIC_Slave.X.production.obj
+__end_of_setup_Interrupt AFE 0 CODE 0 text5 dist/default/production\PIC_Slave.X.production.obj
 __Lcomram 0 0 ABS 0 comram dist/default/production\PIC_Slave.X.production.obj
 __Lconfig 300000 0 CONFIG 0 config dist/default/production\PIC_Slave.X.production.obj
 _RXB0CON F60 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
@@ -759,38 +891,43 @@ _RXFCON0 E46 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXFCON1 E47 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _LATAbits F89 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _LATBbits F8A 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_checkAccelerator 7A8 0 CODE 0 text13 dist/default/production\PIC_Slave.X.production.obj
+_checkAccelerator 564 0 CODE 0 text13 dist/default/production\PIC_Slave.X.production.obj
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production\PIC_Slave.X.production.obj
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\PIC_Slave.X.production.obj
-_MAP_BRAKE 15 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_heartBeatCounter 5 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-stackhi E40 0 ABS 0 - C:\Users\E\AppData\Local\Temp\s52s.obj
-stacklo 6B 0 ABS 0 - C:\Users\E\AppData\Local\Temp\s52s.obj
+_MAP_BRAKE B 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_heartBeatCounter 60 0 BANK0 1 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
+stackhi E40 0 ABS 0 - C:\Users\E\AppData\Local\Temp\s7ro.obj
+stacklo 8C 0 ABS 0 - C:\Users\E\AppData\Local\Temp\s7ro.obj
 __Lintcode 8 0 CODE 0 intcode dist/default/production\PIC_Slave.X.production.obj
 __Lintret 0 0 ABS 0 intret dist/default/production\PIC_Slave.X.production.obj
 __Lirdata 0 0 CODE 0 irdata dist/default/production\PIC_Slave.X.production.obj
 _ADCON0bits FC2 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _ADCON2bits FC0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_BITDATA 35 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_BITDATA 23 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __Lspace_0 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Lspace_1 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Lspace_2 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __pbssCOMRAM 1 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+checkAccelerator@startval 87 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
 __size_of_checkBrake 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__Lend_init 13A 0 CODE 0 end_init dist/default/production\PIC_Slave.X.production.obj
+__Lend_init 170 0 CODE 0 end_init dist/default/production\PIC_Slave.X.production.obj
 _PIR5bits F77 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __CFG_RETEN$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_TEMP_MAP_V_BLINK 31 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-end_of_initialization 74C 0 CODE 0 cinit dist/default/production\PIC_Slave.X.production.obj
+_TEMP_MAP_V_BLINK 21 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+end_of_initialization A16 0 CODE 0 cinit dist/default/production\PIC_Slave.X.production.obj
 __Lnvrram 0 0 COMRAM 1 nvrram dist/default/production\PIC_Slave.X.production.obj
 __Hintentry 0 0 ABS 0 intentry dist/default/production\PIC_Slave.X.production.obj
 __CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RCONbits FD0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_BATTERISTATUS_ID 51 0 COMRAM 1 dataCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_setup_Interrupt 756 0 CODE 0 text5 dist/default/production\PIC_Slave.X.production.obj
+_BATTERISTATUS_ID 4C 0 COMRAM 1 dataCOMRAM dist/default/production\PIC_Slave.X.production.obj
+___awdiv@quotient 80 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+?___awdiv 7A 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+_setup_Interrupt AD0 0 CODE 0 text5 dist/default/production\PIC_Slave.X.production.obj
 __Hreset_vec 4 0 CODE 0 reset_vec dist/default/production\PIC_Slave.X.production.obj
+__size_ofi2_Delay 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
+__HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
 _RXB1CONbits F30 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Lramtop F00 0 RAM 0 ramtop dist/default/production\PIC_Slave.X.production.obj
 __Lrparam 0 0 COMRAM 1 rparam dist/default/production\PIC_Slave.X.production.obj
@@ -801,19 +938,19 @@ _TXB0EIDH F23 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _TXB0EIDL F24 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _TXB0SIDH F21 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _TXB0SIDL F22 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__pcinit 728 0 CODE 0 cinit dist/default/production\PIC_Slave.X.production.obj
-_ECAN_Receive 59A 0 CODE 0 text16 dist/default/production\PIC_Slave.X.production.obj
-__ptext0 4B8 0 CODE 0 text0 dist/default/production\PIC_Slave.X.production.obj
-__ptext1 850 0 CODE 0 text1 dist/default/production\PIC_Slave.X.production.obj
-__ptext2 782 0 CODE 0 text2 dist/default/production\PIC_Slave.X.production.obj
-__ptext3 7F0 0 CODE 0 text3 dist/default/production\PIC_Slave.X.production.obj
-__ptext4 13E 0 CODE 0 text4 dist/default/production\PIC_Slave.X.production.obj
-__ptext5 756 0 CODE 0 text5 dist/default/production\PIC_Slave.X.production.obj
-__ptext6 85E 0 CODE 0 text6 dist/default/production\PIC_Slave.X.production.obj
-__ptext7 6F6 0 CODE 0 text7 dist/default/production\PIC_Slave.X.production.obj
-__ptext8 808 0 CODE 0 text8 dist/default/production\PIC_Slave.X.production.obj
-__ptext9 6BA 0 CODE 0 text9 dist/default/production\PIC_Slave.X.production.obj
-_MOTOR_ID 52 0 COMRAM 1 dataCOMRAM dist/default/production\PIC_Slave.X.production.obj
+__pcinit 9DE 0 CODE 0 cinit dist/default/production\PIC_Slave.X.production.obj
+_ECAN_Receive 738 0 CODE 0 text18 dist/default/production\PIC_Slave.X.production.obj
+__ptext0 65A 0 CODE 0 text0 dist/default/production\PIC_Slave.X.production.obj
+__ptext1 BC4 0 CODE 0 text1 dist/default/production\PIC_Slave.X.production.obj
+__ptext2 980 0 CODE 0 text2 dist/default/production\PIC_Slave.X.production.obj
+__ptext3 B82 0 CODE 0 text3 dist/default/production\PIC_Slave.X.production.obj
+__ptext4 174 0 CODE 0 text4 dist/default/production\PIC_Slave.X.production.obj
+__ptext5 AD0 0 CODE 0 text5 dist/default/production\PIC_Slave.X.production.obj
+__ptext6 A9E 0 CODE 0 text6 dist/default/production\PIC_Slave.X.production.obj
+__ptext7 AFE 0 CODE 0 text7 dist/default/production\PIC_Slave.X.production.obj
+__ptext8 B66 0 CODE 0 text8 dist/default/production\PIC_Slave.X.production.obj
+__ptext9 A62 0 CODE 0 text9 dist/default/production\PIC_Slave.X.production.obj
+_MOTOR_ID 4D 0 COMRAM 1 dataCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __Lstruct 0 0 COMRAM 1 struct dist/default/production\PIC_Slave.X.production.obj
 __Ltext10 0 0 ABS 0 text10 dist/default/production\PIC_Slave.X.production.obj
 __Ltext11 0 0 ABS 0 text11 dist/default/production\PIC_Slave.X.production.obj
@@ -823,45 +960,52 @@ __Ltext14 0 0 ABS 0 text14 dist/default/production\PIC_Slave.X.production.obj
 __Ltext15 0 0 ABS 0 text15 dist/default/production\PIC_Slave.X.production.obj
 __Ltext16 0 0 ABS 0 text16 dist/default/production\PIC_Slave.X.production.obj
 __Ltext17 0 0 ABS 0 text17 dist/default/production\PIC_Slave.X.production.obj
-_MAP_VELOCITY 1F 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-__ramtop F00 0 RAM 0 ramtop C:\Users\E\AppData\Local\Temp\s52s.obj
-__Lpowerup 13A 0 CODE 0 powerup dist/default/production\PIC_Slave.X.production.obj
+__Ltext18 0 0 ABS 0 text18 dist/default/production\PIC_Slave.X.production.obj
+__Ltext19 0 0 ABS 0 text19 dist/default/production\PIC_Slave.X.production.obj
+__Ltext21 0 0 ABS 0 text21 dist/default/production\PIC_Slave.X.production.obj
+__Ltext22 0 0 ABS 0 text22 dist/default/production\PIC_Slave.X.production.obj
+_MAP_VELOCITY 70 0 BANK0 1 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
+__ramtop F00 0 RAM 0 ramtop C:\Users\E\AppData\Local\Temp\s7ro.obj
+__Lpowerup 170 0 CODE 0 powerup dist/default/production\PIC_Slave.X.production.obj
 __size_of_checkBacklight 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\PIC_Slave.X.production.obj
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\PIC_Slave.X.production.obj
-__CFG_SOSCSEL$HIGH 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
+checkAccelerator@gas 88 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
 __size_of_readAnalog 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__end_of_checkAccelerator 7CE 0 CODE 0 text13 dist/default/production\PIC_Slave.X.production.obj
-_checkSafetyPin 808 0 CODE 0 text8 dist/default/production\PIC_Slave.X.production.obj
+__end_of_checkAccelerator 65A 0 CODE 0 text13 dist/default/production\PIC_Slave.X.production.obj
+_checkSafetyPin B66 0 CODE 0 text8 dist/default/production\PIC_Slave.X.production.obj
 ___param_bank 10 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXB0CONbits F60 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production\PIC_Slave.X.production.obj
-__end_of__initialization 74C 0 CODE 0 cinit dist/default/production\PIC_Slave.X.production.obj
+__end_of__initialization A16 0 CODE 0 cinit dist/default/production\PIC_Slave.X.production.obj
 __CFG_WRT0$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_WRT1$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_WRT2$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_WRT3$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
+_CAN_ERRORCODE 48 0 COMRAM 1 dataCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __CFG_WRTB$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Libigdata 0 0 CODE 0 ibigdata dist/default/production\PIC_Slave.X.production.obj
 __CFG_WRTC$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_WRTD$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-?_readAnalog 62 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
-_TEMP_MAP_ACCELERATOR 23 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+?_readAnalog 7C 0 BANK0 1 cstackBANK0 dist/default/production\PIC_Slave.X.production.obj
+_TEMP_MAP_ACCELERATOR 74 0 BANK0 1 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
 __size_of_checkAccelerator 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __Lclrtext 0 0 ABS 0 clrtext dist/default/production\PIC_Slave.X.production.obj
+_deadArea_gas 8A 0 BANK0 1 nvBANK0 dist/default/production\PIC_Slave.X.production.obj
 __size_of_ECAN_Receive 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _TXB0CONbits F20 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__pcstackCOMRAM 43 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_TEMP_MAP_BRAKE 27 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-__Hend_init 13E 0 CODE 0 end_init dist/default/production\PIC_Slave.X.production.obj
+__pcstackCOMRAM 31 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_startMotor BD2 0 CODE 0 text14 dist/default/production\PIC_Slave.X.production.obj
+_TEMP_MAP_BRAKE 17 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+__Hend_init 174 0 CODE 0 end_init dist/default/production\PIC_Slave.X.production.obj
 __CFG_BOREN$SBORDIS 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_CANMX$PORTB 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__end_of_main 59A 0 CODE 0 text0 dist/default/production\PIC_Slave.X.production.obj
+__end_of_main 738 0 CODE 0 text0 dist/default/production\PIC_Slave.X.production.obj
 __pintcode 8 0 CODE 0 intcode dist/default/production\PIC_Slave.X.production.obj
-__end_of_Delay 808 0 CODE 0 text3 dist/default/production\PIC_Slave.X.production.obj
+__end_of_Delay B9A 0 CODE 0 text3 dist/default/production\PIC_Slave.X.production.obj
 _B0DLC E85 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _BSEL0 E7D 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_Delay 7F0 0 CODE 0 text3 dist/default/production\PIC_Slave.X.production.obj
+_Delay B82 0 CODE 0 text3 dist/default/production\PIC_Slave.X.production.obj
 _IRXIF 7BBF 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _MSEL0 E79 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _MSEL1 E7A 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
@@ -870,7 +1014,8 @@ _MSEL3 E7C 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _TRISA F92 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _TRISB F93 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _TRISC F94 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_checkH_blink 6BA 0 CODE 0 text9 dist/default/production\PIC_Slave.X.production.obj
+_HEARTBEAT_ERRORCODE 4A 0 COMRAM 1 dataCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_checkH_blink A62 0 CODE 0 text9 dist/default/production\PIC_Slave.X.production.obj
 __CFG_CP0$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_CP1$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __HRAM 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
@@ -883,7 +1028,7 @@ __Lram 0 0 ABS 0 ram dist/default/production\PIC_Slave.X.production.obj
 __Lsfr 0 0 ABS 0 sfr dist/default/production\PIC_Slave.X.production.obj
 __CFG_CP2$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_CP3$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_count 53 0 COMRAM 1 nvCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_count 4E 0 COMRAM 1 nvCOMRAM dist/default/production\PIC_Slave.X.production.obj
 _RXB0EIDH F63 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXB0EIDL F64 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXB0SIDH F61 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
@@ -897,12 +1042,14 @@ __CFG_CPB$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _B0CONbits E80 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 __size_of_setup_Interrupt 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__end_of_ECAN_Receive 678 0 CODE 0 text16 dist/default/production\PIC_Slave.X.production.obj
+__end_of_ECAN_Receive 816 0 CODE 0 text18 dist/default/production\PIC_Slave.X.production.obj
 __size_of_ISR 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__end_of_checkSafetyPin 820 0 CODE 0 text8 dist/default/production\PIC_Slave.X.production.obj
+__end_ofi2_Delay BC4 0 CODE 0 text22 dist/default/production\PIC_Slave.X.production.obj
+__end_of_checkSafetyPin B82 0 CODE 0 text8 dist/default/production\PIC_Slave.X.production.obj
 __size_of_unZipCAN 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-__initialization 728 0 CODE 0 cinit dist/default/production\PIC_Slave.X.production.obj
-__pdataCOMRAM 51 0 COMRAM 1 dataCOMRAM dist/default/production\PIC_Slave.X.production.obj
+__initialization 9DE 0 CODE 0 cinit dist/default/production\PIC_Slave.X.production.obj
+__pbssBANK0 60 0 BANK0 1 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
+__pdataCOMRAM 48 0 COMRAM 1 dataCOMRAM dist/default/production\PIC_Slave.X.production.obj
 _RXF0EIDH EE2 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXF0EIDL EE3 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXF0SIDH EE0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
@@ -923,20 +1070,24 @@ _RXFBCON4 E75 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXFBCON5 E76 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXFBCON6 E77 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
 _RXFBCON7 E78 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
-_MAP_SAFETYPIN 1D 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_MAP_SAFETYPIN 6E 0 BANK0 1 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
+danger@i 36 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_Slave.X.production.obj
+danger@errorCode 33 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __Hfardata 0 0 FARRAM 0 fardata dist/default/production\PIC_Slave.X.production.obj
 __Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\PIC_Slave.X.production.obj
 __Lifardata 0 0 CODE 0 ifardata dist/default/production\PIC_Slave.X.production.obj
-_MAP_ACCELERATOR F 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_temp_D2 38 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_temp_D3 39 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_temp_D4 3A 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_temp_D5 3B 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_temp_D6 3C 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
-_temp_D7 3D 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+__end_of_checkStop B22 0 CODE 0 text7 dist/default/production\PIC_Slave.X.production.obj
+_MAP_ACCELERATOR 6A 0 BANK0 1 bssBANK0 dist/default/production\PIC_Slave.X.production.obj
+_temp_D2 26 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_temp_D3 27 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_temp_D4 28 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_temp_D5 29 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_temp_D6 2A 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
+_temp_D7 2B 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_Slave.X.production.obj
 __Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\PIC_Slave.X.production.obj
-__Hintcode 13A 0 CODE 0 intcode dist/default/production\PIC_Slave.X.production.obj
-_checkDirection 820 0 CODE 0 text10 dist/default/production\PIC_Slave.X.production.obj
+__size_of_checkStop 0 0 ABS 0 - dist/default/production\PIC_Slave.X.production.obj
+__Hintcode 170 0 CODE 0 intcode dist/default/production\PIC_Slave.X.production.obj
+_checkDirection B9A 0 CODE 0 text10 dist/default/production\PIC_Slave.X.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -962,8 +1113,8 @@ _checkDirection 820 0 CODE 0 text10 dist/default/production\PIC_Slave.X.producti
 # All other numeric quantities are in decimal.
 %SEGMENTS
 idloc 0 200000 200000 8 1
-cstackBANK0 1 60 60 B 1
 reset_vec 0 0 0 4 1
-intcode 0 8 8 85E 1
-bssCOMRAM 1 1 1 54 1
+bssBANK0 1 60 60 2C 1
+intcode 0 8 8 BDC 1
+bssCOMRAM 1 1 1 4F 1
 config 0 300000 300000 E 1

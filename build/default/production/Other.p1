@@ -1,36 +1,24 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"33019 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f26k80.h
-[s S2161 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2161 . LATA0 LATA1 LATA2 LATA3 . LATA5 LATA6 LATA7 ]
-"33029
-[s S2162 :1 `uc 1 ]
-[n S2162 . LA0 ]
-"33032
-[s S2163 :1 `uc 1 :1 `uc 1 ]
-[n S2163 . . LA1 ]
-"33036
-[s S2164 :2 `uc 1 :1 `uc 1 ]
-[n S2164 . . LA2 ]
-"33040
-[s S2165 :3 `uc 1 :1 `uc 1 ]
-[n S2165 . . LA3 ]
-"33044
-[s S2166 :4 `uc 1 :1 `uc 1 ]
-[n S2166 . . LA4 ]
-"33048
-[s S2167 :5 `uc 1 :1 `uc 1 ]
-[n S2167 . . LA5 ]
-"33052
-[s S2168 :6 `uc 1 :1 `uc 1 ]
-[n S2168 . . LA6 ]
-"33056
-[s S2169 :7 `uc 1 :1 `uc 1 ]
-[n S2169 . . LA7 ]
-"33018
-[u S2160 `S2161 1 `S2162 1 `S2163 1 `S2164 1 `S2165 1 `S2166 1 `S2167 1 `S2168 1 `S2169 1 ]
-[n S2160 . . . . . . . . . . ]
-"33061
-[v _LATAbits `VS2160 ~T0 @X0 0 e@3977 ]
+"39513 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f26k80.h
+[s S2558 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2558 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"39523
+[s S2559 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2559 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"39533
+[s S2560 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2560 . . GIEL GIEH ]
+"39538
+[s S2561 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2561 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"39548
+[s S2562 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2562 . . GIEL GIEH ]
+"39512
+[u S2557 `S2558 1 `S2559 1 `S2560 1 `S2561 1 `S2562 1 ]
+[n S2557 . . . . . . ]
+"39554
+[v _INTCONbits `VS2557 ~T0 @X0 0 e@4082 ]
 "33146
 [s S2171 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2171 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
@@ -63,6 +51,38 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2170 . . . . . . . . . . ]
 "33188
 [v _LATBbits `VS2170 ~T0 @X0 0 e@3978 ]
+"33019
+[s S2161 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2161 . LATA0 LATA1 LATA2 LATA3 . LATA5 LATA6 LATA7 ]
+"33029
+[s S2162 :1 `uc 1 ]
+[n S2162 . LA0 ]
+"33032
+[s S2163 :1 `uc 1 :1 `uc 1 ]
+[n S2163 . . LA1 ]
+"33036
+[s S2164 :2 `uc 1 :1 `uc 1 ]
+[n S2164 . . LA2 ]
+"33040
+[s S2165 :3 `uc 1 :1 `uc 1 ]
+[n S2165 . . LA3 ]
+"33044
+[s S2166 :4 `uc 1 :1 `uc 1 ]
+[n S2166 . . LA4 ]
+"33048
+[s S2167 :5 `uc 1 :1 `uc 1 ]
+[n S2167 . . LA5 ]
+"33052
+[s S2168 :6 `uc 1 :1 `uc 1 ]
+[n S2168 . . LA6 ]
+"33056
+[s S2169 :7 `uc 1 :1 `uc 1 ]
+[n S2169 . . LA7 ]
+"33018
+[u S2160 `S2161 1 `S2162 1 `S2163 1 `S2164 1 `S2165 1 `S2166 1 `S2167 1 `S2168 1 `S2169 1 ]
+[n S2160 . . . . . . . . . . ]
+"33061
+[v _LATAbits `VS2160 ~T0 @X0 0 e@3977 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -16649,7 +16669,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "23
 [p x INTOSCSEL=HIGH ]
 "24
-[p x SOSCSEL=HIGH ]
+[p x SOSCSEL=0x0 ]
 "25
 [p x XINST=OFF ]
 "28
@@ -16859,11 +16879,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ECAN.h: 115: unsigned char buttonWasPressed;
 [; ;Other.h: 12: void Delay(unsigned int count);
 [; ;Other.h: 13: void heartBeat();
+[; ;Other.h: 14: void danger(int errorCode);
 [; ;init.h: 11: void InitDevice();
 [; ;init.h: 12: void setup_Interrupt();
 "14 init.h
 [v _FIRST_SEND `i ~T0 @X0 1 e ]
 [; ;init.h: 14: int FIRST_SEND;
+"35
+[v _HEARTBEAT_ERRORCODE `i ~T0 @X0 1 e ]
+[i _HEARTBEAT_ERRORCODE
+-> 3 `i
+]
+[; ;init.h: 35: int HEARTBEAT_ERRORCODE = 3;
+"36
+[v _CAN_ERRORCODE `i ~T0 @X0 1 e ]
+[i _CAN_ERRORCODE
+-> 4 `i
+]
+[; ;init.h: 36: int CAN_ERRORCODE = 4;
+"38
+[v _CAN_ERRORBIT `i ~T0 @X0 1 e ]
+[; ;init.h: 38: int CAN_ERRORBIT;
 [; ;peripherals.h: 11: void heartbeat();
 [; ;peripherals.h: 12: void checkBrake();
 [; ;peripherals.h: 13: void checkBacklight();
@@ -16871,90 +16907,184 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;peripherals.h: 15: void checkH_blink();
 [; ;peripherals.h: 16: void checkDirection();
 [; ;peripherals.h: 17: void checkSafetyPin();
-[; ;peripherals.h: 18: void checkAccelerator();
-[; ;peripherals.h: 19: void updateInputs();
-[; ;peripherals.h: 20: int readAnalog();
-"28 peripherals.h
+[; ;peripherals.h: 18: void checkStop();
+[; ;peripherals.h: 19: void checkAccelerator();
+[; ;peripherals.h: 20: void updateInputs();
+[; ;peripherals.h: 21: int readAnalog();
+[; ;peripherals.h: 22: void startMotor();
+"30 peripherals.h
 [v _MAP_HEARTBEAT `i ~T0 @X0 1 e ]
 [v _MAP_BRAKE `i ~T0 @X0 1 e ]
 [v _MAP_BACKLIGHT `i ~T0 @X0 1 e ]
 [v _MAP_V_BLINK `i ~T0 @X0 1 e ]
-"29
+"31
 [v _MAP_H_BLINK `i ~T0 @X0 1 e ]
 [v _MAP_DIRECTION `i ~T0 @X0 1 e ]
 [v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
+[v _MAP_STOP `i ~T0 @X0 1 e ]
 [v _MAP_ACCELERATOR `i ~T0 @X0 1 e ]
-[; ;peripherals.h: 28: int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
-[; ;peripherals.h: 29: MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
-"32
+[; ;peripherals.h: 30: int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
+[; ;peripherals.h: 31: MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_STOP, MAP_ACCELERATOR;
+"34
 [v _TEMP_MAP_HEARTBEAT `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_BRAKE `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_BACKLIGHT `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_V_BLINK `i ~T0 @X0 1 e ]
-"33
+"35
 [v _TEMP_MAP_H_BLINK `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_DIRECTION `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_SAFETYPIN `i ~T0 @X0 1 e ]
+[v _TEMP_MAP_STOP `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_ACCELERATOR `i ~T0 @X0 1 e ]
-[; ;peripherals.h: 32: int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
-[; ;peripherals.h: 33: TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
-"39
+[; ;peripherals.h: 34: int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
+[; ;peripherals.h: 35: TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_STOP, TEMP_MAP_ACCELERATOR;
+"41
 [v _MAP_BATTERYSTATUS `i ~T0 @X0 1 e ]
 [v _MAP_VELOCITY `i ~T0 @X0 1 e ]
-[; ;peripherals.h: 39: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
-"42
+[; ;peripherals.h: 41: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+"44
+[v _deadArea_gas `i ~T0 @X0 1 e ]
+[; ;peripherals.h: 44: int deadArea_gas;
+"47
 [v _heartBeatCounter `l ~T0 @X0 1 e ]
-[; ;peripherals.h: 42: long heartBeatCounter;
-"43
+[; ;peripherals.h: 47: long heartBeatCounter;
+"48
 [v _blinkCounter `l ~T0 @X0 1 e ]
-[; ;peripherals.h: 43: long blinkCounter;
-"45
+[; ;peripherals.h: 48: long blinkCounter;
+"50
 [v _interruptCounter `l ~T0 @X0 1 e ]
-[; ;peripherals.h: 45: long interruptCounter;
-"11 Other.c
+[; ;peripherals.h: 50: long interruptCounter;
+"52
+[v _OFFSET_ACCELERATOR `i ~T0 @X0 1 e ]
+[; ;peripherals.h: 52: int OFFSET_ACCELERATOR;
+"10 Other.c
 [v _Delay `(v ~T0 @X0 1 ef1`ui ]
-"12
+"11
 {
-[; ;Other.c: 11: void Delay(unsigned int count)
-[; ;Other.c: 12: {
+[; ;Other.c: 10: void Delay(unsigned int count)
+[; ;Other.c: 11: {
 [e :U _Delay ]
 [v _count `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;Other.c: 14: while(count--);
-"14
+[; ;Other.c: 13: while(count--);
+"13
 [e $U 2602  ]
 [e :U 2603 ]
 [e :U 2602 ]
 [e $ != -- _count -> -> 1 `i `ui -> -> 0 `i `ui 2603  ]
 [e :U 2604 ]
-[; ;Other.c: 15: }
-"15
+[; ;Other.c: 14: }
+"14
 [e :UE 2601 ]
 }
-"17
-[v _danger `(v ~T0 @X0 1 ef ]
+"16
+[v _danger `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;Other.c: 17: void danger(){
+[; ;Other.c: 16: void danger(int errorCode){
 [e :U _danger ]
+[v _errorCode `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;Other.c: 18: while(1){
-"18
+[; ;Other.c: 19: INTCONbits.GIEH = 0;
+"19
+[e = . . _INTCONbits 2 2 -> -> 0 `i `uc ]
+[; ;Other.c: 20: INTCONbits.GIEL = 0;
+"20
+[e = . . _INTCONbits 2 1 -> -> 0 `i `uc ]
+[; ;Other.c: 22: LATBbits.LATB1 = 0;
+"22
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[; ;Other.c: 23: LATBbits.LATB4 = 1;
+"23
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;Other.c: 24: LATBbits.LATB0 = 0;
+"24
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+[; ;Other.c: 26: while(1){
+"26
 [e :U 2607 ]
 {
-[; ;Other.c: 19: LATAbits.LATA6 = 0;
-"19
-[e = . . _LATAbits 0 6 -> -> 0 `i `uc ]
-[; ;Other.c: 20: LATBbits.LATB1 = 1;
-"20
-[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
-"21
+[; ;Other.c: 27: for(int i = 0; i< errorCode; i++){
+"27
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 2612  ]
+[e :U 2609 ]
+{
+[; ;Other.c: 28: LATAbits.LATA7 = 1;
+"28
+[e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
+[; ;Other.c: 29: Delay((unsigned int)(64/4)*80 * 500);
+"29
+[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 500 `i `ui ]
+[; ;Other.c: 30: LATAbits.LATA7 = 0;
+"30
+[e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
+[; ;Other.c: 31: Delay((unsigned int)(64/4)*80 * 500);
+"31
+[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 500 `i `ui ]
+"33
+}
+"27
+[e ++ _i -> 1 `i ]
+[e :U 2612 ]
+[e $ < _i _errorCode 2609  ]
+[e :U 2610 ]
+"33
+}
+[; ;Other.c: 33: }
+[; ;Other.c: 35: Delay((unsigned int)(64/4)*80 * 2000);
+"35
+[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 2000 `i `ui ]
+[; ;Other.c: 37: if(CAN_ERRORBIT == 1){
+"37
+[e $ ! == _CAN_ERRORBIT -> 1 `i 2613  ]
+{
+[; ;Other.c: 38: for(int i = 0; i< CAN_ERRORCODE; i++){
+"38
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 2617  ]
+[e :U 2614 ]
+{
+[; ;Other.c: 39: LATAbits.LATA7 = 1;
+"39
+[e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
+[; ;Other.c: 40: Delay((unsigned int)(64/4)*80 * 500);
+"40
+[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 500 `i `ui ]
+[; ;Other.c: 41: LATAbits.LATA7 = 0;
+"41
+[e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
+[; ;Other.c: 42: Delay((unsigned int)(64/4)*80 * 500);
+"42
+[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 500 `i `ui ]
+"44
+}
+"38
+[e ++ _i -> 1 `i ]
+[e :U 2617 ]
+[e $ < _i _CAN_ERRORCODE 2614  ]
+[e :U 2615 ]
+"44
+}
+"45
+}
+[e :U 2613 ]
+[; ;Other.c: 44: }
+[; ;Other.c: 45: }
+[; ;Other.c: 47: Delay((unsigned int)(64/4)*80 * 2000);
+"47
+[e ( _Delay (1 * * -> / -> 64 `i -> 4 `i `ui -> -> 80 `i `ui -> -> 2000 `i `ui ]
+"48
 }
 [e :U 2606 ]
-"18
+"26
 [e $U 2607  ]
 [e :U 2608 ]
-[; ;Other.c: 21: }
-[; ;Other.c: 23: }
-"23
+[; ;Other.c: 48: }
+[; ;Other.c: 50: }
+"50
 [e :UE 2605 ]
 }

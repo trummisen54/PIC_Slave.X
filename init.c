@@ -15,6 +15,8 @@ void InitDevice(){
     OSCCONbits.IRCF = 7;
     OSCTUNEbits.PLLEN = 1;
     
+    
+    
     // Initialize global variables to 0
     heartbeatCount = 0;
     buttonWasPressed = 0;
@@ -29,7 +31,7 @@ void InitDevice(){
     
     ADCON0 = 0x00;
     ADCON1 = 0x00;
-    ADCON2 = 0x00; //set ADFM to 0, (fourth lower bits of ADRESL gives no resultbit))
+    ADCON2 = 0b10000000; //set ADFM to 1, (fourth highest bits of ADRESH gives no resultbit))
     
     
     //HOW OFTEN
@@ -41,11 +43,13 @@ void InitDevice(){
     
     LATA = 0x00;
     
-    TRISB = 0b00011101; //backlight, hblink, vblink, error diode -> output,       turn off, canrx, cantx -> inputs                  (block input?)
+    TRISB = 0b00001100; //backlight, hblink, vblink, error diode, turn off, block_motor -> output,       canrx, cantx -> inputs                  
     LATB = 0x00;
     
     TRISC = 0x00; // Engine output
-    LATC = 0x00;
+    LATC = 0b10001000; // zero motorvalue
+
+    
     
     
     
@@ -55,6 +59,7 @@ void InitDevice(){
     MAP_H_BLINK = 0;
     MAP_DIRECTION = 0;
     MAP_SAFETYPIN = 0;
+    MAP_STOP = 0;
     MAP_ACCELERATOR = 0;
 
     TEMP_MAP_HEARTBEAT = 0;
@@ -64,11 +69,17 @@ void InitDevice(){
     TEMP_MAP_H_BLINK = 0;
     TEMP_MAP_DIRECTION = 0;
     TEMP_MAP_SAFETYPIN = 0;
+    TEMP_MAP_STOP = 0;
     TEMP_MAP_ACCELERATOR = 0;
 
     MAP_BATTERYSTATUS = 0;
     MAP_VELOCITY = 0; 
     MAP_HEARTBEAT = 0;
+    
+    deadArea_gas = 5;
+    
+    
+    OFFSET_ACCELERATOR = 0b00000000;
     
      
     

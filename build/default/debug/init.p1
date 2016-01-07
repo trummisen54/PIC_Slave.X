@@ -16751,7 +16751,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "23
 [p x INTOSCSEL=HIGH ]
 "24
-[p x SOSCSEL=HIGH ]
+[p x SOSCSEL=0x0 ]
 "25
 [p x XINST=OFF ]
 "28
@@ -16961,11 +16961,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ECAN.h: 115: unsigned char buttonWasPressed;
 [; ;Other.h: 12: void Delay(unsigned int count);
 [; ;Other.h: 13: void heartBeat();
+[; ;Other.h: 14: void danger(int errorCode);
 [; ;init.h: 11: void InitDevice();
 [; ;init.h: 12: void setup_Interrupt();
 "14 init.h
 [v _FIRST_SEND `i ~T0 @X0 1 e ]
 [; ;init.h: 14: int FIRST_SEND;
+"35
+[v _HEARTBEAT_ERRORCODE `i ~T0 @X0 1 e ]
+[i _HEARTBEAT_ERRORCODE
+-> 3 `i
+]
+[; ;init.h: 35: int HEARTBEAT_ERRORCODE = 3;
+"36
+[v _CAN_ERRORCODE `i ~T0 @X0 1 e ]
+[i _CAN_ERRORCODE
+-> 4 `i
+]
+[; ;init.h: 36: int CAN_ERRORCODE = 4;
+"38
+[v _CAN_ERRORBIT `i ~T0 @X0 1 e ]
+[; ;init.h: 38: int CAN_ERRORBIT;
 [; ;peripherals.h: 11: void heartbeat();
 [; ;peripherals.h: 12: void checkBrake();
 [; ;peripherals.h: 13: void checkBacklight();
@@ -16973,46 +16989,55 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;peripherals.h: 15: void checkH_blink();
 [; ;peripherals.h: 16: void checkDirection();
 [; ;peripherals.h: 17: void checkSafetyPin();
-[; ;peripherals.h: 18: void checkAccelerator();
-[; ;peripherals.h: 19: void updateInputs();
-[; ;peripherals.h: 20: int readAnalog();
-"28 peripherals.h
+[; ;peripherals.h: 18: void checkStop();
+[; ;peripherals.h: 19: void checkAccelerator();
+[; ;peripherals.h: 20: void updateInputs();
+[; ;peripherals.h: 21: int readAnalog();
+"29 peripherals.h
 [v _MAP_HEARTBEAT `i ~T0 @X0 1 e ]
 [v _MAP_BRAKE `i ~T0 @X0 1 e ]
 [v _MAP_BACKLIGHT `i ~T0 @X0 1 e ]
 [v _MAP_V_BLINK `i ~T0 @X0 1 e ]
-"29
+"30
 [v _MAP_H_BLINK `i ~T0 @X0 1 e ]
 [v _MAP_DIRECTION `i ~T0 @X0 1 e ]
 [v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
+[v _MAP_STOP `i ~T0 @X0 1 e ]
 [v _MAP_ACCELERATOR `i ~T0 @X0 1 e ]
-[; ;peripherals.h: 28: int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
-[; ;peripherals.h: 29: MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
-"32
+[; ;peripherals.h: 29: int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
+[; ;peripherals.h: 30: MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_STOP, MAP_ACCELERATOR;
+"33
 [v _TEMP_MAP_HEARTBEAT `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_BRAKE `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_BACKLIGHT `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_V_BLINK `i ~T0 @X0 1 e ]
-"33
+"34
 [v _TEMP_MAP_H_BLINK `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_DIRECTION `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_SAFETYPIN `i ~T0 @X0 1 e ]
+[v _TEMP_MAP_STOP `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_ACCELERATOR `i ~T0 @X0 1 e ]
-[; ;peripherals.h: 32: int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
-[; ;peripherals.h: 33: TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
-"39
+[; ;peripherals.h: 33: int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
+[; ;peripherals.h: 34: TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_STOP, TEMP_MAP_ACCELERATOR;
+"40
 [v _MAP_BATTERYSTATUS `i ~T0 @X0 1 e ]
 [v _MAP_VELOCITY `i ~T0 @X0 1 e ]
-[; ;peripherals.h: 39: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
-"42
-[v _heartBeatCounter `l ~T0 @X0 1 e ]
-[; ;peripherals.h: 42: long heartBeatCounter;
+[; ;peripherals.h: 40: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
 "43
+[v _deadArea_gas `i ~T0 @X0 1 e ]
+[; ;peripherals.h: 43: int deadArea_gas;
+"46
+[v _heartBeatCounter `l ~T0 @X0 1 e ]
+[; ;peripherals.h: 46: long heartBeatCounter;
+"47
 [v _blinkCounter `l ~T0 @X0 1 e ]
-[; ;peripherals.h: 43: long blinkCounter;
-"45
+[; ;peripherals.h: 47: long blinkCounter;
+"49
 [v _interruptCounter `l ~T0 @X0 1 e ]
-[; ;peripherals.h: 45: long interruptCounter;
+[; ;peripherals.h: 49: long interruptCounter;
+"51
+[v _OFFSET_ACCELERATOR `i ~T0 @X0 1 e ]
+[; ;peripherals.h: 51: int OFFSET_ACCELERATOR;
 "11 init.c
 [v _InitDevice `(v ~T0 @X0 1 ef ]
 {
@@ -17028,182 +17053,194 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;init.c: 16: OSCTUNEbits.PLLEN = 1;
 "16
 [e = . . _OSCTUNEbits 0 1 -> -> 1 `i `uc ]
-[; ;init.c: 19: heartbeatCount = 0;
-"19
+[; ;init.c: 21: heartbeatCount = 0;
+"21
 [e = _heartbeatCount -> -> 0 `i `ui ]
-[; ;init.c: 20: buttonWasPressed = 0;
-"20
+[; ;init.c: 22: buttonWasPressed = 0;
+"22
 [e = _buttonWasPressed -> -> 0 `i `uc ]
-[; ;init.c: 25: TRISA = 0b00111111;
-"25
-[e = _TRISA -> -> 63 `i `uc ]
-[; ;init.c: 26: ANCON0 = 0x01;
-"26
-[e = _ANCON0 -> -> 1 `i `uc ]
-[; ;init.c: 27: ANCON1 = 0x00;
+[; ;init.c: 27: TRISA = 0b00111111;
 "27
+[e = _TRISA -> -> 63 `i `uc ]
+[; ;init.c: 28: ANCON0 = 0x01;
+"28
+[e = _ANCON0 -> -> 1 `i `uc ]
+[; ;init.c: 29: ANCON1 = 0x00;
+"29
 [e = _ANCON1 -> -> 0 `i `uc ]
-[; ;init.c: 30: ADCON0 = 0x00;
-"30
-[e = _ADCON0 -> -> 0 `i `uc ]
-[; ;init.c: 31: ADCON1 = 0x00;
-"31
-[e = _ADCON1 -> -> 0 `i `uc ]
-[; ;init.c: 32: ADCON2 = 0x00;
+[; ;init.c: 32: ADCON0 = 0x00;
 "32
-[e = _ADCON2 -> -> 0 `i `uc ]
-[; ;init.c: 36: ADCON2bits.ADFM=1;
-"36
-[e = . . _ADCON2bits 0 3 -> -> 1 `i `uc ]
-[; ;init.c: 37: ADCON2bits.ACQT=1;
-"37
-[e = . . _ADCON2bits 0 1 -> -> 1 `i `uc ]
-[; ;init.c: 38: ADCON2bits.ADCS=2;
+[e = _ADCON0 -> -> 0 `i `uc ]
+[; ;init.c: 33: ADCON1 = 0x00;
+"33
+[e = _ADCON1 -> -> 0 `i `uc ]
+[; ;init.c: 34: ADCON2 = 0b10000000;
+"34
+[e = _ADCON2 -> -> 128 `i `uc ]
+[; ;init.c: 38: ADCON2bits.ADFM=1;
 "38
+[e = . . _ADCON2bits 0 3 -> -> 1 `i `uc ]
+[; ;init.c: 39: ADCON2bits.ACQT=1;
+"39
+[e = . . _ADCON2bits 0 1 -> -> 1 `i `uc ]
+[; ;init.c: 40: ADCON2bits.ADCS=2;
+"40
 [e = . . _ADCON2bits 0 0 -> -> 2 `i `uc ]
-[; ;init.c: 42: LATA = 0x00;
-"42
-[e = _LATA -> -> 0 `i `uc ]
-[; ;init.c: 44: TRISB = 0b00011101;
+[; ;init.c: 44: LATA = 0x00;
 "44
-[e = _TRISB -> -> 29 `i `uc ]
-[; ;init.c: 45: LATB = 0x00;
-"45
-[e = _LATB -> -> 0 `i `uc ]
-[; ;init.c: 47: TRISC = 0x00;
+[e = _LATA -> -> 0 `i `uc ]
+[; ;init.c: 46: TRISB = 0b00001100;
+"46
+[e = _TRISB -> -> 12 `i `uc ]
+[; ;init.c: 47: LATB = 0x00;
 "47
+[e = _LATB -> -> 0 `i `uc ]
+[; ;init.c: 49: TRISC = 0x00;
+"49
 [e = _TRISC -> -> 0 `i `uc ]
-[; ;init.c: 48: LATC = 0x00;
-"48
+[; ;init.c: 50: LATC = 0x00;
+"50
 [e = _LATC -> -> 0 `i `uc ]
-[; ;init.c: 52: MAP_BRAKE = 0;
-"52
-[e = _MAP_BRAKE -> 0 `i ]
-[; ;init.c: 53: MAP_BACKLIGHT = 0;
-"53
-[e = _MAP_BACKLIGHT -> 0 `i ]
-[; ;init.c: 54: MAP_V_BLINK = 0;
-"54
-[e = _MAP_V_BLINK -> 0 `i ]
-[; ;init.c: 55: MAP_H_BLINK = 0;
-"55
-[e = _MAP_H_BLINK -> 0 `i ]
-[; ;init.c: 56: MAP_DIRECTION = 0;
+[; ;init.c: 56: MAP_BRAKE = 0;
 "56
-[e = _MAP_DIRECTION -> 0 `i ]
-[; ;init.c: 57: MAP_SAFETYPIN = 0;
+[e = _MAP_BRAKE -> 0 `i ]
+[; ;init.c: 57: MAP_BACKLIGHT = 0;
 "57
-[e = _MAP_SAFETYPIN -> 0 `i ]
-[; ;init.c: 58: MAP_ACCELERATOR = 0;
+[e = _MAP_BACKLIGHT -> 0 `i ]
+[; ;init.c: 58: MAP_V_BLINK = 0;
 "58
-[e = _MAP_ACCELERATOR -> 0 `i ]
-[; ;init.c: 60: TEMP_MAP_HEARTBEAT = 0;
+[e = _MAP_V_BLINK -> 0 `i ]
+[; ;init.c: 59: MAP_H_BLINK = 0;
+"59
+[e = _MAP_H_BLINK -> 0 `i ]
+[; ;init.c: 60: MAP_DIRECTION = 0;
 "60
-[e = _TEMP_MAP_HEARTBEAT -> 0 `i ]
-[; ;init.c: 61: TEMP_MAP_BRAKE = 0;
+[e = _MAP_DIRECTION -> 0 `i ]
+[; ;init.c: 61: MAP_SAFETYPIN = 0;
 "61
-[e = _TEMP_MAP_BRAKE -> 0 `i ]
-[; ;init.c: 62: TEMP_MAP_BACKLIGHT = 0;
+[e = _MAP_SAFETYPIN -> 0 `i ]
+[; ;init.c: 62: MAP_STOP = 0;
 "62
-[e = _TEMP_MAP_BACKLIGHT -> 0 `i ]
-[; ;init.c: 63: TEMP_MAP_V_BLINK = 0;
+[e = _MAP_STOP -> 0 `i ]
+[; ;init.c: 63: MAP_ACCELERATOR = 0;
 "63
-[e = _TEMP_MAP_V_BLINK -> 0 `i ]
-[; ;init.c: 64: TEMP_MAP_H_BLINK = 0;
-"64
-[e = _TEMP_MAP_H_BLINK -> 0 `i ]
-[; ;init.c: 65: TEMP_MAP_DIRECTION = 0;
+[e = _MAP_ACCELERATOR -> 0 `i ]
+[; ;init.c: 65: TEMP_MAP_HEARTBEAT = 0;
 "65
-[e = _TEMP_MAP_DIRECTION -> 0 `i ]
-[; ;init.c: 66: TEMP_MAP_SAFETYPIN = 0;
+[e = _TEMP_MAP_HEARTBEAT -> 0 `i ]
+[; ;init.c: 66: TEMP_MAP_BRAKE = 0;
 "66
-[e = _TEMP_MAP_SAFETYPIN -> 0 `i ]
-[; ;init.c: 67: TEMP_MAP_ACCELERATOR = 0;
+[e = _TEMP_MAP_BRAKE -> 0 `i ]
+[; ;init.c: 67: TEMP_MAP_BACKLIGHT = 0;
 "67
-[e = _TEMP_MAP_ACCELERATOR -> 0 `i ]
-[; ;init.c: 69: MAP_BATTERYSTATUS = 0;
+[e = _TEMP_MAP_BACKLIGHT -> 0 `i ]
+[; ;init.c: 68: TEMP_MAP_V_BLINK = 0;
+"68
+[e = _TEMP_MAP_V_BLINK -> 0 `i ]
+[; ;init.c: 69: TEMP_MAP_H_BLINK = 0;
 "69
-[e = _MAP_BATTERYSTATUS -> 0 `i ]
-[; ;init.c: 70: MAP_VELOCITY = 0;
+[e = _TEMP_MAP_H_BLINK -> 0 `i ]
+[; ;init.c: 70: TEMP_MAP_DIRECTION = 0;
 "70
-[e = _MAP_VELOCITY -> 0 `i ]
-[; ;init.c: 71: MAP_HEARTBEAT = 0;
+[e = _TEMP_MAP_DIRECTION -> 0 `i ]
+[; ;init.c: 71: TEMP_MAP_SAFETYPIN = 0;
 "71
-[e = _MAP_HEARTBEAT -> 0 `i ]
-[; ;init.c: 77: T0CONbits.TMR0ON = 1;
+[e = _TEMP_MAP_SAFETYPIN -> 0 `i ]
+[; ;init.c: 72: TEMP_MAP_STOP = 0;
+"72
+[e = _TEMP_MAP_STOP -> 0 `i ]
+[; ;init.c: 73: TEMP_MAP_ACCELERATOR = 0;
+"73
+[e = _TEMP_MAP_ACCELERATOR -> 0 `i ]
+[; ;init.c: 75: MAP_BATTERYSTATUS = 0;
+"75
+[e = _MAP_BATTERYSTATUS -> 0 `i ]
+[; ;init.c: 76: MAP_VELOCITY = 0;
+"76
+[e = _MAP_VELOCITY -> 0 `i ]
+[; ;init.c: 77: MAP_HEARTBEAT = 0;
 "77
-[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
-[; ;init.c: 78: T0CONbits.T08BIT = 0;
-"78
-[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
-[; ;init.c: 79: T0CONbits.T0CS = 0;
+[e = _MAP_HEARTBEAT -> 0 `i ]
+[; ;init.c: 79: deadArea_gas = 5;
 "79
-[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
-[; ;init.c: 81: T0CONbits.PSA = 0;
-"81
-[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
-[; ;init.c: 82: T0CONbits.T0PS = 3;
+[e = _deadArea_gas -> 5 `i ]
+[; ;init.c: 82: OFFSET_ACCELERATOR = 0b00000000;
 "82
-[e = . . _T0CONbits 0 0 -> -> 3 `i `uc ]
-[; ;init.c: 91: T1CONbits.TMR1CS0 = 0;
-"91
-[e = . . _T1CONbits 2 3 -> -> 0 `i `uc ]
-[; ;init.c: 92: T1CONbits.TMR1CS1 = 0;
+[e = _OFFSET_ACCELERATOR -> 0 `i ]
+[; ;init.c: 88: T0CONbits.TMR0ON = 1;
+"88
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+[; ;init.c: 89: T0CONbits.T08BIT = 0;
+"89
+[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
+[; ;init.c: 90: T0CONbits.T0CS = 0;
+"90
+[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
+[; ;init.c: 92: T0CONbits.PSA = 0;
 "92
-[e = . . _T1CONbits 2 4 -> -> 0 `i `uc ]
-[; ;init.c: 93: T1CONbits.SOSCEN = 1;
+[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
+[; ;init.c: 93: T0CONbits.T0PS = 3;
 "93
-[e = . . _T1CONbits 1 3 -> -> 1 `i `uc ]
-[; ;init.c: 95: T1CONbits.T1CKPS0 = 1;
-"95
-[e = . . _T1CONbits 2 1 -> -> 1 `i `uc ]
-[; ;init.c: 96: T1CONbits.T1CKPS1 = 1;
-"96
-[e = . . _T1CONbits 2 2 -> -> 1 `i `uc ]
-[; ;init.c: 98: T1CONbits.nT1SYNC = 1;
-"98
-[e = . . _T1CONbits 1 2 -> -> 1 `i `uc ]
-[; ;init.c: 99: T1CONbits.RD16 = 1;
-"99
-[e = . . _T1CONbits 1 1 -> -> 1 `i `uc ]
-[; ;init.c: 100: T1CONbits.TMR1ON = 1;
-"100
-[e = . . _T1CONbits 1 0 -> -> 1 `i `uc ]
-[; ;init.c: 104: T1GCONbits.TMR1GE = 0;
+[e = . . _T0CONbits 0 0 -> -> 3 `i `uc ]
+[; ;init.c: 102: T1CONbits.TMR1CS0 = 0;
+"102
+[e = . . _T1CONbits 2 3 -> -> 0 `i `uc ]
+[; ;init.c: 103: T1CONbits.TMR1CS1 = 0;
+"103
+[e = . . _T1CONbits 2 4 -> -> 0 `i `uc ]
+[; ;init.c: 104: T1CONbits.SOSCEN = 1;
 "104
+[e = . . _T1CONbits 1 3 -> -> 1 `i `uc ]
+[; ;init.c: 106: T1CONbits.T1CKPS0 = 1;
+"106
+[e = . . _T1CONbits 2 1 -> -> 1 `i `uc ]
+[; ;init.c: 107: T1CONbits.T1CKPS1 = 1;
+"107
+[e = . . _T1CONbits 2 2 -> -> 1 `i `uc ]
+[; ;init.c: 109: T1CONbits.nT1SYNC = 1;
+"109
+[e = . . _T1CONbits 1 2 -> -> 1 `i `uc ]
+[; ;init.c: 110: T1CONbits.RD16 = 1;
+"110
+[e = . . _T1CONbits 1 1 -> -> 1 `i `uc ]
+[; ;init.c: 111: T1CONbits.TMR1ON = 1;
+"111
+[e = . . _T1CONbits 1 0 -> -> 1 `i `uc ]
+[; ;init.c: 115: T1GCONbits.TMR1GE = 0;
+"115
 [e = . . _T1GCONbits 1 6 -> -> 0 `i `uc ]
-[; ;init.c: 105: }
-"105
+[; ;init.c: 116: }
+"116
 [e :UE 2601 ]
 }
-"107
+"118
 [v _setup_Interrupt `(v ~T0 @X0 1 ef ]
 {
-[; ;init.c: 107: void setup_Interrupt(){
+[; ;init.c: 118: void setup_Interrupt(){
 [e :U _setup_Interrupt ]
 [f ]
-[; ;init.c: 109: RCONbits.IPEN = 1;
-"109
-[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
-[; ;init.c: 110: INTCONbits.GIEH = 1;
-"110
-[e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
-[; ;init.c: 111: INTCONbits.GIEL = 1;
-"111
-[e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
-[; ;init.c: 115: INTCONbits.TMR0IE = 1;
-"115
-[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-[; ;init.c: 116: heartBeatCounter = 0;
-"116
-[e = _heartBeatCounter -> -> 0 `i `l ]
-[; ;init.c: 119: PIE1bits.TMR1IE = 1;
-"119
-[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
-[; ;init.c: 120: blinkCounter = 0;
+[; ;init.c: 120: RCONbits.IPEN = 1;
 "120
-[e = _blinkCounter -> -> 0 `i `l ]
-[; ;init.c: 126: }
+[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
+[; ;init.c: 121: INTCONbits.GIEH = 1;
+"121
+[e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
+[; ;init.c: 122: INTCONbits.GIEL = 1;
+"122
+[e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
+[; ;init.c: 126: INTCONbits.TMR0IE = 1;
 "126
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+[; ;init.c: 127: heartBeatCounter = 0;
+"127
+[e = _heartBeatCounter -> -> 0 `i `l ]
+[; ;init.c: 130: PIE1bits.TMR1IE = 1;
+"130
+[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
+[; ;init.c: 131: blinkCounter = 0;
+"131
+[e = _blinkCounter -> -> 0 `i `l ]
+[; ;init.c: 137: }
+"137
 [e :UE 2602 ]
 }

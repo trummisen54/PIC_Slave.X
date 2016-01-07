@@ -16980,7 +16980,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "23
 [p x INTOSCSEL=HIGH ]
 "24
-[p x SOSCSEL=HIGH ]
+[p x SOSCSEL=0x0 ]
 "25
 [p x XINST=OFF ]
 "28
@@ -17190,11 +17190,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ECAN.h: 115: unsigned char buttonWasPressed;
 [; ;Other.h: 12: void Delay(unsigned int count);
 [; ;Other.h: 13: void heartBeat();
+[; ;Other.h: 14: void danger(int errorCode);
 [; ;init.h: 11: void InitDevice();
 [; ;init.h: 12: void setup_Interrupt();
 "14 init.h
 [v _FIRST_SEND `i ~T0 @X0 1 e ]
 [; ;init.h: 14: int FIRST_SEND;
+"35
+[v _HEARTBEAT_ERRORCODE `i ~T0 @X0 1 e ]
+[i _HEARTBEAT_ERRORCODE
+-> 3 `i
+]
+[; ;init.h: 35: int HEARTBEAT_ERRORCODE = 3;
+"36
+[v _CAN_ERRORCODE `i ~T0 @X0 1 e ]
+[i _CAN_ERRORCODE
+-> 4 `i
+]
+[; ;init.h: 36: int CAN_ERRORCODE = 4;
+"38
+[v _CAN_ERRORBIT `i ~T0 @X0 1 e ]
+[; ;init.h: 38: int CAN_ERRORBIT;
 [; ;peripherals.h: 11: void heartbeat();
 [; ;peripherals.h: 12: void checkBrake();
 [; ;peripherals.h: 13: void checkBacklight();
@@ -17202,46 +17218,56 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;peripherals.h: 15: void checkH_blink();
 [; ;peripherals.h: 16: void checkDirection();
 [; ;peripherals.h: 17: void checkSafetyPin();
-[; ;peripherals.h: 18: void checkAccelerator();
-[; ;peripherals.h: 19: void updateInputs();
-[; ;peripherals.h: 20: int readAnalog();
-"28 peripherals.h
+[; ;peripherals.h: 18: void checkStop();
+[; ;peripherals.h: 19: void checkAccelerator();
+[; ;peripherals.h: 20: void updateInputs();
+[; ;peripherals.h: 21: int readAnalog();
+[; ;peripherals.h: 22: void startMotor();
+"30 peripherals.h
 [v _MAP_HEARTBEAT `i ~T0 @X0 1 e ]
 [v _MAP_BRAKE `i ~T0 @X0 1 e ]
 [v _MAP_BACKLIGHT `i ~T0 @X0 1 e ]
 [v _MAP_V_BLINK `i ~T0 @X0 1 e ]
-"29
+"31
 [v _MAP_H_BLINK `i ~T0 @X0 1 e ]
 [v _MAP_DIRECTION `i ~T0 @X0 1 e ]
 [v _MAP_SAFETYPIN `i ~T0 @X0 1 e ]
+[v _MAP_STOP `i ~T0 @X0 1 e ]
 [v _MAP_ACCELERATOR `i ~T0 @X0 1 e ]
-[; ;peripherals.h: 28: int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
-[; ;peripherals.h: 29: MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
-"32
+[; ;peripherals.h: 30: int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
+[; ;peripherals.h: 31: MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_STOP, MAP_ACCELERATOR;
+"34
 [v _TEMP_MAP_HEARTBEAT `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_BRAKE `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_BACKLIGHT `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_V_BLINK `i ~T0 @X0 1 e ]
-"33
+"35
 [v _TEMP_MAP_H_BLINK `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_DIRECTION `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_SAFETYPIN `i ~T0 @X0 1 e ]
+[v _TEMP_MAP_STOP `i ~T0 @X0 1 e ]
 [v _TEMP_MAP_ACCELERATOR `i ~T0 @X0 1 e ]
-[; ;peripherals.h: 32: int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
-[; ;peripherals.h: 33: TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
-"39
+[; ;peripherals.h: 34: int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
+[; ;peripherals.h: 35: TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_STOP, TEMP_MAP_ACCELERATOR;
+"41
 [v _MAP_BATTERYSTATUS `i ~T0 @X0 1 e ]
 [v _MAP_VELOCITY `i ~T0 @X0 1 e ]
-[; ;peripherals.h: 39: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
-"42
+[; ;peripherals.h: 41: int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+"44
+[v _deadArea_gas `i ~T0 @X0 1 e ]
+[; ;peripherals.h: 44: int deadArea_gas;
+"47
 [v _heartBeatCounter `l ~T0 @X0 1 e ]
-[; ;peripherals.h: 42: long heartBeatCounter;
-"43
+[; ;peripherals.h: 47: long heartBeatCounter;
+"48
 [v _blinkCounter `l ~T0 @X0 1 e ]
-[; ;peripherals.h: 43: long blinkCounter;
-"45
+[; ;peripherals.h: 48: long blinkCounter;
+"50
 [v _interruptCounter `l ~T0 @X0 1 e ]
-[; ;peripherals.h: 45: long interruptCounter;
+[; ;peripherals.h: 50: long interruptCounter;
+"52
+[v _OFFSET_ACCELERATOR `i ~T0 @X0 1 e ]
+[; ;peripherals.h: 52: int OFFSET_ACCELERATOR;
 "95 ECAN.c
 [v _temp_EIDH `uc ~T0 @X0 1 e ]
 [; ;ECAN.c: 95: unsigned char temp_EIDH;
@@ -17480,367 +17506,376 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ECAN.c: 208: RXB1CON = 0x00;
 "208
 [e = _RXB1CON -> -> 0 `i `uc ]
-[; ;ECAN.c: 210: }
-"210
+[; ;ECAN.c: 211: CAN_ERRORBIT = 0;
+"211
+[e = _CAN_ERRORBIT -> 0 `i ]
+[; ;ECAN.c: 213: }
+"213
 [e :UE 2601 ]
 }
-"222
+"225
 [v _ECAN_Receive `(uc ~T0 @X0 1 ef ]
-"223
+"226
 {
-[; ;ECAN.c: 222: unsigned char ECAN_Receive(void)
-[; ;ECAN.c: 223: {
+[; ;ECAN.c: 225: unsigned char ECAN_Receive(void)
+[; ;ECAN.c: 226: {
 [e :U _ECAN_Receive ]
 [f ]
-"224
+"227
 [v _RXMsgFlag `uc ~T0 @X0 1 a ]
-[; ;ECAN.c: 224: unsigned char RXMsgFlag;
-[; ;ECAN.c: 226: RXMsgFlag = 0x00;
-"226
-[e = _RXMsgFlag -> -> 0 `i `uc ]
-[; ;ECAN.c: 228: if (RXB0CONbits.RXFUL)
-"228
-[e $ ! != -> . . _RXB0CONbits 0 7 `i -> -> -> 0 `i `Vuc `i 2624  ]
-[; ;ECAN.c: 229: {
+[; ;ECAN.c: 227: unsigned char RXMsgFlag;
+[; ;ECAN.c: 229: RXMsgFlag = 0x00;
 "229
-{
-[; ;ECAN.c: 230: temp_EIDH = RXB0EIDH;
-"230
-[e = _temp_EIDH _RXB0EIDH ]
-[; ;ECAN.c: 231: temp_EIDL = RXB0EIDL;
+[e = _RXMsgFlag -> -> 0 `i `uc ]
+[; ;ECAN.c: 231: if (RXB0CONbits.RXFUL)
 "231
-[e = _temp_EIDL _RXB0EIDL ]
-[; ;ECAN.c: 232: temp_SIDH = RXB0SIDH;
+[e $ ! != -> . . _RXB0CONbits 0 7 `i -> -> -> 0 `i `Vuc `i 2624  ]
+[; ;ECAN.c: 232: {
 "232
-[e = _temp_SIDH _RXB0SIDH ]
-[; ;ECAN.c: 233: temp_SIDL = RXB0SIDL;
+{
+[; ;ECAN.c: 233: temp_EIDH = RXB0EIDH;
 "233
-[e = _temp_SIDL _RXB0SIDL ]
-[; ;ECAN.c: 234: temp_DLC = RXB0DLC;
+[e = _temp_EIDH _RXB0EIDH ]
+[; ;ECAN.c: 234: temp_EIDL = RXB0EIDL;
 "234
-[e = _temp_DLC _RXB0DLC ]
-[; ;ECAN.c: 235: BITDATA = RXB0D0;
+[e = _temp_EIDL _RXB0EIDL ]
+[; ;ECAN.c: 235: temp_SIDH = RXB0SIDH;
 "235
-[e = _BITDATA _RXB0D0 ]
-[; ;ECAN.c: 236: TEMP_ACCELERATOR = RXB0D1;
+[e = _temp_SIDH _RXB0SIDH ]
+[; ;ECAN.c: 236: temp_SIDL = RXB0SIDL;
 "236
-[e = _TEMP_ACCELERATOR _RXB0D1 ]
-[; ;ECAN.c: 237: temp_D2 = RXB0D2;
+[e = _temp_SIDL _RXB0SIDL ]
+[; ;ECAN.c: 237: temp_DLC = RXB0DLC;
 "237
-[e = _temp_D2 _RXB0D2 ]
-[; ;ECAN.c: 238: temp_D3 = RXB0D3;
+[e = _temp_DLC _RXB0DLC ]
+[; ;ECAN.c: 238: BITDATA = RXB0D0;
 "238
-[e = _temp_D3 _RXB0D3 ]
-[; ;ECAN.c: 239: temp_D4 = RXB0D4;
+[e = _BITDATA _RXB0D0 ]
+[; ;ECAN.c: 239: TEMP_ACCELERATOR = RXB0D1;
 "239
-[e = _temp_D4 _RXB0D4 ]
-[; ;ECAN.c: 240: temp_D5 = RXB0D5;
+[e = _TEMP_ACCELERATOR _RXB0D1 ]
+[; ;ECAN.c: 240: temp_D2 = RXB0D2;
 "240
-[e = _temp_D5 _RXB0D5 ]
-[; ;ECAN.c: 241: temp_D6 = RXB0D6;
+[e = _temp_D2 _RXB0D2 ]
+[; ;ECAN.c: 241: temp_D3 = RXB0D3;
 "241
-[e = _temp_D6 _RXB0D6 ]
-[; ;ECAN.c: 242: temp_D7 = RXB0D7;
+[e = _temp_D3 _RXB0D3 ]
+[; ;ECAN.c: 242: temp_D4 = RXB0D4;
 "242
-[e = _temp_D7 _RXB0D7 ]
-[; ;ECAN.c: 243: RXB0CONbits.RXFUL = 0;
+[e = _temp_D4 _RXB0D4 ]
+[; ;ECAN.c: 243: temp_D5 = RXB0D5;
 "243
-[e = . . _RXB0CONbits 0 7 -> -> 0 `i `uc ]
-[; ;ECAN.c: 244: RXMsgFlag = 0x01;
+[e = _temp_D5 _RXB0D5 ]
+[; ;ECAN.c: 244: temp_D6 = RXB0D6;
 "244
-[e = _RXMsgFlag -> -> 1 `i `uc ]
+[e = _temp_D6 _RXB0D6 ]
+[; ;ECAN.c: 245: temp_D7 = RXB0D7;
 "245
-}
-[; ;ECAN.c: 245: }
-[e $U 2625  ]
+[e = _temp_D7 _RXB0D7 ]
+[; ;ECAN.c: 246: RXB0CONbits.RXFUL = 0;
 "246
-[e :U 2624 ]
-[; ;ECAN.c: 246: else if (RXB1CONbits.RXFUL)
-[e $ ! != -> . . _RXB1CONbits 0 7 `i -> -> -> 0 `i `Vuc `i 2626  ]
-[; ;ECAN.c: 247: {
+[e = . . _RXB0CONbits 0 7 -> -> 0 `i `uc ]
+[; ;ECAN.c: 247: RXMsgFlag = 0x01;
 "247
-{
-[; ;ECAN.c: 248: temp_EIDH = RXB1EIDH;
+[e = _RXMsgFlag -> -> 1 `i `uc ]
 "248
-[e = _temp_EIDH _RXB1EIDH ]
-[; ;ECAN.c: 249: temp_EIDL = RXB1EIDL;
-"249
-[e = _temp_EIDL _RXB1EIDL ]
-[; ;ECAN.c: 250: temp_SIDH = RXB1SIDH;
-"250
-[e = _temp_SIDH _RXB1SIDH ]
-[; ;ECAN.c: 251: temp_SIDL = RXB1SIDL;
-"251
-[e = _temp_SIDL _RXB1SIDL ]
-[; ;ECAN.c: 252: temp_DLC = RXB1DLC;
-"252
-[e = _temp_DLC _RXB1DLC ]
-[; ;ECAN.c: 253: BITDATA = RXB1D0;
-"253
-[e = _BITDATA _RXB1D0 ]
-[; ;ECAN.c: 254: TEMP_ACCELERATOR = RXB1D1;
-"254
-[e = _TEMP_ACCELERATOR _RXB1D1 ]
-[; ;ECAN.c: 255: temp_D2 = RXB1D2;
-"255
-[e = _temp_D2 _RXB1D2 ]
-[; ;ECAN.c: 256: temp_D3 = RXB1D3;
-"256
-[e = _temp_D3 _RXB1D3 ]
-[; ;ECAN.c: 257: temp_D4 = RXB1D4;
-"257
-[e = _temp_D4 _RXB1D4 ]
-[; ;ECAN.c: 258: temp_D5 = RXB1D5;
-"258
-[e = _temp_D5 _RXB1D5 ]
-[; ;ECAN.c: 259: temp_D6 = RXB1D6;
-"259
-[e = _temp_D6 _RXB1D6 ]
-[; ;ECAN.c: 260: temp_D7 = RXB1D7;
-"260
-[e = _temp_D7 _RXB1D7 ]
-[; ;ECAN.c: 261: RXB1CONbits.RXFUL = 0;
-"261
-[e = . . _RXB1CONbits 0 7 -> -> 0 `i `uc ]
-[; ;ECAN.c: 262: RXMsgFlag = 0x01;
-"262
-[e = _RXMsgFlag -> -> 1 `i `uc ]
-"263
 }
-[; ;ECAN.c: 263: }
-[e $U 2627  ]
-"264
-[e :U 2626 ]
-[; ;ECAN.c: 264: else if (B0CONbits.RXFUL)
-[e $ ! != -> . . _B0CONbits 1 7 `i -> -> -> 0 `i `Vuc `i 2628  ]
-[; ;ECAN.c: 265: {
-"265
+[; ;ECAN.c: 248: }
+[e $U 2625  ]
+"249
+[e :U 2624 ]
+[; ;ECAN.c: 249: else if (RXB1CONbits.RXFUL)
+[e $ ! != -> . . _RXB1CONbits 0 7 `i -> -> -> 0 `i `Vuc `i 2626  ]
+[; ;ECAN.c: 250: {
+"250
 {
-[; ;ECAN.c: 266: temp_EIDH = B0EIDH;
-"266
-[e = _temp_EIDH _B0EIDH ]
-[; ;ECAN.c: 267: temp_EIDL = B0EIDL;
-"267
-[e = _temp_EIDL _B0EIDL ]
-[; ;ECAN.c: 268: temp_SIDH = B0SIDH;
-"268
-[e = _temp_SIDH _B0SIDH ]
-[; ;ECAN.c: 269: temp_SIDL = B0SIDL;
-"269
-[e = _temp_SIDL _B0SIDL ]
-[; ;ECAN.c: 270: temp_DLC = B0DLC;
-"270
-[e = _temp_DLC _B0DLC ]
-[; ;ECAN.c: 271: BITDATA = B0D0;
-"271
-[e = _BITDATA _B0D0 ]
-[; ;ECAN.c: 272: TEMP_ACCELERATOR = B0D1;
-"272
-[e = _TEMP_ACCELERATOR _B0D1 ]
-[; ;ECAN.c: 273: temp_D2 = B0D2;
-"273
-[e = _temp_D2 _B0D2 ]
-[; ;ECAN.c: 274: temp_D3 = B0D3;
-"274
-[e = _temp_D3 _B0D3 ]
-[; ;ECAN.c: 275: temp_D4 = B0D4;
-"275
-[e = _temp_D4 _B0D4 ]
-[; ;ECAN.c: 276: temp_D5 = B0D5;
-"276
-[e = _temp_D5 _B0D5 ]
-[; ;ECAN.c: 277: temp_D6 = B0D6;
-"277
-[e = _temp_D6 _B0D6 ]
-[; ;ECAN.c: 278: temp_D7 = B0D7;
-"278
-[e = _temp_D7 _B0D7 ]
-[; ;ECAN.c: 280: B0CONbits.RXFUL = 0;
-"280
-[e = . . _B0CONbits 1 7 -> -> 0 `i `uc ]
-[; ;ECAN.c: 281: RXMsgFlag = 0x01;
-"281
+[; ;ECAN.c: 251: temp_EIDH = RXB1EIDH;
+"251
+[e = _temp_EIDH _RXB1EIDH ]
+[; ;ECAN.c: 252: temp_EIDL = RXB1EIDL;
+"252
+[e = _temp_EIDL _RXB1EIDL ]
+[; ;ECAN.c: 253: temp_SIDH = RXB1SIDH;
+"253
+[e = _temp_SIDH _RXB1SIDH ]
+[; ;ECAN.c: 254: temp_SIDL = RXB1SIDL;
+"254
+[e = _temp_SIDL _RXB1SIDL ]
+[; ;ECAN.c: 255: temp_DLC = RXB1DLC;
+"255
+[e = _temp_DLC _RXB1DLC ]
+[; ;ECAN.c: 256: BITDATA = RXB1D0;
+"256
+[e = _BITDATA _RXB1D0 ]
+[; ;ECAN.c: 257: TEMP_ACCELERATOR = RXB1D1;
+"257
+[e = _TEMP_ACCELERATOR _RXB1D1 ]
+[; ;ECAN.c: 258: temp_D2 = RXB1D2;
+"258
+[e = _temp_D2 _RXB1D2 ]
+[; ;ECAN.c: 259: temp_D3 = RXB1D3;
+"259
+[e = _temp_D3 _RXB1D3 ]
+[; ;ECAN.c: 260: temp_D4 = RXB1D4;
+"260
+[e = _temp_D4 _RXB1D4 ]
+[; ;ECAN.c: 261: temp_D5 = RXB1D5;
+"261
+[e = _temp_D5 _RXB1D5 ]
+[; ;ECAN.c: 262: temp_D6 = RXB1D6;
+"262
+[e = _temp_D6 _RXB1D6 ]
+[; ;ECAN.c: 263: temp_D7 = RXB1D7;
+"263
+[e = _temp_D7 _RXB1D7 ]
+[; ;ECAN.c: 264: RXB1CONbits.RXFUL = 0;
+"264
+[e = . . _RXB1CONbits 0 7 -> -> 0 `i `uc ]
+[; ;ECAN.c: 265: RXMsgFlag = 0x01;
+"265
 [e = _RXMsgFlag -> -> 1 `i `uc ]
-"282
+"266
+}
+[; ;ECAN.c: 266: }
+[e $U 2627  ]
+"267
+[e :U 2626 ]
+[; ;ECAN.c: 267: else if (B0CONbits.RXFUL)
+[e $ ! != -> . . _B0CONbits 1 7 `i -> -> -> 0 `i `Vuc `i 2628  ]
+[; ;ECAN.c: 268: {
+"268
+{
+[; ;ECAN.c: 269: temp_EIDH = B0EIDH;
+"269
+[e = _temp_EIDH _B0EIDH ]
+[; ;ECAN.c: 270: temp_EIDL = B0EIDL;
+"270
+[e = _temp_EIDL _B0EIDL ]
+[; ;ECAN.c: 271: temp_SIDH = B0SIDH;
+"271
+[e = _temp_SIDH _B0SIDH ]
+[; ;ECAN.c: 272: temp_SIDL = B0SIDL;
+"272
+[e = _temp_SIDL _B0SIDL ]
+[; ;ECAN.c: 273: temp_DLC = B0DLC;
+"273
+[e = _temp_DLC _B0DLC ]
+[; ;ECAN.c: 274: BITDATA = B0D0;
+"274
+[e = _BITDATA _B0D0 ]
+[; ;ECAN.c: 275: TEMP_ACCELERATOR = B0D1;
+"275
+[e = _TEMP_ACCELERATOR _B0D1 ]
+[; ;ECAN.c: 276: temp_D2 = B0D2;
+"276
+[e = _temp_D2 _B0D2 ]
+[; ;ECAN.c: 277: temp_D3 = B0D3;
+"277
+[e = _temp_D3 _B0D3 ]
+[; ;ECAN.c: 278: temp_D4 = B0D4;
+"278
+[e = _temp_D4 _B0D4 ]
+[; ;ECAN.c: 279: temp_D5 = B0D5;
+"279
+[e = _temp_D5 _B0D5 ]
+[; ;ECAN.c: 280: temp_D6 = B0D6;
+"280
+[e = _temp_D6 _B0D6 ]
+[; ;ECAN.c: 281: temp_D7 = B0D7;
+"281
+[e = _temp_D7 _B0D7 ]
+[; ;ECAN.c: 283: B0CONbits.RXFUL = 0;
+"283
+[e = . . _B0CONbits 1 7 -> -> 0 `i `uc ]
+[; ;ECAN.c: 284: RXMsgFlag = 0x01;
+"284
+[e = _RXMsgFlag -> -> 1 `i `uc ]
+"285
 }
 [e :U 2628 ]
-"284
+"287
 [e :U 2627 ]
 [e :U 2625 ]
-[; ;ECAN.c: 282: }
-[; ;ECAN.c: 284: if (RXMsgFlag == 0x01)
+[; ;ECAN.c: 285: }
+[; ;ECAN.c: 287: if (RXMsgFlag == 0x01)
 [e $ ! == -> _RXMsgFlag `i -> 1 `i 2629  ]
-[; ;ECAN.c: 285: {
-"285
-{
-[; ;ECAN.c: 286: RXMsgFlag = 0x00;
-"286
-[e = _RXMsgFlag -> -> 0 `i `uc ]
-[; ;ECAN.c: 287: PIR5bits.RXB1IF = 0;
-"287
-[e = . . _PIR5bits 0 1 -> -> 0 `i `uc ]
-[; ;ECAN.c: 288: return 1;
+[; ;ECAN.c: 288: {
 "288
+{
+[; ;ECAN.c: 289: RXMsgFlag = 0x00;
+"289
+[e = _RXMsgFlag -> -> 0 `i `uc ]
+[; ;ECAN.c: 290: PIR5bits.RXB1IF = 0;
+"290
+[e = . . _PIR5bits 0 1 -> -> 0 `i `uc ]
+[; ;ECAN.c: 291: return 1;
+"291
 [e ) -> -> 1 `i `uc ]
 [e $UE 2623  ]
-"289
-}
-[; ;ECAN.c: 289: }
-[e $U 2630  ]
-"290
-[e :U 2629 ]
-[; ;ECAN.c: 290: else
-[; ;ECAN.c: 291: {
-"291
-{
-[; ;ECAN.c: 292: return 0;
 "292
+}
+[; ;ECAN.c: 292: }
+[e $U 2630  ]
+"293
+[e :U 2629 ]
+[; ;ECAN.c: 293: else
+[; ;ECAN.c: 294: {
+"294
+{
+[; ;ECAN.c: 295: return 0;
+"295
 [e ) -> -> 0 `i `uc ]
 [e $UE 2623  ]
-"293
+"296
 }
 [e :U 2630 ]
-[; ;ECAN.c: 293: }
-[; ;ECAN.c: 294: }
-"294
+[; ;ECAN.c: 296: }
+[; ;ECAN.c: 297: }
+"297
 [e :UE 2623 ]
 }
-"303
-[v _ECAN_Transmit `(v ~T0 @X0 1 ef11`uc`uc`uc`uc`uc`uc`uc`uc`uc`uc`uc ]
-"314
-{
-[; ;ECAN.c: 303: void ECAN_Transmit(unsigned char SIDH,
-[; ;ECAN.c: 304: unsigned char SIDL,
-[; ;ECAN.c: 305: unsigned char DLC,
-[; ;ECAN.c: 306: unsigned char TRANSMIT_ID,
-[; ;ECAN.c: 307: unsigned char DATA1,
-[; ;ECAN.c: 308: unsigned char DATA2,
-[; ;ECAN.c: 309: unsigned char DATA3,
-[; ;ECAN.c: 310: unsigned char DATA4,
-[; ;ECAN.c: 311: unsigned char DATA5,
-[; ;ECAN.c: 312: unsigned char DATA6,
-[; ;ECAN.c: 313: unsigned char DATA7)
-[; ;ECAN.c: 314: {
-[e :U _ECAN_Transmit ]
-"303
-[v _SIDH `uc ~T0 @X0 1 r1 ]
-"304
-[v _SIDL `uc ~T0 @X0 1 r2 ]
-"305
-[v _DLC `uc ~T0 @X0 1 r3 ]
 "306
-[v _TRANSMIT_ID `uc ~T0 @X0 1 r4 ]
+[v _ECAN_Transmit `(v ~T0 @X0 1 ef11`uc`uc`uc`uc`uc`uc`uc`uc`uc`uc`uc ]
+"317
+{
+[; ;ECAN.c: 306: void ECAN_Transmit(unsigned char SIDH,
+[; ;ECAN.c: 307: unsigned char SIDL,
+[; ;ECAN.c: 308: unsigned char DLC,
+[; ;ECAN.c: 309: unsigned char TRANSMIT_ID,
+[; ;ECAN.c: 310: unsigned char DATA1,
+[; ;ECAN.c: 311: unsigned char DATA2,
+[; ;ECAN.c: 312: unsigned char DATA3,
+[; ;ECAN.c: 313: unsigned char DATA4,
+[; ;ECAN.c: 314: unsigned char DATA5,
+[; ;ECAN.c: 315: unsigned char DATA6,
+[; ;ECAN.c: 316: unsigned char DATA7)
+[; ;ECAN.c: 317: {
+[e :U _ECAN_Transmit ]
+"306
+[v _SIDH `uc ~T0 @X0 1 r1 ]
 "307
-[v _DATA1 `uc ~T0 @X0 1 r5 ]
+[v _SIDL `uc ~T0 @X0 1 r2 ]
 "308
-[v _DATA2 `uc ~T0 @X0 1 r6 ]
+[v _DLC `uc ~T0 @X0 1 r3 ]
 "309
-[v _DATA3 `uc ~T0 @X0 1 r7 ]
+[v _TRANSMIT_ID `uc ~T0 @X0 1 r4 ]
 "310
-[v _DATA4 `uc ~T0 @X0 1 r8 ]
+[v _DATA1 `uc ~T0 @X0 1 r5 ]
 "311
-[v _DATA5 `uc ~T0 @X0 1 r9 ]
+[v _DATA2 `uc ~T0 @X0 1 r6 ]
 "312
-[v _DATA6 `uc ~T0 @X0 1 r10 ]
+[v _DATA3 `uc ~T0 @X0 1 r7 ]
 "313
-[v _DATA7 `uc ~T0 @X0 1 r11 ]
+[v _DATA4 `uc ~T0 @X0 1 r8 ]
 "314
-[f ]
-[; ;ECAN.c: 315: TXB0EIDH = 0x00;
+[v _DATA5 `uc ~T0 @X0 1 r9 ]
 "315
-[e = _TXB0EIDH -> -> 0 `i `uc ]
-[; ;ECAN.c: 316: TXB0EIDL = 0x00;
+[v _DATA6 `uc ~T0 @X0 1 r10 ]
 "316
-[e = _TXB0EIDL -> -> 0 `i `uc ]
-[; ;ECAN.c: 319: TXB0SIDH = SIDH;
+[v _DATA7 `uc ~T0 @X0 1 r11 ]
+"317
+[f ]
+[; ;ECAN.c: 318: TXB0EIDH = 0x00;
+"318
+[e = _TXB0EIDH -> -> 0 `i `uc ]
+[; ;ECAN.c: 319: TXB0EIDL = 0x00;
 "319
+[e = _TXB0EIDL -> -> 0 `i `uc ]
+[; ;ECAN.c: 322: TXB0SIDH = SIDH;
+"322
 [e = _TXB0SIDH _SIDH ]
-[; ;ECAN.c: 320: TXB0SIDL = SIDL;
-"320
+[; ;ECAN.c: 323: TXB0SIDL = SIDL;
+"323
 [e = _TXB0SIDL _SIDL ]
-[; ;ECAN.c: 321: TXB0DLC = DLC;
-"321
+[; ;ECAN.c: 324: TXB0DLC = DLC;
+"324
 [e = _TXB0DLC _DLC ]
-[; ;ECAN.c: 330: TXB0D0 = TRANSMIT_ID;
-"330
-[e = _TXB0D0 _TRANSMIT_ID ]
-[; ;ECAN.c: 331: TXB0D1 = DATA1;
-"331
-[e = _TXB0D1 _DATA1 ]
-[; ;ECAN.c: 332: TXB0D2 = DATA2;
-"332
-[e = _TXB0D2 _DATA2 ]
-[; ;ECAN.c: 333: TXB0D3 = DATA3;
+[; ;ECAN.c: 333: TXB0D0 = TRANSMIT_ID;
 "333
-[e = _TXB0D3 _DATA3 ]
-[; ;ECAN.c: 334: TXB0D4 = DATA4;
+[e = _TXB0D0 _TRANSMIT_ID ]
+[; ;ECAN.c: 334: TXB0D1 = DATA1;
 "334
-[e = _TXB0D4 _DATA4 ]
-[; ;ECAN.c: 335: TXB0D5 = DATA5;
+[e = _TXB0D1 _DATA1 ]
+[; ;ECAN.c: 335: TXB0D2 = DATA2;
 "335
-[e = _TXB0D5 _DATA5 ]
-[; ;ECAN.c: 336: TXB0D6 = DATA6;
+[e = _TXB0D2 _DATA2 ]
+[; ;ECAN.c: 336: TXB0D3 = DATA3;
 "336
-[e = _TXB0D6 _DATA6 ]
-[; ;ECAN.c: 337: TXB0D7 = DATA7;
+[e = _TXB0D3 _DATA3 ]
+[; ;ECAN.c: 337: TXB0D4 = DATA4;
 "337
-[e = _TXB0D7 _DATA7 ]
-[; ;ECAN.c: 339: TXB0CONbits.TXREQ = 1;
+[e = _TXB0D4 _DATA4 ]
+[; ;ECAN.c: 338: TXB0D5 = DATA5;
+"338
+[e = _TXB0D5 _DATA5 ]
+[; ;ECAN.c: 339: TXB0D6 = DATA6;
 "339
+[e = _TXB0D6 _DATA6 ]
+[; ;ECAN.c: 340: TXB0D7 = DATA7;
+"340
+[e = _TXB0D7 _DATA7 ]
+[; ;ECAN.c: 342: TXB0CONbits.TXREQ = 1;
+"342
 [e = . . _TXB0CONbits 0 2 -> -> 1 `i `uc ]
-[; ;ECAN.c: 353: }
-"353
+[; ;ECAN.c: 356: }
+"356
 [e :UE 2631 ]
 }
-"359
+"362
 [v _unZipCAN `(v ~T0 @X0 1 ef ]
 {
-[; ;ECAN.c: 359: void unZipCAN(){
+[; ;ECAN.c: 362: void unZipCAN(){
 [e :U _unZipCAN ]
 [f ]
-[; ;ECAN.c: 361: TEMP_MAP_HEARTBEAT = (BITDATA & (1 << 0));
-"361
-[e = _TEMP_MAP_HEARTBEAT & -> _BITDATA `i << -> 1 `i -> 0 `i ]
-[; ;ECAN.c: 362: TEMP_MAP_HEARTBEAT = (TEMP_MAP_HEARTBEAT >> 0);
-"362
-[e = _TEMP_MAP_HEARTBEAT >> _TEMP_MAP_HEARTBEAT -> 0 `i ]
-[; ;ECAN.c: 364: TEMP_MAP_BRAKE = BITDATA & (1 << 1);
+[; ;ECAN.c: 364: TEMP_MAP_HEARTBEAT = (BITDATA & (1 << 0));
 "364
-[e = _TEMP_MAP_BRAKE & -> _BITDATA `i << -> 1 `i -> 1 `i ]
-[; ;ECAN.c: 365: TEMP_MAP_BRAKE = (TEMP_MAP_BRAKE >> 1);
+[e = _TEMP_MAP_HEARTBEAT & -> _BITDATA `i << -> 1 `i -> 0 `i ]
+[; ;ECAN.c: 365: TEMP_MAP_HEARTBEAT = (TEMP_MAP_HEARTBEAT >> 0);
 "365
-[e = _TEMP_MAP_BRAKE >> _TEMP_MAP_BRAKE -> 1 `i ]
-[; ;ECAN.c: 367: TEMP_MAP_BACKLIGHT = BITDATA & (1 << 2);
+[e = _TEMP_MAP_HEARTBEAT >> _TEMP_MAP_HEARTBEAT -> 0 `i ]
+[; ;ECAN.c: 367: TEMP_MAP_BRAKE = BITDATA & (1 << 1);
 "367
-[e = _TEMP_MAP_BACKLIGHT & -> _BITDATA `i << -> 1 `i -> 2 `i ]
-[; ;ECAN.c: 368: TEMP_MAP_BACKLIGHT = (TEMP_MAP_BACKLIGHT >> 2);
+[e = _TEMP_MAP_BRAKE & -> _BITDATA `i << -> 1 `i -> 1 `i ]
+[; ;ECAN.c: 368: TEMP_MAP_BRAKE = (TEMP_MAP_BRAKE >> 1);
 "368
-[e = _TEMP_MAP_BACKLIGHT >> _TEMP_MAP_BACKLIGHT -> 2 `i ]
-[; ;ECAN.c: 370: TEMP_MAP_V_BLINK = BITDATA & (1 << 3);
+[e = _TEMP_MAP_BRAKE >> _TEMP_MAP_BRAKE -> 1 `i ]
+[; ;ECAN.c: 370: TEMP_MAP_BACKLIGHT = BITDATA & (1 << 2);
 "370
-[e = _TEMP_MAP_V_BLINK & -> _BITDATA `i << -> 1 `i -> 3 `i ]
-[; ;ECAN.c: 371: TEMP_MAP_V_BLINK = (TEMP_MAP_V_BLINK >> 3);
+[e = _TEMP_MAP_BACKLIGHT & -> _BITDATA `i << -> 1 `i -> 2 `i ]
+[; ;ECAN.c: 371: TEMP_MAP_BACKLIGHT = (TEMP_MAP_BACKLIGHT >> 2);
 "371
-[e = _TEMP_MAP_V_BLINK >> _TEMP_MAP_V_BLINK -> 3 `i ]
-[; ;ECAN.c: 373: TEMP_MAP_H_BLINK = BITDATA & (1 << 4);
+[e = _TEMP_MAP_BACKLIGHT >> _TEMP_MAP_BACKLIGHT -> 2 `i ]
+[; ;ECAN.c: 373: TEMP_MAP_V_BLINK = BITDATA & (1 << 3);
 "373
-[e = _TEMP_MAP_H_BLINK & -> _BITDATA `i << -> 1 `i -> 4 `i ]
-[; ;ECAN.c: 374: TEMP_MAP_H_BLINK = (TEMP_MAP_H_BLINK >> 4);
+[e = _TEMP_MAP_V_BLINK & -> _BITDATA `i << -> 1 `i -> 3 `i ]
+[; ;ECAN.c: 374: TEMP_MAP_V_BLINK = (TEMP_MAP_V_BLINK >> 3);
 "374
-[e = _TEMP_MAP_H_BLINK >> _TEMP_MAP_H_BLINK -> 4 `i ]
-[; ;ECAN.c: 376: TEMP_MAP_DIRECTION = BITDATA & (1 << 5);
+[e = _TEMP_MAP_V_BLINK >> _TEMP_MAP_V_BLINK -> 3 `i ]
+[; ;ECAN.c: 376: TEMP_MAP_H_BLINK = BITDATA & (1 << 4);
 "376
-[e = _TEMP_MAP_DIRECTION & -> _BITDATA `i << -> 1 `i -> 5 `i ]
-[; ;ECAN.c: 377: TEMP_MAP_DIRECTION = (TEMP_MAP_DIRECTION >> 5);
+[e = _TEMP_MAP_H_BLINK & -> _BITDATA `i << -> 1 `i -> 4 `i ]
+[; ;ECAN.c: 377: TEMP_MAP_H_BLINK = (TEMP_MAP_H_BLINK >> 4);
 "377
-[e = _TEMP_MAP_DIRECTION >> _TEMP_MAP_DIRECTION -> 5 `i ]
-[; ;ECAN.c: 379: TEMP_MAP_SAFETYPIN = BITDATA & (1 << 6);
+[e = _TEMP_MAP_H_BLINK >> _TEMP_MAP_H_BLINK -> 4 `i ]
+[; ;ECAN.c: 379: TEMP_MAP_DIRECTION = BITDATA & (1 << 5);
 "379
-[e = _TEMP_MAP_SAFETYPIN & -> _BITDATA `i << -> 1 `i -> 6 `i ]
-[; ;ECAN.c: 380: TEMP_MAP_SAFETYPIN = (TEMP_MAP_SAFETYPIN >> 6);
+[e = _TEMP_MAP_DIRECTION & -> _BITDATA `i << -> 1 `i -> 5 `i ]
+[; ;ECAN.c: 380: TEMP_MAP_DIRECTION = (TEMP_MAP_DIRECTION >> 5);
 "380
-[e = _TEMP_MAP_SAFETYPIN >> _TEMP_MAP_SAFETYPIN -> 6 `i ]
-[; ;ECAN.c: 382: }
+[e = _TEMP_MAP_DIRECTION >> _TEMP_MAP_DIRECTION -> 5 `i ]
+[; ;ECAN.c: 382: TEMP_MAP_SAFETYPIN = BITDATA & (1 << 6);
 "382
+[e = _TEMP_MAP_SAFETYPIN & -> _BITDATA `i << -> 1 `i -> 6 `i ]
+[; ;ECAN.c: 383: TEMP_MAP_SAFETYPIN = (TEMP_MAP_SAFETYPIN >> 6);
+"383
+[e = _TEMP_MAP_SAFETYPIN >> _TEMP_MAP_SAFETYPIN -> 6 `i ]
+[; ;ECAN.c: 385: TEMP_MAP_STOP = BITDATA & (1 << 7);
+"385
+[e = _TEMP_MAP_STOP & -> _BITDATA `i << -> 1 `i -> 7 `i ]
+[; ;ECAN.c: 386: TEMP_MAP_STOP = (TEMP_MAP_STOP >> 7);
+"386
+[e = _TEMP_MAP_STOP >> _TEMP_MAP_STOP -> 7 `i ]
+[; ;ECAN.c: 388: }
+"388
 [e :UE 2632 ]
 }

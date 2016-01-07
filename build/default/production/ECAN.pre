@@ -20766,7 +20766,7 @@ extern __nonreentrant void _delay3(unsigned char);
 # 22 "config.h"
 #pragma config RETEN = OFF
 #pragma config INTOSCSEL = HIGH
-#pragma config SOSCSEL = HIGH
+#pragma config SOSCSEL = 0b10
 #pragma config XINST = OFF
 
 
@@ -20997,12 +20997,19 @@ unsigned char buttonWasPressed;
 # 12 "Other.h"
 void Delay(unsigned int count);
 void heartBeat();
+void danger(int errorCode);
 
 # 11 "init.h"
 void InitDevice();
 void setup_Interrupt();
 
 int FIRST_SEND;
+
+# 35
+int HEARTBEAT_ERRORCODE = 3;
+int CAN_ERRORCODE = 4;
+
+int CAN_ERRORBIT;
 
 # 11 "peripherals.h"
 void heartbeat();
@@ -21012,26 +21019,33 @@ void checkV_blink();
 void checkH_blink();
 void checkDirection();
 void checkSafetyPin();
+void checkStop();
 void checkAccelerator();
 void updateInputs();
 int readAnalog();
+void startMotor();
 
-# 28
+# 30
 int MAP_HEARTBEAT, MAP_BRAKE, MAP_BACKLIGHT, MAP_V_BLINK,
-MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_ACCELERATOR;
+MAP_H_BLINK, MAP_DIRECTION, MAP_SAFETYPIN, MAP_STOP, MAP_ACCELERATOR;
 
 
 int TEMP_MAP_HEARTBEAT, TEMP_MAP_BRAKE, TEMP_MAP_BACKLIGHT, TEMP_MAP_V_BLINK,
-TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_ACCELERATOR;
+TEMP_MAP_H_BLINK, TEMP_MAP_DIRECTION, TEMP_MAP_SAFETYPIN, TEMP_MAP_STOP, TEMP_MAP_ACCELERATOR;
 
-# 39
+# 41
 int MAP_BATTERYSTATUS, MAP_VELOCITY, MAP_HEARTBEAT;
+
+
+int deadArea_gas;
 
 
 long heartBeatCounter;
 long blinkCounter;
 
 long interruptCounter;
+
+int OFFSET_ACCELERATOR;
 
 # 95 "ECAN.c"
 unsigned char temp_EIDH;
@@ -21137,9 +21151,12 @@ while(CANSTATbits.OPMODE==0x40);
 RXB0CON = 0x00;
 RXB1CON = 0x00;
 
+
+CAN_ERRORBIT = 0;
+
 }
 
-# 222
+# 225
 unsigned char ECAN_Receive(void)
 {
 unsigned char RXMsgFlag;
@@ -21214,7 +21231,7 @@ return 0;
 }
 }
 
-# 303
+# 306
 void ECAN_Transmit(unsigned char SIDH,
 unsigned char SIDL,
 unsigned char DLC,
@@ -21235,7 +21252,7 @@ TXB0SIDH = SIDH;
 TXB0SIDL = SIDL;
 TXB0DLC = DLC;
 
-# 330
+# 333
 TXB0D0 = TRANSMIT_ID;
 TXB0D1 = DATA1;
 TXB0D2 = DATA2;
@@ -21247,10 +21264,10 @@ TXB0D7 = DATA7;
 
 TXB0CONbits.TXREQ = 1;
 
-# 353
+# 356
 }
 
-# 359
+# 362
 void unZipCAN(){
 
 TEMP_MAP_HEARTBEAT = (BITDATA & (1 << 0));
@@ -21273,5 +21290,8 @@ TEMP_MAP_DIRECTION = (TEMP_MAP_DIRECTION >> 5);
 
 TEMP_MAP_SAFETYPIN = BITDATA & (1 << 6);
 TEMP_MAP_SAFETYPIN = (TEMP_MAP_SAFETYPIN >> 6);
+
+TEMP_MAP_STOP = BITDATA & (1 << 7);
+TEMP_MAP_STOP = (TEMP_MAP_STOP >> 7);
 
 }

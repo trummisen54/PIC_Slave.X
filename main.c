@@ -33,9 +33,10 @@ int main(void){
             
         }
         
-        if(heartBeatCounter > 25){ // 20 works, 10 is to low
-            danger();
-        }
+        //testar lägga detta i interruptet istället... säkrare...
+        //if(heartBeatCounter > 35){ // 20 works, 10 is to low
+        //    danger();
+        //}
         
         checkBrake();
         checkBacklight();
@@ -43,19 +44,19 @@ int main(void){
         checkH_blink();
         checkDirection();
         checkSafetyPin();
+        checkStop();
         checkAccelerator();
               
-  
         
         
         updateInputs();
             
         ECAN_Transmit(0x32,0xC0, 0x08,
-                MAP_BATTERYSTATUS,
+                0,//not used
                 MAP_VELOCITY,
                 0x01, // heartbeat always one
-                temp_D3,
-                temp_D4,
+                MAP_BATTERYSTATUS & 0x00FF,
+                (MAP_BATTERYSTATUS & 0xFF00) >> 8,
                 temp_D5,
                 temp_D6,
                 temp_D7);
@@ -74,8 +75,8 @@ void interrupt ISR(){
    
     if(IRXIF){// CAN Bus Error Message Received Interrupt Flag bit  
         if(TXB0CONbits.TXERR){ // wrong in send, maybe (TXREQ not cleared)
-            ERROR_DIODE_PIN = 1;
-    
+            CAN_ERRORBIT = 1;
+            
         }
         IRXIF = 0;
     }
@@ -85,6 +86,9 @@ void interrupt ISR(){
     if(TMR0IF == 1){
         if(!FIRST_SEND){
             heartBeatCounter++;
+            if(heartBeatCounter > 35){
+                danger(HEARTBEAT_ERRORCODE);
+            }
         }
         TMR0IF = 0;
     }
@@ -117,9 +121,6 @@ void interrupt ISR(){
             }
             
         }
-        
-        
-        
         
         TMR1IF = 0;
     }
